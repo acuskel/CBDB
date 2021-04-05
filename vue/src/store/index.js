@@ -18,6 +18,26 @@ if(currentToken != null) {
 
 export default new Vuex.Store({
   state: {
+    comics: [
+      {
+        title: "Spiderman",
+        author: "Peter David",
+        isbn: "9781601390554"
+      },
+      {
+        title: "Batman",
+        author: "Jeph Loeb",
+        isbn: "9781401223175"
+      },
+      {
+        title: "The Tick",
+        author: "Greg Hyland",
+        isbn: "9781578400775"
+      },
+    ],
+
+    collections: [],
+
     token: currentToken || '',
     user: currentUser || {}
   },
@@ -37,6 +57,12 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    SET_ACTIVE_COMIC(state, comicIsbn){ // todo: not working
+      state.activeComic = comicIsbn;
+    },
+    SAVE_COLLECTION(state, newCollection){
+      state.collections.push(newCollection);
     }
   }
 })
