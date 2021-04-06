@@ -63,6 +63,9 @@ export default new Vuex.Store({
     },
     SAVE_COLLECTION(state, newCollection){
       state.collections.push(newCollection);
+    },
+    REPLACE_COLLECTIONS(state, collections) {
+      state.collections = collections;
     }
   }
 })
