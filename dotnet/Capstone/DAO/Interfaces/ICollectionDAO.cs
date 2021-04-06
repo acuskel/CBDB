@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Capstone.DAO.Interfaces
 {
-    interface ICollectionDAO
+    public interface ICollectionDAO
     {
         List<Collection> GetCollections();
     }
