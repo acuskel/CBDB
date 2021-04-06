@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Capstone.DAO.Interfaces;
 using Capstone.Models;
+using Capstone.DAO;
 
 namespace Capstone.Controllers
 {
@@ -15,7 +16,10 @@ namespace Capstone.Controllers
     {
         private ICollectionDAO collectionDAO;
 
-        //public CollectionController(ICollectioDAO c)
+        public CollectionController(ICollectionDAO collectionDAO)
+        {
+            this.collectionDAO = collectionDAO;
+        }
         
         [HttpGet]
         public ActionResult<List<Collection>> GetCollections()
