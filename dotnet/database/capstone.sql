@@ -68,7 +68,10 @@ INSERT INTO issues (issue_title, series_title) VALUES ('Whisperer Wars', 'The Wa
 INSERT INTO issues (issue_title, series_title) VALUES ('Crawling', 'The Tick');
 
 -- populate join table
-INSERT INTO collections_issues (collection_id, issue_id) VALUES (1,2);INSERT INTO collections_issues (collection_id, issue_id) VALUES (1,3);INSERT INTO collections_issues (collection_id, issue_id) VALUES (2,4);INSERT INTO collections_issues (collection_id, issue_id) VALUES (3,1);
+INSERT INTO collections_issues (collection_id, issue_id) VALUES (1,2);
+INSERT INTO collections_issues (collection_id, issue_id) VALUES (1,3);
+INSERT INTO collections_issues (collection_id, issue_id) VALUES (2,4);
+INSERT INTO collections_issues (collection_id, issue_id) VALUES (3,1);
 
 
 GO
