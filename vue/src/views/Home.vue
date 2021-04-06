@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>My Collection</h1>
+    <h1>Collections</h1>
     <collections-list />
     <add-collection />
   </div>

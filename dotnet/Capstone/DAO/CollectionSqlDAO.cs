@@ -11,13 +11,13 @@ namespace Capstone.DAO
     public class CollectionSqlDAO : ICollectionDAO
     {
         private string connectionString;
-        private string sqlGetCollections = "SELECT * FROM collections;";
+        private string sqlGetCollections = "SELECT * FROM collections WHERE user_id = @userId;";
 
         public CollectionSqlDAO(string connectionString)
         {
             this.connectionString = connectionString;
         }
-        public List<Collection> GetCollections()
+        public List<Collection> GetCollections(int userId)
         {
             List<Collection> collections = new List<Collection>();
             try
@@ -26,7 +26,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sqlGetCollections, conn);
-
+                    cmd.Parameters.AddWithValue("@userId", userId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())

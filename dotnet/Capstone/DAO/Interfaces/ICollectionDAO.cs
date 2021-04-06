@@ -8,6 +8,6 @@ namespace Capstone.DAO.Interfaces
 {
     public interface ICollectionDAO
     {
-        List<Collection> GetCollections();
+        List<Collection> GetCollections(int userId);
     }
 }

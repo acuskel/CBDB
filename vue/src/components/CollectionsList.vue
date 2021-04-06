@@ -2,14 +2,14 @@
   <div class="my-collection-container">
     <ul>
       <li
-        v-bind:collection="collection"
+        
         v-for="collection in $store.state.collections"
         v-bind:key="collection.name"
       >
       <!-- todo: add routerlink to CollectionDisplay -->
-      {{collection.id}}
+      
       {{collection.name}}
-      {{collection.userId}}
+      
       <li/>
       <!-- todo: bind on ID -->
     </ul>
@@ -34,7 +34,7 @@ export default {
     this.message = "";
 
     collectionService
-      .getCollections()
+      .getCollections(this.$store.state.user.userId)
       .then((response) => {
         this.$store.commit("REPLACE_COLLECTIONS", response.data);
       })

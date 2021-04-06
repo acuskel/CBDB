@@ -22,10 +22,10 @@ namespace Capstone.Controllers
             this.collectionDAO = collectionDAO;
         }
         
-        [HttpGet]
-        public ActionResult<List<Collection>> GetCollections()
+        [HttpGet ("{userId}")]
+        public ActionResult<List<Collection>> GetCollections(int userId)
         {
-            return Ok(collectionDAO.GetCollections());
+            return Ok(collectionDAO.GetCollections(userId));
         }
 
     }
