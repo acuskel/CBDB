@@ -11,7 +11,7 @@ namespace Capstone.DAO
     public class CollectionSqlDAO : ICollectionDAO
     {
         private string connectionString;
-        private string sqlGetCollections = "SELECT * FROM collections WHERE user_id = @id;";
+        private string sqlGetCollections = "SELECT * FROM collections;";
 
         public CollectionSqlDAO(string connectionString)
         {

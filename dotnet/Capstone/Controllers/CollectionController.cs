@@ -8,10 +8,14 @@ using Capstone.Models;
 
 namespace Capstone.Controllers
 {
+    
+    [Route("[controller]")]
+    [ApiController]
     public class CollectionController : ControllerBase
     {
         private ICollectionDAO collectionDAO;
 
+        //public CollectionController(ICollectioDAO c)
         
         [HttpGet]
         public ActionResult<List<Collection>> GetCollections()
