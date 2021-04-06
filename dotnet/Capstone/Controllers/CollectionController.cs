@@ -10,7 +10,7 @@ using Capstone.DAO;
 
 namespace Capstone.Controllers
 {
-    
+
     [Route("[controller]")]
     [ApiController]
     public class CollectionController : ControllerBase
@@ -21,11 +21,25 @@ namespace Capstone.Controllers
         {
             this.collectionDAO = collectionDAO;
         }
-        
-        [HttpGet ("{userId}")]
+
+        [HttpGet("{userId}")]
         public ActionResult<List<Collection>> GetCollections(int userId)
         {
             return Ok(collectionDAO.GetCollections(userId));
+        }
+
+        [HttpPost]
+        public ActionResult AddCollection(Collection collection)
+        {
+            bool result = collectionDAO.AddCollection(collection);
+            if (result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
     }

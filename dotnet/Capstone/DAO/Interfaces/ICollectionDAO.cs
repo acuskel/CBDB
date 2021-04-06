@@ -9,5 +9,7 @@ namespace Capstone.DAO.Interfaces
     public interface ICollectionDAO
     {
         List<Collection> GetCollections(int userId);
+
+        bool AddCollection(Collection collection);
     }
 }
