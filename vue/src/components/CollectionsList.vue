@@ -10,7 +10,7 @@
       
       {{collection.name}}
       
-      <li/>
+      </li>
       <!-- todo: bind on ID -->
     </ul>
   </div>

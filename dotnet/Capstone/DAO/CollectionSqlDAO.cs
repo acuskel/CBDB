@@ -12,6 +12,7 @@ namespace Capstone.DAO
     {
         private string connectionString;
         private string sqlGetCollections = "SELECT * FROM collections WHERE user_id = @userId;";
+        private string sqlAddCollection = "INSERT INTO collections(collection_name, user_id) VALUES(@collectionName, @userId)";
 
         public CollectionSqlDAO(string connectionString)
         {
@@ -33,7 +34,6 @@ namespace Capstone.DAO
                     {
                         Collection collection = ReaderToCollections(reader);
                         collections.Add(collection);
-
                     }
                 }
             }
@@ -44,6 +44,42 @@ namespace Capstone.DAO
 
             return collections;
         }
+
+        public bool AddCollection(Collection collection)
+        {
+            bool result = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlAddCollection, conn);
+                    cmd.Parameters.AddWithValue("@collectionName", collection.Name);
+                    cmd.Parameters.AddWithValue("@userId", collection.UserId);
+
+                    int count = cmd.ExecuteNonQuery();
+
+                    if (count > 0)
+                    {
+                        result = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+            return result;
+        }
+    
+
+
+
+
+
+
+
+
 
         private Collection ReaderToCollections(SqlDataReader reader)
         {
