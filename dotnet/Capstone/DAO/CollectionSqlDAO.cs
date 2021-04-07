@@ -13,6 +13,7 @@ namespace Capstone.DAO
         private string connectionString;
         private string sqlGetCollections = "SELECT * FROM collections WHERE user_id = @userId;";
         private string sqlAddCollection = "INSERT INTO collections(collection_name, user_id, is_public) VALUES(@collectionName, @userId, @isPublic)";
+        private string sqlGetPublicCollection = "SELECT * FROM collections WHERE is_public = 1;";
 
         public CollectionSqlDAO(string connectionString)
         {
@@ -44,7 +45,32 @@ namespace Capstone.DAO
 
             return collections;
         }
+        public List<Collection> GetPublicCollections()
+        {
+            List<Collection> collections = new List<Collection>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlGetPublicCollection, conn);
+                    
+                    SqlDataReader reader = cmd.ExecuteReader();
 
+                    while (reader.Read())
+                    {
+                        Collection collection = ReaderToPublicCollections(reader);
+                        collections.Add(collection);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                collections = new List<Collection>();
+            }
+
+            return collections;
+        }
         public bool AddCollection(Collection collection)
         {
             bool result = false;
@@ -73,12 +99,6 @@ namespace Capstone.DAO
             }
             return result;
         }
-    
-
-
-
-
-
 
 
 
@@ -93,5 +113,14 @@ namespace Capstone.DAO
             return collection;
         }
 
+        private Collection ReaderToPublicCollections(SqlDataReader reader)
+        {
+            Collection collection = new Collection();
+            collection.Id = Convert.ToInt32(reader["id"]);
+            collection.Name = Convert.ToString(reader["collection_name"]);
+            collection.UserId = Convert.ToInt32(reader["user_id"]);
+            collection.IsPublic = Convert.ToBoolean(reader["is_public"]);
+            return collection;
+        }
     }
 }
