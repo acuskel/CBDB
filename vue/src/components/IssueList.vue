@@ -34,7 +34,7 @@ export default {
     this.message = "";
 
     issueService
-      .getCollections(this.$store.state.user.userId) //need parameter from selected collection
+      .getCollections(this.$store.state.collections) //need parameter from selected collection
       .then((response) => {
         this.$store.commit("REPLACE_ISSUES", response.data);
       })
