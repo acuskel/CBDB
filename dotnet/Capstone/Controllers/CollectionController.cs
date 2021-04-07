@@ -28,5 +28,7 @@ namespace Capstone.Controllers
             return Ok(collectionDAO.GetCollections(userId));
         }
 
+        
+
     }
 }
