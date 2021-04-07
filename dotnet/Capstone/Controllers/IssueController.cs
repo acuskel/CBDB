@@ -26,6 +26,20 @@ namespace Capstone.Controllers
             return Ok(issueDAO.GetIssues(collectionId));
         }
 
+        [HttpPost]
+        public ActionResult AddIssue(Issue issue)
+        {
+            bool result = issueDAO.AddIssue(issue);
+            if (result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
 
 
     }

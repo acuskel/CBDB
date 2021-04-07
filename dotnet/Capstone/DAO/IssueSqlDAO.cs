@@ -13,7 +13,8 @@ namespace Capstone.DAO
         private string connectionString;
         private string sqlGetIssues = "SELECT * FROM ISSUES i JOIN collections_issues ci ON ci.issue_id = i.id" +
             " JOIN collections c ON c.id = ci.collection_id WHERE collection_id = @collectionId";
-        //private string sqlAddCollection = "INSERT INTO collections(collection_name, user_id, is_public) VALUES(@collectionName, @userId, @isPublic)";
+        private string sqlAddIssue = "INSERT INTO issues(issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher) " +
+            "VALUES(@issueTitle, @seriesTitle, @releaseDate, @isbn, @upc, @summary, @coverLink, @publisher)";
 
         public IssueSqlDAO(string connectionString)
         {
@@ -45,6 +46,39 @@ namespace Capstone.DAO
             }
 
             return issues;
+        }
+
+        public bool AddIssue(Issue issue)
+        {
+            bool result = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlAddIssue, conn);
+                    cmd.Parameters.AddWithValue("@issueTitle", issue.Title);
+                    cmd.Parameters.AddWithValue("@seriesTitle", issue.SeriesTitle);
+                    cmd.Parameters.AddWithValue("@releaseDate", issue.UPC);
+                    cmd.Parameters.AddWithValue("@isbn", issue.ISBN);
+                    cmd.Parameters.AddWithValue("@upc", issue.Summary);
+                    cmd.Parameters.AddWithValue("@summary", issue.Publisher);
+                    cmd.Parameters.AddWithValue("@coverLink", issue.CoverLink);
+                    cmd.Parameters.AddWithValue("@publisher", issue.ReleaseDate);
+
+                    int count = cmd.ExecuteNonQuery();
+
+                    if (count > 0)
+                    {
+                        result = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+            return result;
         }
 
         private Issue ReaderToIssues(SqlDataReader reader)

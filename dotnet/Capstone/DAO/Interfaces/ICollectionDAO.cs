@@ -10,7 +10,6 @@ namespace Capstone.DAO.Interfaces
     {
         List<Collection> GetCollections(int userId);
         List<Collection> GetPublicCollections();
-
         bool AddCollection(Collection collection);
     }
 }

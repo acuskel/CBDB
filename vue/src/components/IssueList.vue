@@ -1,6 +1,7 @@
 <template>
   <div class="issues-container">
     <ul>
+        <li>{{$store.state.issues}}</li>
       <li
         
         v-for="issue in $store.state.issues"
@@ -34,7 +35,7 @@ export default {
     this.message = "";
 
     issueService
-      .getCollections(this.$store.state.collections) //need parameter from selected collection
+      .getIssues(this.$store.state.collections.id) //need parameter from selected collection
       .then((response) => {
         this.$store.commit("REPLACE_ISSUES", response.data);
       })
