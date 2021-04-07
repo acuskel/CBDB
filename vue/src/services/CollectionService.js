@@ -7,5 +7,9 @@ export default {
         return axios.get(path + '/' + user)
     },
 
+    addCollection(collection){
+        return axios.post(path, collection)
+    }
+
 
 }
