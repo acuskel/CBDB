@@ -27,7 +27,8 @@ CREATE TABLE users (
 CREATE TABLE collections (
 	id int IDENTITY (1,1) NOT NULL,
 	collection_name varchar(50) NOT NULL,
-	user_id int NOT NULL
+	user_id int NOT NULL,
+	is_public bit,
 )
 
 CREATE TABLE issues (
@@ -54,18 +55,19 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg4
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
 
 --populate collections data
-INSERT INTO collections (collection_name, user_id) VALUES ('Batman', 1);
-INSERT INTO collections (collection_name, user_id) VALUES ('Spiderman', 1);
-INSERT INTO collections (collection_name, user_id) VALUES ('Tick', 1);
-INSERT INTO collections (collection_name, user_id) VALUES ('Marvel', 2);
-INSERT INTO collections (collection_name, user_id) VALUES ('DC', 2);
-INSERT INTO collections (collection_name, user_id) VALUES ('Image', 2);
+INSERT INTO collections (collection_name, user_id, is_public) VALUES ('Batman', 1, 0);
+INSERT INTO collections (collection_name, user_id, is_public) VALUES ('Spiderman', 1, 1);
+INSERT INTO collections (collection_name, user_id, is_public) VALUES ('Tick', 1, 1);
+INSERT INTO collections (collection_name, user_id, is_public) VALUES ('Marvel', 2, 0);
+INSERT INTO collections (collection_name, user_id, is_public) VALUES ('DC', 2, 1);
+INSERT INTO collections (collection_name, user_id, is_public) VALUES ('Image', 2, 0);
 
 --populate issues data
-INSERT INTO issues (issue_title, series_title) VALUES ('Far From Home', 'Spiderman');
-INSERT INTO issues (issue_title, series_title) VALUES ('Court of Owls', 'Batman');
-INSERT INTO issues (issue_title, series_title) VALUES ('Whisperer Wars', 'The Walking Dead');
-INSERT INTO issues (issue_title, series_title) VALUES ('Crawling', 'The Tick');
+INSERT INTO issues (issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher) VALUES ('Far From Home', 'Spiderman', '2010-01-01', 456789, 727272,'ppppp', 'mmfmf', 'Marvel');
+INSERT INTO issues (issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher) VALUES ('Court of Owls', 'Batman', '2010-01-01', 456789, 727272, 'summ', 'mmfmf', 'DC');
+INSERT INTO issues (issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher) VALUES ('Whisperer Wars', 'The Walking Dead', '2010-01-01', 456789, 727272, 'summ', 'mmfmf', 'Other');
+INSERT INTO issues (issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher) VALUES ('Crawling', 'The Tick', '2010-01-01', 456789, 727272,'summ','mmfmf', 'Marvel');
+
 
 -- populate join table
 INSERT INTO collections_issues (collection_id, issue_id) VALUES (1,2);

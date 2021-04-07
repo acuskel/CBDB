@@ -1,13 +1,20 @@
 <template>
-  <h1>List of comics in collection selected</h1>
+  <div>
+    <h1>List of comics in collection selected</h1> <!-- selected collection name? -->
+    <issue-list />
+  </div>
 </template>
 
 <script>
-export default {
 
-}
+import IssueList from "../components/IssueList.vue";
+export default {
+  name: 'collection-display',
+  components: {
+    IssueList,
+  },
+};
 </script>
 
 <style>
-
 </style>
