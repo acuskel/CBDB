@@ -38,6 +38,8 @@ export default new Vuex.Store({
 
     collections: [],
 
+    issues: [],
+
     token: currentToken || '',
     user: currentUser || {}
   },
@@ -66,6 +68,9 @@ export default new Vuex.Store({
     },
     REPLACE_COLLECTIONS(state, collections) {
       state.collections = collections;
+    },
+    REPLACE_ISSUES(state, issues) {
+      state.issues = issues;
     }
   }
 })

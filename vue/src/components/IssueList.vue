@@ -1,15 +1,15 @@
 <template>
-  <div class="my-collection-container">
+  <div class="issues-container">
     <ul>
       <li
         
-        v-for="collection in $store.state.collections"
-        v-bind:key="collection.name"
+        v-for="issue in $store.state.issues"
+        v-bind:key="issue.title"
       >
-      <!-- todo: add routerlink to CollectionDisplay -->
-      <router-link v-bind:to="{ name: 'collection-display', params: {id: collection.id}}">
-      {{collection.name}}
-      </router-link>
+      <!-- todo: add routerlink to Individual comic Display -->
+      
+      {{issue.title}}
+      
       </li>
       <!-- todo: bind on ID -->
     </ul>
@@ -17,26 +17,26 @@
 </template>
 
 <script>
-import collectionService from "../services/CollectionService.js";
+import issueService from "../services/IssueService.js";
 export default {
-  name: "my-collection",
+  name: "issue-list",
   data() {
     return {
       message: "",
     };
   },
   computed: {
-    collections() {
-      return this.$store.state.collections;
+    issues() {
+      return this.$store.state.issues;
     }
   },
   created(){
     this.message = "";
 
-    collectionService
-      .getCollections(this.$store.state.user.userId)
+    issueService
+      .getCollections(this.$store.state.user.userId) //need parameter from selected collection
       .then((response) => {
-        this.$store.commit("REPLACE_COLLECTIONS", response.data);
+        this.$store.commit("REPLACE_ISSUES", response.data);
       })
       .catch((error) => {
         if (error.response) {

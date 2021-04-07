@@ -11,7 +11,7 @@ namespace Capstone.DAO
     public class IssueSqlDAO : IIssueDAO
     {
         private string connectionString;
-        private string sqlGetIssues = "SELECT * FROM ISSUES i JOIN collections_issues ci ON ci.issue_id = i.id +" +
+        private string sqlGetIssues = "SELECT * FROM ISSUES i JOIN collections_issues ci ON ci.issue_id = i.id" +
             " JOIN collections c ON c.id = ci.collection_id WHERE collection_id = @collectionId";
         //private string sqlAddCollection = "INSERT INTO collections(collection_name, user_id, is_public) VALUES(@collectionName, @userId, @isPublic)";
 

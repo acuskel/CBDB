@@ -8,14 +8,14 @@
         v-model="collection.name"
       />
       <button type="submit" v-on:click="onSubmit()">Add Collection</button>
-     <input type="checkbox" v-model="collection.isPublic">
+      <input type="checkbox" v-model="collection.isPublic" />
       <label for="checkbox">Make Public</label>
     </form>
   </div>
 </template>
 
 <script>
-import CollectionService from "../services/CollectionService.js"
+import CollectionService from "../services/CollectionService.js";
 
 export default {
   name: "add-collection",
@@ -24,21 +24,19 @@ export default {
       collection: {
         name: "",
         userId: this.$store.state.user.userId,
-        isPublic: false
+        isPublic: false,
       },
     };
   },
 
   methods: {
-    onSubmit(){
-      CollectionService
-      .addCollection(this.collection)
-      .then((response) => {
+    onSubmit() {
+      CollectionService.addCollection(this.collection)
+        .then((response) => {
           console.log("promise was success", response);
-          this.$router.go(0); 
+          this.$router.go(0);
         })
         .catch((error) => {
-         
           if (error.response) {
             console.log("HTTP Response Code: ", error.response.data.status);
             console.log("Description: ", error.response.data.title);
@@ -46,8 +44,8 @@ export default {
             console.log("Network Error");
           }
         });
-    }
     },
+  },
 };
 </script>
 

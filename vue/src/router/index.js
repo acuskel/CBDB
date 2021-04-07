@@ -7,6 +7,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import ComicDetails from '../views/ComicDetails.vue'
+import CollectionDisplay from '../views/CollectionDisplay.vue'
 
 
 Vue.use(Router)
@@ -55,6 +56,12 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: '/collection/:id',
+      name: 'collection-display',
+      component: CollectionDisplay
+      //todo: add Auth?
     },
     {
       path: "/comicdetails",
