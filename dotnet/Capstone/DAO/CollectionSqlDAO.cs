@@ -12,7 +12,7 @@ namespace Capstone.DAO
     {
         private string connectionString;
         private string sqlGetCollections = "SELECT * FROM collections WHERE user_id = @userId;";
-        private string sqlAddCollection = "INSERT INTO collections(collection_name, user_id) VALUES(@collectionName, @userId)";
+        private string sqlAddCollection = "INSERT INTO collections(collection_name, user_id, is_public) VALUES(@collectionName, @userId, @isPublic)";
 
         public CollectionSqlDAO(string connectionString)
         {
@@ -56,6 +56,8 @@ namespace Capstone.DAO
                     SqlCommand cmd = new SqlCommand(sqlAddCollection, conn);
                     cmd.Parameters.AddWithValue("@collectionName", collection.Name);
                     cmd.Parameters.AddWithValue("@userId", collection.UserId);
+                    cmd.Parameters.AddWithValue("@isPublic", collection.IsPublic);
+
 
                     int count = cmd.ExecuteNonQuery();
 

@@ -8,6 +8,8 @@
         v-model="collection.name"
       />
       <button type="submit" v-on:click="onSubmit()">Add Collection</button>
+     <input type="checkbox" v-model="collection.isPublic">
+      <label for="checkbox">Make Public</label>
     </form>
   </div>
 </template>
@@ -21,7 +23,8 @@ export default {
     return {
       collection: {
         name: "",
-        userId: this.$store.state.user.userId
+        userId: this.$store.state.user.userId,
+        isPublic: false
       },
     };
   },
