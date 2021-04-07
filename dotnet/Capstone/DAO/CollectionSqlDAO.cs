@@ -89,6 +89,7 @@ namespace Capstone.DAO
             collection.Id = Convert.ToInt32(reader["id"]);
             collection.Name = Convert.ToString(reader["collection_name"]);
             collection.UserId = Convert.ToInt32(reader["user_id"]);
+            collection.IsPublic = Convert.ToBoolean(reader["is_public"]);
             return collection;
         }
 
