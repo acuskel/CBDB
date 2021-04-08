@@ -9,5 +9,9 @@ export default {
 
     addCollection(collection){
         return axios.post(path, collection)
+    },
+
+    getIssues(collectionId) {
+        return axios.get(path + '/' + collectionId)
     }
 }

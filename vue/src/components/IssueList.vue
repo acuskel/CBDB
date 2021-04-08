@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import issueService from "../services/IssueService.js";
+import CollectionService from "../services/CollectionService.js";
 export default {
   name: "issue-list",
   data() {
@@ -34,8 +34,8 @@ export default {
   created(){
     this.message = "";
 
-    issueService
-      .getIssues(this.$store.state.collections.id) //need parameter from selected collection
+    CollectionService
+      .getIssues(this.$store.state.collections) //need parameter from selected collection
       .then((response) => {
         this.$store.commit("REPLACE_ISSUES", response.data);
       })

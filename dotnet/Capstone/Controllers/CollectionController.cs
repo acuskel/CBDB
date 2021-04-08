@@ -16,11 +16,14 @@ namespace Capstone.Controllers
     public class CollectionController : ControllerBase
     {
         private ICollectionDAO collectionDAO;
+        private IIssueDAO issueDAO;
 
         public CollectionController(ICollectionDAO collectionDAO)
         {
             this.collectionDAO = collectionDAO;
         }
+
+    
 
         [HttpGet()]
         public ActionResult<List<Collection>> GetPublicCollections()
@@ -33,6 +36,12 @@ namespace Capstone.Controllers
         {
             List<Collection> result = collectionDAO.GetCollections(userId);
             return Ok(collectionDAO.GetCollections(userId));
+        }
+
+        [HttpGet("{collectionId}")]
+        public ActionResult<List<Issue>> GetIssues(int collectionId)
+        {
+            return Ok(collectionDAO.GetIssues(collectionId));
         }
 
 

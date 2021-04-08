@@ -11,42 +11,14 @@ namespace Capstone.DAO
     public class IssueSqlDAO : IIssueDAO
     {
         private string connectionString;
-        private string sqlGetIssues = "SELECT * FROM ISSUES i JOIN collections_issues ci ON ci.issue_id = i.id" +
-            " JOIN collections c ON c.id = ci.collection_id WHERE collection_id = @collectionId";
         private string sqlAddIssue = "INSERT INTO issues(issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher) " +
             "VALUES(@issueTitle, @seriesTitle, @releaseDate, @isbn, @upc, @summary, @coverLink, @publisher)";
-
+        private string sqlGetIssue = "SELECT * FROM issues i WHERE i.id = @issueID;";
         public IssueSqlDAO(string connectionString)
         {
             this.connectionString = connectionString;
         }
 
-        public List<Issue> GetIssues(int collectionId)
-        {
-            List<Issue> issues = new List<Issue>();
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(sqlGetIssues, conn);
-                    cmd.Parameters.AddWithValue("@collectionId", collectionId);
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        Issue issue = ReaderToIssues(reader);
-                        issues.Add(issue);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                issues = new List<Issue>();
-            }
-
-            return issues;
-        }
 
         public bool AddIssue(Issue issue)
         {
@@ -79,6 +51,33 @@ namespace Capstone.DAO
                 result = false;
             }
             return result;
+        }
+
+        public Issue GetIssue(int issueId)
+        {
+            Issue issue = new Issue();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlGetIssue, conn);
+                    cmd.Parameters.AddWithValue("@issueId", issueId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        issue = ReaderToIssues(reader);
+                       
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                issue = new Issue();
+                throw (ex);
+            }
+            return issue;
         }
 
         private Issue ReaderToIssues(SqlDataReader reader)

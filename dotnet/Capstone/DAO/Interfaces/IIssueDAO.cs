@@ -8,7 +8,7 @@ namespace Capstone.DAO.Interfaces
 {
     public interface IIssueDAO
     {
-        List<Issue> GetIssues(int collectionId);
+        Issue GetIssue(int issueId);
         bool AddIssue(Issue issue);
 
     }
