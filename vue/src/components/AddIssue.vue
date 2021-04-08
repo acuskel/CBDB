@@ -37,12 +37,13 @@ export default {
 
   props: ["collectionId"],
 
+  computed : {
+
+  },
 
   methods: {
     onSubmit() {
       IssueService.addIssue(this.issue, this.collectionId)
-        .console.log(response)
-        .console.log(response.data)
         .then((response) => {
           console.log(response.data);
           console.log("promise was success", response);

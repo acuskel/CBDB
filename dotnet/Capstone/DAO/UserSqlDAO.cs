@@ -12,7 +12,7 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
-        private readonly string sqlGetUser = "SELECT user_id, username, password_hash, salt, user_role FROM users WHERE username = @username";
+        private readonly string sqlGetUser = "SELECT user_id, username, password_hash, salt, user_role, is_premium FROM users WHERE username = @username";
         private readonly string sqlGetUsers = "SELECT user_id, username, user_role FROM users";
 
         public UserSqlDAO(string dbConnectionString)
@@ -115,6 +115,7 @@ namespace Capstone.DAO
                 PasswordHash = Convert.ToString(reader["password_hash"]),
                 Salt = Convert.ToString(reader["salt"]),
                 Role = Convert.ToString(reader["user_role"]),
+                IsPremium = Convert.ToBoolean(reader["is_premium"]),
             };
 
             return u;

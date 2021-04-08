@@ -82,6 +82,11 @@ const router = new Router({
       path: '/public/:id',
       name: 'public-display',
       component: PublicDisplay
+    },
+    {
+      path:'/signup',
+      name: 'signup',
+      component: Home
     }
   ]
 })
