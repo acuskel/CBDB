@@ -1,5 +1,6 @@
 <template>
   <div class="my-collection-container">
+
     <ul>
       <li
         
@@ -47,7 +48,6 @@ export default {
           this.message = "Network Error";
         }
       });
-    
   },
 };
 </script>

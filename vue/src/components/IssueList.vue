@@ -29,13 +29,14 @@ export default {
   computed: {
     issues() {
       return this.$store.state.issues;
-    }
+    },
+
   },
   created(){
     this.message = "";
-
-    CollectionService
-      .getIssues(this.$store.state.collections) //need parameter from selected collection
+    
+    issueService
+      .getIssues(this.$store.state.collections.id) //need parameter from selected collection
       .then((response) => {
         this.$store.commit("REPLACE_ISSUES", response.data);
       })
