@@ -1,15 +1,15 @@
 <template>
   <div>
     <h2>Add an Issue</h2>
-    <form v-on:submit.prevent>
+    <form v-on:submit.prevent="onSubmit()">
       <input type="text" placeholder="Title" v-model="issue.title" />
       <input
         type="text"
         placeholder="Series Title"
         v-model="issue.seriesTitle"
       />
-      <input type="number" placeholder="UPC" v-model="issue.upc" />
-      <input type="number" placeholder="ISBN" v-model="issue.isbn" />
+      <input type="number" placeholder="UPC" v-model.number="issue.upc" />
+      <input type="number" placeholder="ISBN" v-model.number="issue.isbn" />
       <input type="text" placeholder="Summary" v-model="issue.summary" />
       <input type="text" placeholder="Publisher" v-model="issue.publisher" />
       <input type="text" placeholder="Cover Link" v-model="issue.coverLink" />
@@ -18,7 +18,7 @@
         placeholder="Release Date"
         v-model="issue.releaseDate"
       />
-      <button type="submit" v-on:click="onSubmit()">Add Issue</button>
+      <button type="submit">Add Issue</button>
     </form>
   </div>
 </template>
@@ -31,21 +31,12 @@ export default {
   data() {
     return {
       issue: {
-        title: "",
-        seriesTitle: "",
-        upc: "",
-        isbn: "",
-        summary: "",
-        publisher: "",
-        coverLink: "",
       },
-      collectionId: 0,
     };
   },
 
-  created() {
-    this.collectionId = this.$route.params.collectionId;
-  },
+  props: ["collectionId"],
+
 
   methods: {
     onSubmit() {

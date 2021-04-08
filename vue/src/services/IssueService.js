@@ -9,6 +9,7 @@ export default {
     },
 
     addIssue(issue, collectionId){
+        console.log(issue, collectionId)
         return axios.post(path + '/' + collectionId, issue)
     }
 }
