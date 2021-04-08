@@ -37,15 +37,21 @@ export default {
         isbn: "",
         summary: "",
         publisher: "",
-        coverLink: ""
+        coverLink: "",
       },
+      collectionId: 0,
     };
+  },
+
+  created() {
+    this.collectionId = this.$route.params.collectionId;
   },
 
   methods: {
     onSubmit() {
-      IssueService.addIssue(this.issue)
+      IssueService.addIssue(this.issue, this.collectionId)
         .then((response) => {
+          console.log(response.data);
           console.log("promise was success", response);
           this.$router.go(0);
         })

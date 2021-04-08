@@ -8,7 +8,7 @@ export default {
         return axios.get(path + '/' + collectionId)
     },
 
-    addIssue(issue){
-        return axios.post(path, issue)
+    addIssue(issue, collectionId){
+        return axios.post(path + '/' + collectionId, issue)
     }
 }

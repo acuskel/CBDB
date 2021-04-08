@@ -21,28 +21,28 @@ namespace Capstone.Controllers
         }
         [HttpGet("{issueId}")]
         public ActionResult<Issue> GetIssue(int issueId)
-            {
+        {
             return Ok(issueDAO.GetIssue(issueId));
+        }
+
+
+        [HttpPost("{collectionId}")]
+        public ActionResult AddIssue(Issue issue, int collectionId)
+        {
+            bool result = issueDAO.AddIssue(issue, collectionId);
+            if (result)
+            {
+                return Ok();
             }
+            else
+            {
+                return BadRequest();
+            }
+        }
 
 
-    [HttpPost]
-    public ActionResult AddIssue(Issue issue)
-    {
-        bool result = issueDAO.AddIssue(issue);
-        if (result)
-        {
-            return Ok();
-        }
-        else
-        {
-            return BadRequest();
-        }
+
     }
-
-
-
-}
 
 
 }

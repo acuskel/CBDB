@@ -11,8 +11,7 @@ namespace Capstone.DAO
     public class IssueSqlDAO : IIssueDAO
     {
         private string connectionString;
-        private string sqlAddIssue = "INSERT INTO issues(issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher) " +
-            "VALUES(@issueTitle, @seriesTitle, @releaseDate, @isbn, @upc, @summary, @coverLink, @publisher)";
+        private string sqlAddIssue = "INSERT INTO issues(issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher) VALUES(@issueTitle, @seriesTitle, @releaseDate, @isbn, @upc, @summary, @coverLink, @publisher) INSERT INTO collections_issues (collection_id, issue_id) VALUES (@collectionId, (SELECT MAX(id) FROM issues))";
         private string sqlGetIssue = "SELECT * FROM issues i WHERE i.id = @issueID;";
         public IssueSqlDAO(string connectionString)
         {
@@ -20,7 +19,7 @@ namespace Capstone.DAO
         }
 
 
-        public bool AddIssue(Issue issue)
+        public bool AddIssue(Issue issue, int collectionId)
         {
             bool result = false;
             try
@@ -37,6 +36,7 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@summary", issue.Publisher);
                     cmd.Parameters.AddWithValue("@coverLink", issue.CoverLink);
                     cmd.Parameters.AddWithValue("@publisher", issue.ReleaseDate);
+                    cmd.Parameters.AddWithValue("@collectionId", collectionId);
 
                     int count = cmd.ExecuteNonQuery();
 
