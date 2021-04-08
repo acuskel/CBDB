@@ -4,6 +4,7 @@ const path = '/issue';
 
 export default {
     getIssues(collectionId) {
+        console.log(this.$store.state.collections);
         return axios.get(path + '/' + collectionId)
     },
 

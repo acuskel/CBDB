@@ -29,11 +29,12 @@ export default {
   computed: {
     issues() {
       return this.$store.state.issues;
-    }
+    },
+
   },
   created(){
     this.message = "";
-
+    
     issueService
       .getIssues(this.$store.state.collections.id) //need parameter from selected collection
       .then((response) => {
