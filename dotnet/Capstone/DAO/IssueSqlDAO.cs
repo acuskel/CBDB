@@ -30,12 +30,12 @@ namespace Capstone.DAO
                     SqlCommand cmd = new SqlCommand(sqlAddIssue, conn);
                     cmd.Parameters.AddWithValue("@issueTitle", issue.Title);
                     cmd.Parameters.AddWithValue("@seriesTitle", issue.SeriesTitle);
-                    cmd.Parameters.AddWithValue("@releaseDate", issue.UPC);
+                    cmd.Parameters.AddWithValue("@releaseDate", issue.ReleaseDate);
                     cmd.Parameters.AddWithValue("@isbn", issue.ISBN);
-                    cmd.Parameters.AddWithValue("@upc", issue.Summary);
-                    cmd.Parameters.AddWithValue("@summary", issue.Publisher);
+                    cmd.Parameters.AddWithValue("@upc", issue.UPC);
+                    cmd.Parameters.AddWithValue("@summary", issue.Summary);
                     cmd.Parameters.AddWithValue("@coverLink", issue.CoverLink);
-                    cmd.Parameters.AddWithValue("@publisher", issue.ReleaseDate);
+                    cmd.Parameters.AddWithValue("@publisher", issue.Publisher);
                     cmd.Parameters.AddWithValue("@collectionId", collectionId);
 
                     int count = cmd.ExecuteNonQuery();
@@ -48,6 +48,7 @@ namespace Capstone.DAO
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 result = false;
             }
             return result;
