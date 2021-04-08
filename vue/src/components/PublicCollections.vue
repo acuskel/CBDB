@@ -1,15 +1,16 @@
 <template>
-  <div class="issues-container">
+  <div class="public-collections">
+
     <ul>
       <li
         
-        v-for="issue in $store.state.issues"
-        v-bind:key="issue.title"
+        v-for="collection in $store.state.collections"
+        v-bind:key="collection.name"
       >
-      <!-- todo: add routerlink to Individual comic Display -->
-      
-      {{issue.title}}
-      
+      <!-- todo: add routerlink to CollectionDisplay -->
+      <router-link v-bind:to="{ name: 'public-display', params: {id: collection.id}}">
+      {{collection.name}}
+      </router-link>
       </li>
       <!-- todo: bind on ID -->
     </ul>
@@ -17,30 +18,26 @@
 </template>
 
 <script>
-import CollectionService from "../services/CollectionService.js";
+import collectionService from "../services/CollectionService.js";
 export default {
-  name: "issue-list",
+  name: "public-collections",
   data() {
     return {
       message: "",
-      issueId: 0,
     };
   },
   computed: {
-    issues() {
-      return this.$store.state.issues;
-    },
-
+    collections() {
+      return this.$store.state.collections;
+    }
   },
   created(){
     this.message = "";
-    this.issueId = this.$route.params.id;
-    
-    CollectionService
-      .getIssues(this.issueId) //need parameter from selected collection
-      
+
+    collectionService
+      .getPublicCollections()
       .then((response) => {
-        this.$store.commit("REPLACE_ISSUES", response.data);
+        this.$store.commit("REPLACE_COLLECTIONS", response.data);
       })
       .catch((error) => {
         if (error.response) {
@@ -51,7 +48,6 @@ export default {
           this.message = "Network Error";
         }
       });
-    
   },
 };
 </script>

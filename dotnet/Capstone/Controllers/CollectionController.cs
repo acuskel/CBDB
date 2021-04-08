@@ -41,6 +41,7 @@ namespace Capstone.Controllers
         [HttpGet("{collectionId}")]
         public ActionResult<List<Issue>> GetIssues(int collectionId)
         {
+            List<Issue> result = collectionDAO.GetIssues(collectionId);
             return Ok(collectionDAO.GetIssues(collectionId));
         }
 

@@ -2,18 +2,15 @@
   <div>
     <h1>List of comics in collection selected</h1> <!-- selected collection name? -->
     <issue-list />
-    <add-issue v-if="$store.state.token != ''" />
   </div>
 </template>
 
 <script>
-import AddIssue from '../components/AddIssue.vue';
 import IssueList from "../components/IssueList.vue";
 export default {
-  name: 'collection-display',
+  name: 'public-display',
   components: {
     IssueList,
-    AddIssue,
   },
 };
 </script>

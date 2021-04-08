@@ -8,6 +8,8 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import ComicDetails from '../views/ComicDetails.vue'
 import CollectionDisplay from '../views/CollectionDisplay.vue'
+import Public from '../views/Public.vue'
+import PublicDisplay from '../views/PublicDisplay.vue'
 
 
 Vue.use(Router)
@@ -71,6 +73,16 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: '/public',
+      name: 'public',
+      component: Public
+    },
+    {
+      path: '/public/:id',
+      name: 'public-display',
+      component: PublicDisplay
+    }
   ]
 })
 

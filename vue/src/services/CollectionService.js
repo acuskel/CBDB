@@ -13,5 +13,9 @@ export default {
 
     getIssues(collectionId) {
         return axios.get(path + '/' + collectionId)
-    }
+    },
+
+    getPublicCollections() {
+        return axios.get(path)
+    },
 }
