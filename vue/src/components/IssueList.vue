@@ -15,16 +15,15 @@
     </table>
     <h1>Issues</h1>
     <ul>
+
       <li
         
         v-for="issue in $store.state.issues"
-        v-bind:key="issue.title"
+        v-bind:key="issue.id"
       >
-      <!-- todo: add routerlink to Individual comic Display -->
-      
+      <router-link v-bind:to="{name: 'issue-display', params: {id: issue.id}}">
       {{issue.title}}
-
-      
+      </router-link>
       </li>
       <!-- todo: bind on ID -->
     </ul>

@@ -10,6 +10,7 @@ import ComicDetails from '../views/ComicDetails.vue'
 import CollectionDisplay from '../views/CollectionDisplay.vue'
 import Public from '../views/Public.vue'
 import PublicDisplay from '../views/PublicDisplay.vue'
+import IssueDisplay from '../views/IssueDisplay.vue'
 
 
 Vue.use(Router)
@@ -63,6 +64,12 @@ const router = new Router({
       path: '/collection/:id',
       name: 'collection-display',
       component: CollectionDisplay
+      //todo: add Auth?
+    },
+    {
+      path: '/issue/:id',
+      name: 'issue-display',
+      component: IssueDisplay
       //todo: add Auth?
     },
     {
