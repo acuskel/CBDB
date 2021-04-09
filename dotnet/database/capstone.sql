@@ -36,6 +36,7 @@ CREATE TABLE issues (
 	id int IDENTITY NOT NULL,
 	issue_title varchar(150),
 	series_title varchar (150),
+	creator varchar(255),
 	release_date date,
 	ISBN int,
 	UPC int,
@@ -76,14 +77,14 @@ INSERT INTO collections (collection_name, user_id, is_public) VALUES ('DC', 2, 1
 INSERT INTO collections (collection_name, user_id, is_public) VALUES ('Image', 2, 0);
 
 --populate issues data
-INSERT INTO issues (issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher, issue_number, story_title, story_arc_name, characters, bio_link, genre, page_count, country, language, creator_bio, publication_type) 
-VALUES ('Far From Home', 'Spiderman', '2010-01-01', 456789, 727272,'ppppp', 'mmfmf', 'Marvel', 24, 'storytitle', 'storyarcname', 'chara', 'whoswholink', 'genre', 12, 'country', 'language', 'bio', 'story type' );
-INSERT INTO issues (issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher, issue_number, story_title, story_arc_name, characters, bio_link, genre, page_count, country, language, creator_bio, publication_type) 
-VALUES ('Court of Owls', 'Batman', '2010-01-01', 456789, 727272, 'summ', 'mmfmf', 'DC', 23, 'storytitle', 'storyarcname', 'chara', 'whoswholink', 'genre', 12, 'country', 'language', 'bio', 'story type' );
-INSERT INTO issues (issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher, issue_number, story_title, story_arc_name, characters, bio_link, genre, page_count, country, language, creator_bio, publication_type) 
-VALUES ('Whisperer Wars', 'The Walking Dead', '2010-01-01', 456789, 727272, 'summ', 'mmfmf', 'Other', 24, 'storytitle', 'storyarcname', 'chara', 'whoswholink', 'genre', 12, 'country', 'language', 'bio', 'story type' );
-INSERT INTO issues (issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher, issue_number, story_title, story_arc_name, characters, bio_link, genre, page_count, country, language, creator_bio, publication_type) 
-VALUES ('Crawling', 'The Tick', '2010-01-01', 456789, 727272,'summ','mmfmf', 'Marvel', 23, 'storytitle', 'storyarcname', 'chara', 'whoswholink', 'genre', 12, 'country', 'language', 'bio', 'story type' );
+INSERT INTO issues (issue_title, series_title, creator, release_date, ISBN, UPC, summary, cover_link, publisher, issue_number, story_title, story_arc_name, characters, bio_link, genre, page_count, country, language, creator_bio, publication_type) 
+VALUES ('Far From Home', 'Spiderman', 'Creator', '2010-01-01', 456789, 727272,'ppppp', 'mmfmf', 'Marvel', 24, 'storytitle', 'storyarcname', 'chara', 'whoswholink', 'genre', 12, 'country', 'language', 'bio', 'story type' );
+INSERT INTO issues (issue_title, series_title, creator, release_date, ISBN, UPC, summary, cover_link, publisher, issue_number, story_title, story_arc_name, characters, bio_link, genre, page_count, country, language, creator_bio, publication_type) 
+VALUES ('Court of Owls', 'Batman', 'creator', '2010-01-01', 456789, 727272, 'summ', 'mmfmf', 'DC', 23, 'storytitle', 'storyarcname', 'chara', 'whoswholink', 'genre', 12, 'country', 'language', 'bio', 'story type' );
+INSERT INTO issues (issue_title, series_title, creator, release_date, ISBN, UPC, summary, cover_link, publisher, issue_number, story_title, story_arc_name, characters, bio_link, genre, page_count, country, language, creator_bio, publication_type) 
+VALUES ('Whisperer Wars', 'The Walking Dead', 'creator', '2010-01-01', 456789, 727272, 'summ', 'mmfmf', 'Other', 24, 'storytitle', 'storyarcname', 'chara', 'whoswholink', 'genre', 12, 'country', 'language', 'bio', 'story type' );
+INSERT INTO issues (issue_title, series_title, creator, release_date, ISBN, UPC, summary, cover_link, publisher, issue_number, story_title, story_arc_name, characters, bio_link, genre, page_count, country, language, creator_bio, publication_type) 
+VALUES ('Crawling', 'The Tick', 'creator', '2010-01-01', 456789, 727272,'summ','mmfmf', 'Marvel', 23, 'storytitle', 'storyarcname', 'chara', 'whoswholink', 'genre', 12, 'country', 'language', 'bio', 'story type' );
 
 
 -- populate join table

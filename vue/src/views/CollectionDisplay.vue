@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>List of comics in collection selected</h1>
     <!-- selected collection name? -->
     <issue-list />
     <add-issue
