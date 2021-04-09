@@ -46,13 +46,13 @@ CREATE TABLE issues (
 	story_title varchar(255),
 	story_arc_name varchar(255),
 	characters varchar(max),
-	whos_who_link varchar(255),
+	bio_link varchar(255),
 	genre varchar(255),
 	page_count decimal(10,3),
 	country varchar(255),
 	language varchar(255),
 	creator_bio varchar(max),
-	story_type varchar(255)
+	publication_type varchar(255)
 
 	)
 
@@ -76,13 +76,13 @@ INSERT INTO collections (collection_name, user_id, is_public) VALUES ('DC', 2, 1
 INSERT INTO collections (collection_name, user_id, is_public) VALUES ('Image', 2, 0);
 
 --populate issues data
-INSERT INTO issues (issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher, issue_number, story_title, story_arc_name, characters, whos_who_link, genre, page_count, country, language, creator_bio, story_type) 
+INSERT INTO issues (issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher, issue_number, story_title, story_arc_name, characters, bio_link, genre, page_count, country, language, creator_bio, publication_type) 
 VALUES ('Far From Home', 'Spiderman', '2010-01-01', 456789, 727272,'ppppp', 'mmfmf', 'Marvel', 24, 'storytitle', 'storyarcname', 'chara', 'whoswholink', 'genre', 12, 'country', 'language', 'bio', 'story type' );
-INSERT INTO issues (issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher, issue_number, story_title, story_arc_name, characters, whos_who_link, genre, page_count, country, language, creator_bio, story_type) 
+INSERT INTO issues (issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher, issue_number, story_title, story_arc_name, characters, bio_link, genre, page_count, country, language, creator_bio, publication_type) 
 VALUES ('Court of Owls', 'Batman', '2010-01-01', 456789, 727272, 'summ', 'mmfmf', 'DC', 23, 'storytitle', 'storyarcname', 'chara', 'whoswholink', 'genre', 12, 'country', 'language', 'bio', 'story type' );
-INSERT INTO issues (issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher, issue_number, story_title, story_arc_name, characters, whos_who_link, genre, page_count, country, language, creator_bio, story_type) 
+INSERT INTO issues (issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher, issue_number, story_title, story_arc_name, characters, bio_link, genre, page_count, country, language, creator_bio, publication_type) 
 VALUES ('Whisperer Wars', 'The Walking Dead', '2010-01-01', 456789, 727272, 'summ', 'mmfmf', 'Other', 24, 'storytitle', 'storyarcname', 'chara', 'whoswholink', 'genre', 12, 'country', 'language', 'bio', 'story type' );
-INSERT INTO issues (issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher, issue_number, story_title, story_arc_name, characters, whos_who_link, genre, page_count, country, language, creator_bio, story_type) 
+INSERT INTO issues (issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher, issue_number, story_title, story_arc_name, characters, bio_link, genre, page_count, country, language, creator_bio, publication_type) 
 VALUES ('Crawling', 'The Tick', '2010-01-01', 456789, 727272,'summ','mmfmf', 'Marvel', 23, 'storytitle', 'storyarcname', 'chara', 'whoswholink', 'genre', 12, 'country', 'language', 'bio', 'story type' );
 
 
