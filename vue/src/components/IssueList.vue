@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       message: "",
-      issueId: 0,
+      collectionId: 0,
     };
   },
   computed: {
@@ -48,10 +48,10 @@ export default {
   },
   created(){
     this.message = "";
-    this.issueId = this.$route.params.id;
+    this.collectionId = this.$route.params.id;
     
     CollectionService
-      .getIssues(this.issueId)
+      .getIssues(this.collectionId)
       
       .then((response) => {
         this.$store.commit("REPLACE_ISSUES", response.data);

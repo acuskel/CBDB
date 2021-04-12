@@ -29,7 +29,7 @@ namespace Capstone.Controllers
         [HttpPost("{collectionId}")]
         public ActionResult AddIssue(Issue issue, int collectionId)
         {
-            bool result = issueDAO.AddIssue(issue, collectionId);
+            bool result = issueDAO.AddIssue(issue.IssueId, collectionId);
             if (result)
             {
                 return Ok();

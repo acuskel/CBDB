@@ -2,8 +2,6 @@
   <div>
     <div>
       <h1>{{unaddedCollections}}</h1>
-      <h1>{{this.$store.state.issues}}</h1>
-      <h2>{{ issue }}</h2>
       <h1>{{ issue.title }}</h1>
       <h3>{{ issue.seriesTitle }}</h3>
       <h3>Issue Number: {{ issue.issueNumber }}</h3>

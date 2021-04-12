@@ -9,7 +9,8 @@ namespace Capstone.DAO.Interfaces
     public interface IIssueDAO
     {
         Issue GetIssue(int issueId);
-        bool AddIssue(Issue issue, int collectionId);
+        bool AddIssue(int issueId, int collectionId);
+        //bool CreateIssue(Issue issue, int collectionId);
 
     }
 }
