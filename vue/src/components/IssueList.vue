@@ -21,7 +21,7 @@
         v-for="issue in $store.state.issues"
         v-bind:key="issue.id"
       >
-      <router-link v-bind:to="{name: 'issue-display', params: {id: issue.id}}">
+      <router-link v-bind:to="{name: 'issue-display', params: {id: issue.issueId}}">
       {{issue.title}}
       </router-link>
       </li>

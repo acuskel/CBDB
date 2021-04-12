@@ -16,7 +16,7 @@ namespace Capstone.Models
         public string Creator { get; set; }
         public string Publisher { get; set; }
         public string CoverLink { get; set; }
-        public DateTime ReleaseDate { get; set; }
+        public string ReleaseDate { get; set; }
         public int IssueNumber { get; set; }
         public string StoryTitle { get; set; }
         public string StoryArcName { get; set; }

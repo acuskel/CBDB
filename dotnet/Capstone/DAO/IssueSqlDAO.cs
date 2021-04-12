@@ -99,7 +99,7 @@ namespace Capstone.DAO
             issue.IssueId = Convert.ToInt32(reader["id"]);
             issue.Title = Convert.ToString(reader["issue_title"]);
             issue.SeriesTitle = Convert.ToString(reader["series_title"]);
-            issue.ReleaseDate = Convert.ToDateTime(reader["release_date"]);
+            issue.ReleaseDate = Convert.ToString(reader["release_date"]);
             issue.ISBN = Convert.ToInt32(reader["ISBN"]);
             issue.UPC = Convert.ToInt32(reader["UPC"]);
             issue.Summary = Convert.ToString(reader["summary"]);

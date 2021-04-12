@@ -2,14 +2,17 @@
   <div id="app">
     <img src="../src/assets/logo.png"/>
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'home' }" v-if="$store.state.token != ''">Home</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'public' }">Browse Public Collections</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'signup' }">Become a Premium User</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'register' }" v-if="$store.state.token == ''">Register</router-link>&nbsp;|&nbsp;
+       <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>&nbsp;|&nbsp;
+      <!-- <router-link v-bind:to="{ name: 'signup' }" v-if="$store.state.token != ''">Become a Premium User</router-link>&nbsp;|&nbsp;-->
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
     <router-view />
   </div>
 </template>
+
 
 <style>
 #app {
