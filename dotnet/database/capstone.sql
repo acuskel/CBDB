@@ -63,6 +63,8 @@ INSERT INTO collections (collection_name, user_id, is_public) VALUES ('Marvel', 
 INSERT INTO collections (collection_name, user_id, is_public) VALUES ('DC', 2, 1);
 INSERT INTO collections (collection_name, user_id, is_public) VALUES ('Image', 2, 0);
 
+SET IDENTITY_INSERT issues ON;
+
 --populate issues data
 INSERT [dbo].[issues] ([id], [issue_title], [series_title], [release_date], [ISBN], [UPC], [summary], [cover_link], [publisher]) VALUES (1, N'', N'Batman / Superman', N'May 2021', N'', N'76194136270001611', N'In Metropolis, Superman battles the Unknown Wizard, who is really Lex Luthor, who attacks the unveiling of a new power source that was developed by Dr. Martha Wayne.  Meanwhile in Gotham City, Batman and Robin battle the Spider Lady who helps the Joker and Penguin to escape from Arkham, and who warns Batman about the shady activities of Arkham''s warden, who has in his possession a rocket ship from Krypton with a dead infant skeleton inside.', N'', N'DC')
 INSERT [dbo].[issues] ([id], [issue_title], [series_title], [release_date], [ISBN], [UPC], [summary], [cover_link], [publisher]) VALUES (2, N'', N'Action Comics', N'May 2021', N'', N'76194134388402911', N'Having traveled from the future to the present, Midnighter uses the new super-computer uploaded to his brain to help take on his enemies, but soon finds out that the super-computer contains an AI that now co-exists in his brain.', N'', N'DC')
