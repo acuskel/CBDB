@@ -6,7 +6,6 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
-import ComicDetails from '../views/ComicDetails.vue'
 import CollectionDisplay from '../views/CollectionDisplay.vue'
 import Public from '../views/Public.vue'
 import PublicDisplay from '../views/PublicDisplay.vue'
@@ -73,14 +72,6 @@ const router = new Router({
       //todo: add Auth?
     },
     {
-      path: "/comicdetails",
-      name: "comic-details",
-      component: ComicDetails,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
       path: '/public',
       name: 'public',
       component: Public
@@ -89,11 +80,6 @@ const router = new Router({
       path: '/public/:id',
       name: 'public-display',
       component: PublicDisplay
-    },
-    {
-      path:'/signup',
-      name: 'signup',
-      component: Home
     }
   ]
 })
