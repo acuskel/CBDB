@@ -1,13 +1,12 @@
 <template>
   <div>
-    <h1>List of comics in collection selected</h1>
     <!-- selected collection name? -->
     <issue-list />
     <add-issue
       v-if="allowAdd"
       v-bind:collectionId="collectionId"
     />
-    <img v-else src="https://i.imgur.com/pgONM9p.png" width=500/ >
+    <router-link v-else v-bind:to="{ name: 'signup' }"><img src="https://i.imgur.com/pgONM9p.png" width=500/ ></router-link>
   </div>
 </template>
 

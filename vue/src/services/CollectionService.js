@@ -3,8 +3,8 @@ import axios from 'axios';
 const path = '/collection';
 
 export default {
-    getCollections(user) {
-        return axios.get(path + '/user/' + user)
+    getCollections(userId) {
+        return axios.get(path + '/user/' + userId)
     },
 
     addCollection(collection){

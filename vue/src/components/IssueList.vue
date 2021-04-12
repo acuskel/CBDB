@@ -1,15 +1,29 @@
 <template>
   <div class="issues-container">
+    <h1>Collection Stats</h1>
+    <table class="table table-bordered table-hover">
+    <tbody>
+      <tr>
+        <td>Issues</td>
+        <td>{{issues.length }}</td>
+      </tr>
+      <tr>
+        <td>Issues Data</td>
+        <td>{{issues}}</td>
+      </tr>
+    </tbody>
+    </table>
+    <h1>Issues</h1>
     <ul>
+
       <li
         
         v-for="issue in $store.state.issues"
-        v-bind:key="issue.title"
+        v-bind:key="issue.id"
       >
-      <!-- todo: add routerlink to Individual comic Display -->
-      
+      <router-link v-bind:to="{name: 'issue-display', params: {id: issue.issueId}}">
       {{issue.title}}
-      
+      </router-link>
       </li>
       <!-- todo: bind on ID -->
     </ul>
@@ -23,7 +37,7 @@ export default {
   data() {
     return {
       message: "",
-      issueId: 0,
+      collectionId: 0,
     };
   },
   computed: {
@@ -34,10 +48,10 @@ export default {
   },
   created(){
     this.message = "";
-    this.issueId = this.$route.params.id;
+    this.collectionId = this.$route.params.id;
     
     CollectionService
-      .getIssues(this.issueId) //need parameter from selected collection
+      .getIssues(this.collectionId)
       
       .then((response) => {
         this.$store.commit("REPLACE_ISSUES", response.data);
@@ -58,4 +72,15 @@ export default {
 
 <style>
 
+table,
+th,
+td {
+  border: 1px solid black;
+  background-color: white;
+}
+
+table {
+  width: 50%;
+  margin: 20px;
+}
 </style>
