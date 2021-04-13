@@ -10,6 +10,7 @@ import CollectionDisplay from '../views/CollectionDisplay.vue'
 import Public from '../views/Public.vue'
 import PublicDisplay from '../views/PublicDisplay.vue'
 import IssueDisplay from '../views/IssueDisplay.vue'
+import SearchIssues from '../views/SearchIssues.vue'
 
 
 Vue.use(Router)
@@ -80,7 +81,12 @@ const router = new Router({
       path: '/public/:id',
       name: 'public-display',
       component: PublicDisplay
-    }
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: SearchIssues
+    },
   ]
 })
 
