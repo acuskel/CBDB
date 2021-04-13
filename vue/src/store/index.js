@@ -11,6 +11,7 @@ Vue.use(Vuex)
  */
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
+const currentCollections = JSON.parse(localStorage.getItem('collections'));
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -18,28 +19,11 @@ if(currentToken != null) {
 
 export default new Vuex.Store({
   state: {
-    comics: [
-      {
-        title: "Spiderman",
-        author: "Peter David",
-        isbn: "9781601390554"
-      },
-      {
-        title: "Batman",
-        author: "Jeph Loeb",
-        isbn: "9781401223175"
-      },
-      {
-        title: "The Tick",
-        author: "Greg Hyland",
-        isbn: "9781578400775"
-      },
-    ],
-
-    collections: [],
-
+    collections: currentCollections || [],
     issues: [],
 
+    collection: {},
+    
     token: currentToken || '',
     user: currentUser || {}
   },
@@ -60,17 +44,18 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    SET_ACTIVE_COMIC(state, comicIsbn){ // todo: not working
-      state.activeComic = comicIsbn;
-    },
     SAVE_COLLECTION(state, newCollection){
       state.collections.push(newCollection);
     },
     REPLACE_COLLECTIONS(state, collections) {
       state.collections = collections;
+      localStorage.setItem('collections', JSON.stringify(collections));
     },
     REPLACE_ISSUES(state, issues) {
       state.issues = issues;
+    },
+    SET_COLLECTION(state, collection) {
+      state.currentCollection = collection;
     }
   }
 })
