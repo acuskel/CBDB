@@ -26,11 +26,11 @@ export default {
       message: "",
     };
   },
-  computed: {
-    collections() {
-      return this.$store.state.collections;
-    }
-  },
+ // computed: {
+   // collections() {
+   //   return this.$store.state.collections;
+   // }
+//  },
   created(){
     this.message = "";
 
