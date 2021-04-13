@@ -1,5 +1,5 @@
 <template>
-  <div class="my-collections">
+  <div class="home">
     <carousel />
   </div>
 </template>
@@ -10,6 +10,6 @@ import Carousel from "../components/Carousel"
 
 export default {
   components: { Carousel },
-  name: "my-collections"
+  name: "home"
 };
 </script>

@@ -32,8 +32,9 @@ export default {
 
 
 <style>
-@import '/assets/styles/styles.css';
 body, html, #app {   
+  margin: auto;
+  max-width: 1200px;
   min-height: 100%;
   background-color: rgb(232, 61, 79);
   text-align: center;

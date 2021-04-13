@@ -2,14 +2,15 @@
        <div id="navbar">
       <b-navbar toggleable="lg" type="dark">
         <b-navbar-brand>
-          <img class="navbar-logo" v-bind:to="{ name: 'home'}" src="../../src/assets/logo.png" alt="CBDB Logo" height="80">
+          <img class="navbar-logo" v-bind:to="{ name: 'home'}" src="../../src/assets/logo.png" alt="CBDB Logo" height="100">
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item :to="{ name: 'home'}" v-if="$store.state.token != ''" >Home</b-nav-item>
+            <b-nav-item :to="{ name: 'home'}" >Home</b-nav-item>
+            <b-nav-item :to="{ name: 'my-collections'}" v-if="$store.state.token != ''" >My Collections</b-nav-item>
             <b-nav-item :to="{ name: 'public'}" >Browse Public Collections</b-nav-item>
             <b-nav-item :to="{ name: 'search'}">Search Comics</b-nav-item>
             <b-nav-item :to="{ name: 'register'}" v-if="$store.state.token == ''">Register</b-nav-item>
