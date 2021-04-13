@@ -9,7 +9,6 @@ namespace Capstone.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        
         public List<Issue> Issues { get; set; }
         public int UserId { get; set; }
         public bool IsPublic { get; set; }
