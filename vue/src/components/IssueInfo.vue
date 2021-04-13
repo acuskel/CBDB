@@ -42,7 +42,7 @@ export default {
     console.log('store.user', this.$store.state.user);
     this.collection = this.$store.state.collections.find((c) => c.id = this.$route.params.id);
     this.issueId = this.$route.params.id;
-    this.issue = this.collection.issues.find((i) => i.issueId = this.issueId);
+    this.issue = this.$store.state.allIssues.find((i) => i.issueId = this.issueId);
 
 
 
