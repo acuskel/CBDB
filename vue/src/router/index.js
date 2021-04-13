@@ -11,6 +11,7 @@ import Public from '../views/Public.vue'
 import PublicDisplay from '../views/PublicDisplay.vue'
 import IssueDisplay from '../views/IssueDisplay.vue'
 import SearchIssues from '../views/SearchIssues.vue'
+import MyCollections from '../views/MyCollections.vue'
 
 
 Vue.use(Router)
@@ -32,6 +33,14 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: Home,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/my-collections',
+      name: 'my-collections',
+      component: MyCollections,
       meta: {
         requiresAuth: true
       }
