@@ -25,6 +25,12 @@ namespace Capstone.Controllers
             return Ok(issueDAO.GetIssue(issueId));
         }
 
+        [HttpGet("All")]
+        public ActionResult<Issue> GetAllIssues()
+        {
+            return Ok(issueDAO.GetAllIssues());
+        }
+
 
         [HttpPost("{collectionId}")]
         public ActionResult AddIssue(Issue issue, int collectionId)
@@ -40,7 +46,7 @@ namespace Capstone.Controllers
             }
         }
 
-
+        
 
     }
 

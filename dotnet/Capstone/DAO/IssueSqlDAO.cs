@@ -14,6 +14,7 @@ namespace Capstone.DAO
         //private string sqlCreateIssue = "INSERT INTO issues(issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher) VALUES(@issueTitle, @seriesTitle, @releaseDate, @isbn, @upc, @summary, @coverLink, @publisher) INSERT INTO collections_issues (collection_id, issue_id) VALUES (@collectionId, (SELECT MAX(id) FROM issues))";
         private string sqlAddIssue = "INSERT INTO collections_issues(collection_id, issue_id) VALUES (@collectionId, @issueId)";
         private string sqlGetIssue = "SELECT * FROM issues i WHERE i.id = @issueID;";
+        private string sqlGetAllIssues = "SELECT * FROM issues WHERE issues.page_count != 'NULL'";
         public IssueSqlDAO(string connectionString)
         {
             this.connectionString = connectionString;
@@ -46,6 +47,32 @@ namespace Capstone.DAO
                 result = false;
             }
             return result;
+        }
+
+        public List<Issue> GetAllIssues()
+        {
+            List<Issue> allIssues = new List<Issue>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlGetAllIssues, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Issue issue = ReaderToIssues(reader);
+                        allIssues.Add(issue);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                allIssues = new List<Issue>();
+            }
+
+            return allIssues;
         }
 
         public Issue GetIssue(int issueId)
@@ -91,7 +118,7 @@ namespace Capstone.DAO
             issue.Characters = Convert.ToString(reader["characters"]);
             issue.Creator = Convert.ToString(reader["author_name"]);
             issue.PageCount = Convert.ToInt32(reader["page_count"]);
-            issue.SeriesId = Convert.ToInt32(reader["series_id"]);
+            issue.SeriesId = Convert.ToString(reader["series_id"]);
             return issue;
         }
 

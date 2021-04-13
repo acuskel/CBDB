@@ -24,7 +24,7 @@ namespace Capstone.Models
         //public string BioLink { get; set; }
         //public string Genre { get; set; }
         public int PageCount { get; set; }
-        public int SeriesId { get; set; }
+        public string SeriesId { get; set; }
         //public string Country { get; set; }
         //public string Language { get; set; }
         //public string CreatorBio { get; set; }

@@ -166,7 +166,7 @@ namespace Capstone.DAO
             issue.Characters = Convert.ToString(reader["characters"]);
             issue.Creator = Convert.ToString(reader["author_name"]);
             issue.PageCount = Convert.ToInt32(reader["page_count"]);
-            issue.SeriesId = Convert.ToInt32(reader["series_id"]);
+            issue.SeriesId = Convert.ToString(reader["series_id"]);
             return issue;
         }
     }
