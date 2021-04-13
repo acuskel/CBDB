@@ -1,18 +1,15 @@
 <template>
-  <div class="home">
-    <h1>Collections</h1>
-    <collections-list />
-    <add-collection />
+  <div class="my-collections">
+    <carousel />
   </div>
 </template>
 
 <script>
-import AddCollection from '../components/AddCollection.vue';
-import CollectionsList from '../components/CollectionsList.vue';
+import Carousel from "../components/Carousel"
 
 
 export default {
-  components: { AddCollection, CollectionsList},
-  name: "home"
+  components: { Carousel },
+  name: "my-collections"
 };
 </script>
