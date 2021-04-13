@@ -1,26 +1,18 @@
 <template>
   <div>
-    <div>
-      <h1>{{this.$store.state.currentCollection}}</h1>
-      <h3>params.id {{ this.$route.params.id }}</h3>
-      <h3>params.issueId {{ this.$route.params.issueId }}</h3>
-      <h3>state.user.userId {{ this.$store.state.user.userId }}</h3>
-      <h3>state.collections {{ this.$store.state.collections }}</h3>
-      <h3>
-        state.collections.issues {{ this.$store.state.collections.issues }}
-      </h3>
-      <h3>this.issueId {{ this.issueId }}</h3>
-
-      <h1>{{ unaddedCollections }}</h1>
+    <div id="issue-data">
       <h1>{{ issue.title }}</h1>
-      <h3>{{ issue.seriesTitle }}</h3>
-      <h3>Issue Number: {{ issue.issueNumber }}</h3>
-      <h3>{{ issue.creator }}</h3>
-      <h3>{{ issue.publisher }}</h3>
-      <h3>Genre: {{ issue.genre }}</h3>
+      <h3>Title: {{ issue.seriesTitle }}</h3>
+      <h3>Creator: {{ issue.creator }}</h3>
+      <h3>Publisher: {{ issue.publisher }}</h3>
+      <h3>Characters: {{ issue.characters }}</h3>
+      <h3>Summary: {{ issue.summary}}</h3>
       <h3>Publication Date: {{ issue.releaseDate }}</h3> 
-      <h3>Pages: {{ issue.pageCount }}</h3> -->
+      <h3>Page Count: {{ issue.pageCount }}</h3>
     </div>
+    <div>
+    <!-- <b-form-rating v-model="value" variant="warning" class="mb-3"></b-form-rating> -->
+  </div>
   </div>
 </template>
 
@@ -46,14 +38,15 @@ export default {
     }
   },
   created() {
-    
     console.log('store.collections', this.$store.state.collections);
     console.log('store.user', this.$store.state.user);
     this.collection = this.$store.state.collections.find((c) => c.id = this.$route.params.id);
-
-
-
     this.issueId = this.$route.params.id;
+    this.issue = this.collection.issues.find((i) => i.issueId = this.issueId);
+
+
+
+    
 
     /* /let issues = this.$store.state.collections.find((c) => 
     this.issue = this.$store.state.issues.find(
