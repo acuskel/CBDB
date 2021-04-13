@@ -20,11 +20,10 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     collections: currentCollections || [],
-
     issues: [],
 
     collection: {},
-
+    
     token: currentToken || '',
     user: currentUser || {}
   },
