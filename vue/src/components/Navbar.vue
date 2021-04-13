@@ -1,8 +1,10 @@
 <template>
     <div>
-      <b-navbar toggleable="lg" type="dark" variant="success">
+      <b-navbar toggleable="lg" type="dark">
         <b-container>
-            <b-navbar-brand href="#">Mealzers</b-navbar-brand>
+            <b-navbar-brand href="../">
+            <img class="navbar-logo" src="../../src/assets/logo.png" alt="CBDB Logo" height="80">
+            </b-navbar-brand>
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
             <b-collapse id="nav-collapse" is-nav>
               <!-- Right aligned nav items -->
@@ -11,7 +13,7 @@
                   <b-form-input 
                     size="sm" 
                     class="mr-sm-2" 
-                    placeholder="Search for a meal"
+                    placeholder="Search for a comic"
                     v-model="meal"
                     ></b-form-input>
                   <b-button 
@@ -35,7 +37,6 @@
 </template>
 <script>
 export default {
-    name: "nav-bar",
     data() {
         return {
             meal: ''
