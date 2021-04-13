@@ -82,22 +82,16 @@ namespace Capstone.DAO
             issue.Title = Convert.ToString(reader["issue_title"]);
             issue.SeriesTitle = Convert.ToString(reader["series_title"]);
             issue.ReleaseDate = Convert.ToString(reader["release_date"]);
-            issue.ISBN = Convert.ToInt32(reader["ISBN"]);
-            issue.UPC = Convert.ToInt32(reader["UPC"]);
+            issue.ISBN = Convert.ToString(reader["ISBN"]);
+            issue.UPC = Convert.ToString(reader["UPC"]);
             issue.Summary = Convert.ToString(reader["summary"]);
             issue.CoverLink = Convert.ToString(reader["cover_link"]);
             issue.Publisher = Convert.ToString(reader["publisher"]);
-            issue.IssueNumber = Convert.ToInt32(reader["issue_number"]);
-            issue.StoryTitle = Convert.ToString(reader["story_title"]);
-            issue.StoryArcName = Convert.ToString(reader["story_arc_name"]);
+            //issue.IssueNumber = Convert.ToInt32(reader["issue_number"]);
             issue.Characters = Convert.ToString(reader["characters"]);
-            issue.BioLink = Convert.ToString(reader["bio_link"]);
-            issue.Genre = Convert.ToString(reader["genre"]);
-            issue.PageCount = Convert.ToDecimal(reader["page_count"]);
-            issue.Country = Convert.ToString(reader["country"]);
-            issue.Language = Convert.ToString(reader["language"]);
-            issue.CreatorBio = Convert.ToString(reader["creator_bio"]);
-            issue.PublicationType = Convert.ToString(reader["publication_type"]);
+            issue.Creator = Convert.ToString(reader["author_name"]);
+            issue.PageCount = Convert.ToInt32(reader["page_count"]);
+            issue.SeriesId = Convert.ToInt32(reader["series_id"]);
             return issue;
         }
 

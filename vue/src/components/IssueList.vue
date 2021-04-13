@@ -7,10 +7,7 @@
         <td>Issues</td>
         <td>{{issues.length }}</td>
       </tr>
-      <tr>
-        <td>Issues Data</td>
-        <td>{{issues}}</td>
-      </tr>
+      
     </tbody>
     </table>
     <h1>Issues</h1>
@@ -18,13 +15,13 @@
 
       <li
         
-        v-for="issue in $store.state.issues"
+        v-for="issue in issues"
         v-bind:key="issue.id"
       >
       <router-link 
       v-on:click="onSubmit"
       v-bind:to="{name: 'issue-display', params: {id: issue.issueId, collectionId: collectionId}}">
-      {{issue.title}}
+      {{issue.seriesTitle}}
       </router-link>
       </li>
       <!-- todo: bind on ID -->
