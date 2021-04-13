@@ -21,7 +21,9 @@
         v-for="issue in $store.state.issues"
         v-bind:key="issue.id"
       >
-      <router-link v-bind:to="{name: 'issue-display', params: {id: issue.issueId}}">
+      <router-link 
+      v-on:click="onSubmit"
+      v-bind:to="{name: 'issue-display', params: {id: issue.issueId, collectionId: collectionId}}">
       {{issue.title}}
       </router-link>
       </li>
@@ -38,18 +40,23 @@ export default {
     return {
       message: "",
       collectionId: 0,
+      collection: {}
     };
   },
   computed: {
     issues() {
       return this.$store.state.issues;
     },
-
+  },
+  methods: {
+    onSubmit() {
+      this.$store.commit("SET_COLLECTION", this.$route.params.id);
+    }
   },
   created(){
-    this.message = "";
     this.collectionId = this.$route.params.id;
-    
+    console.log('store.collections', this.$store.state.collections);
+    this.collection = this.$store.state.collections
     CollectionService
       .getIssues(this.collectionId)
       

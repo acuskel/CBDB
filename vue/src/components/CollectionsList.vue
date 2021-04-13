@@ -2,17 +2,16 @@
   <div class="my-collection-container">
 
     <ul>
-      <li
-        
+      <li 
+        v-on:click="setCollection"
         v-for="collection in $store.state.collections"
         v-bind:key="collection.name"
       >
-      <!-- todo: add routerlink to CollectionDisplay -->
-      <router-link v-bind:to="{ name: 'collection-display', params: {id: collection.id}}">
+      <router-link 
+      v-bind:to="{ name: 'collection-display', params: {id: collection.id}}">
       {{collection.name}}
       </router-link>
       </li>
-      <!-- todo: bind on ID -->
     </ul>
   </div>
 </template>
@@ -20,19 +19,19 @@
 <script>
 import collectionService from "../services/CollectionService.js";
 export default {
-  name: "my-collection",
+  name: "collections-list",
   data() {
     return {
-      message: "",
+      collection: {},
+      collectionId: 0
     };
   },
-  computed: {
-    collections() {
-      return this.$store.state.collections;
+  methods: {
+    setCollection() {
+      this.$store.commit('SET_COLLECTION', this.collection);
     }
   },
   created(){
-    this.message = "";
 
     collectionService
       .getCollections(this.$store.state.user.userId)
