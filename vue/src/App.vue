@@ -28,12 +28,31 @@
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue';  
+import Navbar from './components/Navbar.vue';
+import issueService from "./services/IssueService.js";
+
   export default {
     name: 'navbar',
-    components: {
-      Navbar
-}}
+    components: { Navbar },
+    created(){
+    issueService
+      .getAllIssues()
+      .then((response) => {
+        this.$store.commit("POPULATE_ALL_ISSUES", response.data);
+      })
+      .catch((error) => {
+        if (error.response) {
+          this.message = 
+          "error: HTTP Response Code: " + error.response.data.status;
+          this.message =+ " Description: " + error.response.data.title;
+        } else {
+          this.message = "Network Error";
+        }
+      });
+  },
+    
+    
+    }
 
 </script>
 
