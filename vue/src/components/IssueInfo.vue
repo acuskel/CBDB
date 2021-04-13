@@ -11,7 +11,7 @@
       <h3>Page Count: {{ issue.pageCount }}</h3>
     </div>
     <div>
-    <b-form-rating v-model="value" variant="warning" class="mb-3"></b-form-rating>
+    <!-- <b-form-rating v-model="value" variant="warning" class="mb-3"></b-form-rating> -->
   </div>
   </div>
 </template>
