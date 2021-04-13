@@ -1,7 +1,6 @@
 <template>
   <div>
-    <Cards />
-    <div>
+    <div id="issue-data">
       <h1>{{ issue.title }}</h1>
       <h3>Title: {{ issue.seriesTitle }}</h3>
       <h3>Creator: {{ issue.creator }}</h3>
@@ -11,14 +10,15 @@
       <h3>Publication Date: {{ issue.releaseDate }}</h3> 
       <h3>Page Count: {{ issue.pageCount }}</h3>
     </div>
+    <div>
+    <b-form-rating v-model="value" variant="warning" class="mb-3"></b-form-rating>
+  </div>
   </div>
 </template>
 
 <script>
-import Cards from './Cards.vue'
 
 export default {
-  components: { Cards },
   name: "issue-info",
   data() {
     return {
