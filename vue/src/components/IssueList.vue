@@ -2,27 +2,30 @@
   <div class="issues-container">
     <h1>Collection Stats</h1>
     <table class="table table-bordered table-hover">
-    <tbody>
-      <tr>
-        <th>Number of Issues or Books</th>
-        <th>Number of Marvel Comics</th>
-        <th>Number of DC Comics</th>
-        <th>Number of Issues Featuring Superheroes</th>
-        <th>Number of Issues Featuring Spiderman</th>
-        <th>Number of Issues Featuring Superman</th>
-        <th>Number of Issues Featuring Batman</th>
-      </tr>
-      <tr>
+    <b-tbody responsive>
+      <b-tr>
+        <th>Issues or Books</th>
+        <th>Marvel Comics</th>
+        <th>DC Comics</th>
+        <th>Issues Featuring Superheroes</th>
+        <th>Issues Featuring Wonder Woman</th>
+        <th>Issues Featuring Spiderman</th>
+        <th>Issues Featuring Superman</th>
+        <th>Issues Featuring Batman</th>
+      </b-tr>
+      <b-tr>
         <td>{{issues.length }}</td>
         <td>{{ marvelComics }}</td>
         <td>{{ dcComics }}</td>
         <td>{{ superheroCount }}</td>
+        <td> {{ wonderWomanCount }} </td>
         <td>{{ spidermanCount }}</td>
         <td>{{ supermanCount }}</td>
         <td>{{ batmanCount }}</td>
-      </tr>
+        
+      </b-tr>
       
-    </tbody>
+    </b-tbody>
     </table>
     <h1>Issues in this Collection:</h1>
     <ul>
@@ -109,6 +112,16 @@ export default {
       
       this.issues.forEach(i => {
       if(i.characters.includes("Spider-Man") || i.characters.includes("Spiderman")){
+        counter ++;
+      }     
+      });
+      return counter;  
+    },
+    wonderWomanCount(){
+      let counter = 0;
+      
+      this.issues.forEach(i => {
+      if(i.characters.includes("Wonder Woman")){
         counter ++;
       }     
       });
