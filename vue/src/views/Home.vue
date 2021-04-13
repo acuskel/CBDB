@@ -12,7 +12,7 @@ import CollectionsList from '../components/CollectionsList.vue';
 
 
 export default {
-  components: { AddCollection, CollectionsList },
+  components: { AddCollection, CollectionsList},
   name: "home"
 };
 </script>

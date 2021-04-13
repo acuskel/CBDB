@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <test-table />
     <div id="navbar">
       <b-navbar toggleable="lg" type="dark">
         <b-navbar-brand>
@@ -51,15 +52,18 @@
       </b-navbar>
     </div>
     <router-view />
+    <carousel />
   </div>
 </template>
 
 <script>
 //import Navbar from './components/Navbar.vue';
+import carousel from './components/Carousel.vue';
+import TestTable from './components/TestTable.vue';
 import issueService from "./services/IssueService.js";
 
 export default {
-  //components: { Navbar },
+  components: { carousel, TestTable },
   created() {
     issueService
       .getAllIssues()
