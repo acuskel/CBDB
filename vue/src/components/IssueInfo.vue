@@ -26,7 +26,9 @@
 </template>
 
 <script>
-import IssueService from "../services/IssueService.js"
+import IssueService from "../services/IssueService.js";
+import collectionService from "../services/CollectionService.js";
+
 export default {
   name: "issue-info",
   data() {
@@ -40,18 +42,13 @@ export default {
     };
   },
   computed: {
-    // trying to implement so the und=addedCOllections list updates
-        /*updateUnaddedCollections() {
-        unaddedCollections = this.$store.state.collections.filter(
-      (c) => !c.issues.some((i) => i.issueId == this.issue.issueId));
-      return this.unaddedCollections;
-        }*/ 
   },
   methods: {
     addToCollection(issue, unaddedCollectionId){
       IssueService.addIssue(issue, unaddedCollectionId)
             .then((response) => {
           console.log("promise was success", response);
+          this.updateUnaddedCollections(unaddedCollectionId)
         })
         .catch((error) => {
           if (error.response) {
@@ -65,12 +62,27 @@ export default {
     setCollection() {
       this.$store.commit("SET_COLLECTION", this.collection);
     },
+    updateUnaddedCollections(unaddedCollectionId){
+         this.unaddedCollections = this.unaddedCollections.filter(
+      (c) => c.id != unaddedCollectionId);
+    }
 
   },
   created() {
-    console.log("store.collections", this.$store.state.collections);
-    console.log("store.user", this.$store.state.user);
-    // this.collection = this.$store.state.collections.find((c) => c.id == this.$route.params.id);
+    collectionService
+      .getCollections(this.$store.state.user.userId)
+      .then((response) => {
+        this.$store.commit("REPLACE_COLLECTIONS", response.data);
+      })
+      .catch((error) => {
+        if (error.response) {
+          this.message = 
+          "error: HTTP Response Code: " + error.response.data.status;
+          this.message =+ " Description: " + error.response.data.title;
+        } else {
+          this.message = "Network Error";
+        }
+      });
     this.issueId = this.$route.params.id;
     this.issue = this.$store.state.allIssues.find(
       (i) => i.issueId == this.issueId
@@ -85,7 +97,9 @@ export default {
 </script>
 
 <style scoped>
-
+div {
+  background-color: white;
+}
 button{
   border-radius: 50%;
 }

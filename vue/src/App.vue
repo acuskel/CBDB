@@ -10,7 +10,7 @@
 import Navbar from './components/Navbar.vue';
 import issueService from "./services/IssueService.js";
 import Foot from './components/Foot.vue';
-
+import collectionService from "./services/CollectionService.js";
 
 export default {
   components: { Navbar, Foot },
@@ -29,7 +29,23 @@ export default {
           this.message = "Network Error";
         }
       });
+      
+    collectionService
+      .getCollections(this.$store.state.user.userId)
+      .then((response) => {
+        this.$store.commit("REPLACE_COLLECTIONS", response.data);
+      })
+      .catch((error) => {
+        if (error.response) {
+          this.message = 
+          "error: HTTP Response Code: " + error.response.data.status;
+          this.message =+ " Description: " + error.response.data.title;
+        } else {
+          this.message = "Network Error";
+        }
+      });
   },
+  
 };
 </script>
 

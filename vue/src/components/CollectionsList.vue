@@ -32,7 +32,6 @@ export default {
     }
   },
   created(){
-
     collectionService
       .getCollections(this.$store.state.user.userId)
       .then((response) => {
