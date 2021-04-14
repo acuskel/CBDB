@@ -10,15 +10,12 @@
       <h3>Publication Date: {{ issue.releaseDate }}</h3>
       <h3>Page Count: {{ issue.pageCount }}</h3>
     </div>
-    <ul>
-      <li
+        <h1>Add to Collection:</h1>
+        <b-button 
+        variant="primary"
         v-for="unaddedCollection in unaddedCollections"
-        v-bind:key="unaddedCollection.id"
-      >
-        {{ unaddedCollection.name }}
-        <button type="button" class="btn btn-success" v-on:click="addToCollection(issue, unaddedCollection.id)">+</button>
-      </li>
-    </ul>
+        v-bind:key="unaddedCollection.id" 
+        v-on:click="addToCollection(issue, unaddedCollection.id)">{{ unaddedCollection.name }}</b-button>
     <div>
       <!-- <b-form-rating v-model="value" variant="warning" class="mb-3"></b-form-rating> -->
     </div>
@@ -101,7 +98,7 @@ div {
   background-color: white;
 }
 button{
-  border-radius: 50%;
+  margin:5px;
 }
 
 </style>
