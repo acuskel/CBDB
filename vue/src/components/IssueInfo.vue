@@ -26,7 +26,11 @@
       <img v-if="issue.publisher == 'Dark Horse'" src="https://d2lzb5v10mb0lj.cloudfront.net/darkhorse/index_images/blog/blog2015/sdcc15logo.jpg">
       <img v-if="issue.publisher == 'Marvel'" width=300 src="https://logodownload.org/wp-content/uploads/2017/05/marvel-logo-0.png">
       <img v-if="issue.publisher == 'DC'" width=300 src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/DC_Comics_logo.svg/600px-DC_Comics_logo.svg.png">
-      <img v-if="issue.publisher == 'Centaur'" src="https://comicvine1.cbsistatic.com/uploads/scale_small/1/19772/619139-centaur.gif">
+      <img v-if="issue.publisher == 'Centaur'" width=300 src="https://comicvine1.cbsistatic.com/uploads/scale_small/1/19772/619139-centaur.gif">
+      <img v-if="issue.publisher == 'Image'" width=300 src="https://static.wikia.nocookie.net/walkingdead/images/3/3f/Image-comics-logo.png/revision/latest?cb=20180904121918">
+      <img v-if="issue.publisher == 'IDW'" width=300 src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/IDW_Publishing_logo.svg/300px-IDW_Publishing_logo.svg.png">
+      <img v-if="issue.publisher == 'Archie'" width=300 src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Archiecomicslogo.png/800px-Archiecomicslogo.png">
+      <img v-if="issue.publisher == 'Boom!'" width=300 src="https://upload.wikimedia.org/wikipedia/en/e/ea/Updated_BOOM%21_logo%2C_fair_use.jpg">
       </b-col>
       </b-row>
       </b-container>
@@ -112,6 +116,10 @@ export default {
 </script>
 
 <style scoped>
+#issue-data{
+  border:10px;
+  border-color: white;
+}
 div {
   color:white;
 }

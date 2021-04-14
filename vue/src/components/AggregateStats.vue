@@ -3,13 +3,33 @@
     <b-row align-h="center">
       <b-card-group deck>
         <b-col md="4" class="ml-auto p-3">
-          <b-card header="Issues" class="text-center">
-            <b-card-text class="card_text">{{ issues.length }}</b-card-text>
+          <b-card header="Total Number of Users" class="text-center">
+            <b-card-text class="card_text">{{ numberOfUsers }}</b-card-text>
           </b-card>
         </b-col>
         <b-col md="4" class="ml-auto p-3">
-          <b-card header="Featuring Superheroes" class="text-center">
-            <b-card-text class="card_text">{{ superheroCount }}</b-card-text>
+          <b-card header="Size of Largest Collection" class="text-center">
+            <b-card-text class="card_text">{{ largestUserCollection }}</b-card-text>
+          </b-card>
+        </b-col>
+        <b-col md="4" class="ml-auto p-3">
+          <b-card header="Avg. Issues Per Collection" class="text-center">
+            <b-card-text class="card_text">{{ averageNumberOfIssues }}</b-card-text>
+          </b-card>
+        </b-col>
+        <b-col md="4" class="ml-auto p-3">
+          <b-card header="Most Collections by a User" class="text-center">
+            <b-card-text class="card_text">{{ mostCollectionsByUser }}</b-card-text>
+          </b-card>
+        </b-col>
+        <b-col md="4" class="ml-auto p-3">
+              <b-card header="Featuring Superheroes" class="text-center">
+                <b-card-text class="card_text">{{ superheroCount }}</b-card-text>
+              </b-card>
+            </b-col>
+        <b-col md="4" class="ml-auto p-3">
+          <b-card header="DC Comics" class="text-center">
+            <b-card-text class="card_text">{{ dcComics }}</b-card-text>
           </b-card>
         </b-col>
         <b-col md="4" class="ml-auto p-3">
@@ -18,19 +38,13 @@
           </b-card>
         </b-col>
         <b-col md="4" class="ml-auto p-3">
-          <b-card header="DC Comics" class="text-center">
-            <b-card-text class="card_text">{{ dcComics }}</b-card-text>
-          </b-card>
-        </b-col>
-
-        <b-col md="4" class="ml-auto p-3">
-          <b-card header="Featuring Spiderman" class="text-center">
-            <b-card-text class="card_text">{{ spidermanCount }}</b-card-text>
+          <b-card header="Image Comics" class="text-center">
+            <b-card-text class="card_text">{{ imageComics }}</b-card-text>
           </b-card>
         </b-col>
         <b-col md="4" class="ml-auto p-3">
-          <b-card header="Featuring Batman" class="text-center">
-            <b-card-text class="card_text">{{ batmanCount }}</b-card-text>
+          <b-card header="Dark Horse Comics" class="text-center">
+            <b-card-text class="card_text">{{ darkHorseComics }}</b-card-text>
           </b-card>
         </b-col>
       </b-card-group>
@@ -38,23 +52,33 @@
   </b-container>
 </template>
 <script>
-import CollectionService from "../services/CollectionService.js";
+import StatisticsService from "../services/StatisticsService.js";
 export default {
-  name: "issue-list",
+  name: "aggregate-statistics",
   data() {
     return {
       message: "",
-      collectionId: 0,
-      collections: {},
     };
   },
   computed: {
-    issues() {
-      return this.$store.state.issues;
+    statistics() {
+      return this.$store.state.statistics;
+    },
+    averageNumberOfIssues() {
+      return this.statistics.averageNumberOfIssues
+    },
+    largestUserCollection(){
+      return this.statistics.largestUserCollection
+    },
+    numberOfUsers(){
+      return this.statistics.numberOfUsers
+    },
+    mostCollectionsByUser(){
+      return this.statistics.mostCollectionsByUser
     },
     marvelComics() {
       let counter = 0;
-      this.issues.forEach((i) => {
+      this.$store.state.allIssues.forEach((i) => {
         if (i.publisher == "Marvel") {
           counter++;
         }
@@ -63,7 +87,7 @@ export default {
     },
     dcComics() {
       let counter = 0;
-      this.issues.forEach((i) => {
+      this.$store.state.allIssues.forEach((i) => {
         if (i.publisher == "DC") {
           counter++;
         }
@@ -72,7 +96,7 @@ export default {
     },
     imageComics() {
       let counter = 0;
-      this.issues.forEach((i) => {
+      this.$store.state.allIssues.forEach((i) => {
         if (i.publisher == "Image") {
           counter++;
         }
@@ -81,7 +105,7 @@ export default {
     },
     darkHorseComics() {
       let counter = 0;
-      this.issues.forEach((i) => {
+      this.$store.state.allIssues.forEach((i) => {
         if (i.publisher == "Dark Horse") {
           counter++;
         }
@@ -91,90 +115,20 @@ export default {
     superheroCount() {
       let counter = 0;
 
-      this.issues.forEach((i) => {
-        if (i.publisher == "DC" || i.publisher == "Marvel") {
+      this.$store.state.allIssues.forEach((i) => {
+        if (i.seriesTitle.includes("man") || i.seriesTitle.includes("men") || i.seriesTitle.includes("X") || i.seriesTitle.includes("Justice") || i.seriesTitle.includes("Squad") || i.seriesTitle.includes("Flash") || i.seriesTitle.includes("Guardians") ) {
           counter++;
         }
       });
       return counter;
     },
-    spidermanCount() {
-      let counter = 0;
 
-      this.issues.forEach((i) => {
-        if (
-          i.characters.includes("Spider-Man") ||
-          i.characters.includes("Spiderman")
-        ) {
-          counter++;
-        }
-      });
-      return counter;
-    },
-    wonderWomanCount() {
-      let counter = 0;
-
-      this.issues.forEach((i) => {
-        if (i.characters.includes("Wonder Woman")) {
-          counter++;
-        }
-      });
-      return counter;
-    },
-    supermanCount() {
-      let counter = 0;
-
-      this.issues.forEach((i) => {
-        if (i.characters.includes("Superman")) {
-          counter++;
-        }
-      });
-      return counter;
-    },
-    batmanCount() {
-      let counter = 0;
-
-      this.issues.forEach((i) => {
-        if (i.characters.includes("Batman")) {
-          counter++;
-        }
-      });
-      return counter;
-    },
-    stanLeeComics() {
-      let counter = 0;
-
-      this.issues.forEach((i) => {
-        if (i.creator.includes("Stan Lee")) {
-          counter++;
-        }
-      });
-      return counter;
-    },
-    jackKirbyComics() {
-      let counter = 0;
-
-      this.issues.forEach((i) => {
-        if (i.characters.includes("Jack Kirby")) {
-          counter++;
-        }
-      });
-      return counter;
-    },
-  },
-  methods: {
-    onSubmit() {
-      this.$store.commit("SET_COLLECTION", this.$route.params.id);
-    },
   },
   created() {
-    this.collectionId = this.$route.params.id;
-    console.log("store.collections", this.$store.state.collections);
-    this.collections = this.$store.state.collections;
-    CollectionService.getIssues(this.collectionId)
-
+    this.statistics = this.$store.state.statistics;
+    StatisticsService.getStatistics()
       .then((response) => {
-        this.$store.commit("REPLACE_ISSUES", response.data);
+        this.$store.commit("REPLACE_STATISTICS", response.data);
       })
       .catch((error) => {
         if (error.response) {

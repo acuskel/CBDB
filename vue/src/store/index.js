@@ -22,6 +22,7 @@ export default new Vuex.Store({
   state: {
     collections: currentCollections || [],
     issues: [],
+    statistics: [],
     allIssues: allIssues || [],
 
     collection: {},
@@ -62,6 +63,9 @@ export default new Vuex.Store({
     POPULATE_ALL_ISSUES(state, allIssues) {
       state.allIssues = allIssues;
       localStorage.setItem('allIssues', JSON.stringify(allIssues))
+    },
+    REPLACE_STATISTICS(state, statistics) {
+      state.statistics = statistics;
     },
     ADD_ISSUE_TO_COLLECTION(state, addedIssue){
       state.issues.push(addedIssue);

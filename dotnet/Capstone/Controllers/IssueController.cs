@@ -28,7 +28,8 @@ namespace Capstone.Controllers
         [HttpGet("All")]
         public ActionResult<Issue> GetAllIssues()
         {
-            return Ok(issueDAO.GetAllIssues());
+            List<Issue> testIssues = issueDAO.GetAllIssues();
+            return Ok(testIssues);
         }
 
 
