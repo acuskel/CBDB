@@ -2,7 +2,7 @@
        <div id="navbar">
       <b-navbar class="navbar-custom" toggleable="lg" type="dark">
         <b-navbar-brand>
-          <img class="navbar-logo" v-bind:to="{ name: 'home'}" src="../../src/assets/cbdblogo.png" alt="CBDB Logo" height="120">
+          <img class="navbar-logo" v-bind:to="{ name: 'home'}" src="../../src/assets/cbdbyellow2.png" alt="CBDB Logo" height="50">
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -12,7 +12,7 @@
             <b-nav-item :to="{ name: 'home'}" >Home</b-nav-item>
             <b-nav-item :to="{ name: 'my-collections'}" v-if="$store.state.token != ''" >My Collections</b-nav-item>
             <b-nav-item :to="{ name: 'public'}" >Browse Public Collections</b-nav-item>
-            <b-nav-item :to="{ name: 'search'}">Search Comics</b-nav-item>
+            <b-nav-item :to="{ name: 'search'}">Browse All Comics</b-nav-item>
             <b-nav-item :to="{ name: 'register'}" v-if="$store.state.token == ''">Register</b-nav-item>
             <b-nav-item :to="{ name: 'login'}" v-if="$store.state.token == '' && this.$route.name != 'login'">Log In</b-nav-item>
           </b-navbar-nav>
@@ -69,6 +69,18 @@ export default {
 
 <style scoped>
 .navbar-custom {
-  background-color:#080f4d;
+  background-color:rgba(26, 24, 24, 0.966);
+  color:white;
+
+;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+      color:white!important
+    }
+
+
+b{
+  color:white;
 }
 </style>

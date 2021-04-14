@@ -74,3 +74,9 @@ export default {
   }
 };
 </script>
+
+<style>
+#login{
+  background-color:rgba(26, 24, 24, 0.966);
+  }
+</style>

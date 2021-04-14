@@ -67,5 +67,8 @@ export default new Vuex.Store({
     REPLACE_STATISTICS(state, statistics) {
       state.statistics = statistics;
     },
+    ADD_ISSUE_TO_COLLECTION(state, addedIssue){
+      state.issues.push(addedIssue);
+    }
   }
 })

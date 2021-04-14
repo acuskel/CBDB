@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <h1>Search</h1>
-    <b-table-simple striped hover>
+  <div id="search">
+    <b-button id="prev" v-on:click="nextPage" variant="primary">Previous Page</b-button>
+    <b-button id="next" v-on:click="prevPage" variant="primary">Next Page</b-button>
+    <b-table-simple bordered hover small responsive=false>
       <b-thead>
         <b-tr>
           <b-th>Series Title</b-th>
@@ -34,15 +35,54 @@ export default {
   name: "search-issues",
   data() {
     return {
-      allIssues: [],
-    };
+      issues: this.allIssues,
+      first: 0,
+      last: 40,
+    }
+  },
+  computed: {
+    firstIssue(){
+      return this.first;
+    },
+    lastIssue(){
+      return this.last;
+    },
+    allIssues(){
+      return this.$store.state.allIssues.slice(this.firstIssue, this.lastIssue);
+    }
   },
   created() {
-    this.allIssues = this.$store.state.allIssues;
-    console.log("Reached Search Issues", this.allIssues)
+    //this.allIssues = this.$store.state.allIssues.slice(this.firstIssue, this.lastIssue);
+    console.log("Reached Search Issues", this.allIssues);
   },
+  methods: {
+    nextPage() {
+      this.first += 40;
+      this.last += 40;
+      this.issues = this.allIssues;
+    },
+    prevPage() {
+      this.first -=40;
+      this.last -=40;
+      this.issues = this.allIssues;
+    }
+  }
 };
 </script>
 
 <style>
+#search{
+  background-color:rgba(26, 24, 24, 0.966);
+  padding:20px 80px 20px 30px;
+  }
+
+#prev{
+  float:left;
+  margin:20px;
+}
+
+#next{
+  float:right;
+  margin:20px -20px 20px 20px;
+}
 </style>

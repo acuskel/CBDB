@@ -17,3 +17,9 @@ export default {
   name: "my-collections"
 };
 </script>
+
+<style>
+.my-collections{
+  background-color:rgba(26, 24, 24, 0.966);
+  }
+</style>

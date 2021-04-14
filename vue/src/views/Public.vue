@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="public">
     <h1>Public comics:</h1> 
     <public-collections />
   </div>
@@ -16,4 +16,7 @@ export default {
 </script>
 
 <style>
+#public{
+  background-color:rgba(26, 24, 24, 0.966);
+  }
 </style>

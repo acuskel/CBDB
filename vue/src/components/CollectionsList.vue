@@ -29,10 +29,10 @@ export default {
   methods: {
     setCollection() {
       this.$store.commit('SET_COLLECTION', this.collection);
+      console.log('in coll disp', this.collection)
     }
   },
   created(){
-
     collectionService
       .getCollections(this.$store.state.user.userId)
       .then((response) => {
