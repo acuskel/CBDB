@@ -2,15 +2,18 @@
   <div id="app">
     <navbar />
     <router-view />
+    <foot />
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue';
 import issueService from "./services/IssueService.js";
+import Foot from './components/Foot.vue';
+
 
 export default {
-  components: { Navbar },
+  components: { Navbar, Foot },
   created() {
     issueService
       .getAllIssues()
@@ -36,10 +39,12 @@ body, html, #app {
   margin: auto;
   max-width: 1200px;
   min-height: 100%;
-  background-color: rgb(232, 61, 79);
   text-align: center;
   color: #2c3e50;
-  display: auto; }
+  display: auto; 
+  background: #7493bb;
+  background-image: url("https://www.onlygfx.com/wp-content/uploads/2016/08/halftone-simple.png"), linear-gradient(#a64ac9, #fccd04);
+  }
 
 #nav a {
   font-weight: bold;

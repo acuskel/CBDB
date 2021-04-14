@@ -48,7 +48,7 @@
           img-height="561"
         >
            <h1 class="thor">Thor</h1>
-          <p class="thor">Staff Pick: ...um...AJ?</p>
+          <p class="thor">Staff Pick: RJ</p>
         </b-carousel-slide>
 
         <!-- Slides with img slot -->
@@ -99,13 +99,6 @@ export default {
 </script>
 
 <style scoped>
-#carousel {
-  text-align: center;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  justify-self: center;
-}
 
 .tankgirl {
   color: #388ca0;
@@ -113,7 +106,6 @@ export default {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
 }
-
 
 .sagatext {
   color: #605c75
