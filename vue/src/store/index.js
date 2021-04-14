@@ -24,6 +24,7 @@ export default new Vuex.Store({
     issues: [],
     statistics: [],
     allIssues: allIssues || [],
+    publicCollections: [],
 
     collection: {},
     
@@ -54,6 +55,8 @@ export default new Vuex.Store({
       state.collections = collections;
       localStorage.setItem('collections', JSON.stringify(collections));
     },
+    SET_PUBLIC_COLLECTIONS(state, publicCollections) {
+      state.publicCollections = publicCollections;},
     REPLACE_ISSUES(state, issues) {
       state.issues = issues;
     },
