@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="issue-list">
     <issue-list />
   </div>
 </template>
@@ -13,3 +13,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.issue-list{
+  background-color:rgba(26, 24, 24, 0.966);
+  }
+</style>

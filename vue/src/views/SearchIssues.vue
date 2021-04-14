@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="search">
     <h1>Search</h1>
     <b-table-simple striped hover>
       <b-thead>
@@ -45,4 +45,7 @@ export default {
 </script>
 
 <style>
+#search{
+  background-color:rgba(26, 24, 24, 0.966);
+  }
 </style>

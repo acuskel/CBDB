@@ -69,6 +69,18 @@ export default {
 
 <style scoped>
 .navbar-custom {
-  background-color:#080f4d;
+  background-color:rgba(26, 24, 24, 0.966);
+  color:white;
+
+;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+      color:white!important
+    }
+
+
+b{
+  color:white;
 }
 </style>
