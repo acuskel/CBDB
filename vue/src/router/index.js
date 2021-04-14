@@ -96,6 +96,11 @@ const router = new Router({
       name: 'search',
       component: SearchIssues
     },
+    {
+      path: '/statistics',
+      name: 'statistics',
+      component: MyCollections
+    }
   ]
 })
 
