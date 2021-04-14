@@ -40,10 +40,10 @@ export default {
   created() {
     console.log('store.collections', this.$store.state.collections);
     console.log('store.user', this.$store.state.user);
-    this.collection = this.$store.state.collections.find((c) => c.id = this.$route.params.id);
+   // this.collection = this.$store.state.collections.find((c) => c.id == this.$route.params.id);
     this.issueId = this.$route.params.id;
-    this.issue = this.collection.issues.find((i) => i.issueId = this.issueId);
-
+    this.issue = this.$store.state.allIssues.find(i => i.issueId == this.issueId);
+    //console.log(this.issue)
 
 
     
