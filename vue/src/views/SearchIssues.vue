@@ -5,7 +5,9 @@
       <b-thead>
         <b-tr>
           <b-th>Series Title</b-th>
+          <b-th>Issue Title</b-th>
           <b-th>Publication Date</b-th>
+          <b-th>Characters</b-th>
         </b-tr>
         <b-tr v-for="issue in allIssues" v-bind:key="issue.issueId">
           <b-td>
@@ -18,7 +20,9 @@
               {{ issue.seriesTitle }}
             </b-link>
           </b-td>
+          <b-td>{{ issue.title }}</b-td>
           <b-td>{{ issue.releaseDate }}</b-td>
+          <b-td>{{ issue.characters }}</b-td>
         </b-tr>
       </b-thead>
     </b-table-simple>
@@ -35,6 +39,7 @@ export default {
   },
   created() {
     this.allIssues = this.$store.state.allIssues;
+    console.log("Reached Search Issues", this.allIssues)
   },
 };
 </script>

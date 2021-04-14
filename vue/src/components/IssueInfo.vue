@@ -43,7 +43,7 @@ export default {
    // this.collection = this.$store.state.collections.find((c) => c.id == this.$route.params.id);
     this.issueId = this.$route.params.id;
     this.issue = this.$store.state.allIssues.find(i => i.issueId == this.issueId);
-    console.log(this.issue)
+    //console.log(this.issue)
 
 
     
