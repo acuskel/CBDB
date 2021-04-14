@@ -63,5 +63,8 @@ export default new Vuex.Store({
       state.allIssues = allIssues;
       localStorage.setItem('allIssues', JSON.stringify(allIssues))
     },
+    ADD_ISSUE_TO_COLLECTION(state, addedIssue){
+      state.issues.push(addedIssue);
+    }
   }
 })

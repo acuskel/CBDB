@@ -14,7 +14,7 @@ namespace Capstone.DAO
         //private string sqlCreateIssue = "INSERT INTO issues(issue_title, series_title, release_date, ISBN, UPC, summary, cover_link, publisher) VALUES(@issueTitle, @seriesTitle, @releaseDate, @isbn, @upc, @summary, @coverLink, @publisher) INSERT INTO collections_issues (collection_id, issue_id) VALUES (@collectionId, (SELECT MAX(id) FROM issues))";
         private string sqlAddIssue = "INSERT INTO collections_issues(collection_id, issue_id) VALUES (@collectionId, @issueId)";
         private string sqlGetIssue = "SELECT * FROM issues i WHERE i.id = @issueID;";
-        private string sqlGetAllIssues = "SELECT TOP (1000) * FROM issues WHERE issues.page_count != 'NULL'";
+        private string sqlGetAllIssues = "SELECT TOP 100 * FROM issues WHERE page_count != 'NULL' AND (publisher = 'DC' OR publisher = 'Marvel');";
         public IssueSqlDAO(string connectionString)
         {
             this.connectionString = connectionString;
