@@ -47,9 +47,6 @@ export default {
           this.message = "Network Error";
         }
       });
-  
-  this.collection = this.$store.state.collection;
-  console.log('in coll disp created', this.collection)
   },
 };
 </script>

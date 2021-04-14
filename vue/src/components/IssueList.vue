@@ -1,19 +1,17 @@
 <template>
   <div class="issues-container">
-    <h1>Collection Stats</h1>
-    <b-container fluid-center class="card-grid">
-      <b-row align-h="center">
-        <b-card-group deck>
-          <b-col md="4" class="ml-auto p-3">
-            <b-card header="Issues" class="text-center">
-              <b-card-text class="card_text">{{ issues.length }}</b-card-text>
-            </b-card>
+      <h1>Collection Stats</h1>
+      <b-container fluid-center class="card-grid">
+        <b-row align-h="center">
+          <b-card-group deck>
+            <b-col md="4" class="ml-auto p-3">
+              <b-card header="Issues" class="text-center">
+                <b-card-text class="card_text">{{ issues.length }}</b-card-text>
+              </b-card>
             </b-col>
             <b-col md="4" class="ml-auto p-3">
               <b-card header="Featuring Superheroes" class="text-center">
-                <b-card-text class="card_text">{{
-                  superheroCount
-                }}</b-card-text>
+                <b-card-text class="card_text">{{ superheroCount }}</b-card-text>
               </b-card>
             </b-col>
             <b-col md="4" class="ml-auto p-3">
@@ -35,29 +33,30 @@
               </b-card>
             </b-col>
             <b-col md="4" class="ml-auto p-3">
-            <b-card header="Featuring Batman" class="text-center">
-              <b-card-text class="card_text">{{ batmanCount }}</b-card-text>
-            </b-card>
-          </b-col>
-        </b-card-group>
-      </b-row>
-    </b-container>
+              <b-card header="Featuring Batman" class="text-center">
+                <b-card-text class="card_text">{{ batmanCount }}</b-card-text>
+              </b-card>
+            </b-col>
+          </b-card-group>
+        </b-row>
+      </b-container>
 
-    <h1>Issues in this Collection:</h1>
-    <ul>
-      <li v-for="issue in issues" v-bind:key="issue.id">
-        <router-link
-          v-on:click="onSubmit"
-          v-bind:to="{
-            name: 'issue-display',
-            params: { id: issue.issueId, collectionId: collectionId },
-          }"
-        >
-          {{ issue.seriesTitle }}
-        </router-link>
-      </li>
-      <!-- todo: bind on ID -->
-    </ul>
+      <h1>Issues in this Collection:</h1>
+      <ul>
+        <li v-for="issue in issues" v-bind:key="issue.id">
+          <router-link
+            v-on:click="onSubmit"
+            v-bind:to="{
+              name: 'issue-display',
+              params: { id: issue.issueId, collectionId: collectionId },
+            }"
+          >
+            {{ issue.seriesTitle }}
+          </router-link>
+        </li>
+        <!-- todo: bind on ID -->
+      </ul>
+    
   </div>
 </template>
 
@@ -233,5 +232,8 @@ td {
 table {
   width: 50%;
   margin: 20px;
+}
+body {
+  background-color: white;
 }
 </style>

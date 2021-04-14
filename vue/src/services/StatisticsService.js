@@ -1,21 +1,9 @@
 import axios from 'axios';
 
-const path = '/stats';
+const path = '/statistics';
 
 export default {
-    getCollections(userId) {
-        return axios.get(path + '/user/' + userId)
-    },
-
-    addCollection(collection){
-        return axios.post(path, collection)
-    },
-
-    getIssues(collectionId) {
-        return axios.get(path + '/' + collectionId)
-    },
-
-    getPublicCollections() {
+    getStatistics() {
         return axios.get(path)
     },
 }
