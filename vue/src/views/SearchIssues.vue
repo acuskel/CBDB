@@ -1,7 +1,7 @@
 <template>
   <div id="search">
-    <b-button id="prev" v-on:click="nextPage" variant="primary">Previous Page</b-button>
-    <b-button id="next" v-on:click="prevPage" variant="primary">Next Page</b-button>
+    <b-button id="prev" v-on:click="prevPage" variant="primary">Previous Page</b-button>
+    <b-button id="next" v-on:click="nextPage" variant="primary">Next Page</b-button>
     <b-table-simple bordered hover small responsive=false>
       <b-thead>
         <b-tr>
@@ -37,7 +37,7 @@ export default {
     return {
       issues: this.allIssues,
       first: 0,
-      last: 40,
+      last: 39,
     }
   },
   computed: {
@@ -60,6 +60,9 @@ export default {
       this.first += 40;
       this.last += 40;
       this.issues = this.allIssues;
+      console.log("first", this.first);
+      console.log("last", this.last);
+      console.log("issue", this.issues);
     },
     prevPage() {
       this.first -=40;
