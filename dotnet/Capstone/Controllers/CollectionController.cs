@@ -60,6 +60,20 @@ namespace Capstone.Controllers
             }
         }
 
+        [HttpDelete("{collectionId}")]
+        public ActionResult DeleteCollection(int collectionId)
+        {
+            bool result = collectionDAO.DeleteCollection(collectionId);
+            if (result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
 
     }
 }

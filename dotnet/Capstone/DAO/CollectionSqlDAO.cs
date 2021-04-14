@@ -16,6 +16,8 @@ namespace Capstone.DAO
         private string sqlGetPublicCollection = "SELECT * FROM collections WHERE is_public = 1;";
         //Get Issues By CollectionID
         private string sqlGetIssues = "SELECT * FROM issues i JOIN collections_issues ci ON ci.issue_id = i.id JOIN collections c ON c.id = ci.collection_id WHERE ci.collection_id = @collectionId;";
+        private string sqlDeleteCollection = "DELETE FROM collections where id = @collection_id; DELETE FROM collections_issues where collection_id = @collection_id;";
+
         public CollectionSqlDAO(string connectionString)
         {
             this.connectionString = connectionString;
@@ -86,6 +88,32 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@userId", collection.UserId);
                     cmd.Parameters.AddWithValue("@isPublic", collection.IsPublic);
 
+
+                    int count = cmd.ExecuteNonQuery();
+
+                    if (count > 0)
+                    {
+                        result = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        public bool DeleteCollection(int collectionId)
+        {
+            bool result = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlDeleteCollection, conn);
+                    cmd.Parameters.AddWithValue("@collection_id", collectionId);
 
                     int count = cmd.ExecuteNonQuery();
 
