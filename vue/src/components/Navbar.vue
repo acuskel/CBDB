@@ -1,6 +1,6 @@
 <template>
        <div id="navbar">
-      <b-navbar class="navbar-custom" toggleable="lg" type="light">
+      <b-navbar class="navbar-custom" toggleable="lg" type="dark">
         <b-navbar-brand>
           <img class="navbar-logo" v-bind:to="{ name: 'home'}" src="../../src/assets/cbdblogo.png" alt="CBDB Logo" height="120">
         </b-navbar-brand>
@@ -69,6 +69,6 @@ export default {
 
 <style scoped>
 .navbar-custom {
-  background-color:white;
+  background-color:#080f4d;
 }
 </style>

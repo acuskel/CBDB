@@ -65,7 +65,8 @@ export default {
 
 <style>
 #foot {
-  background-color: white;
+  background-color: #020736;
+  margin:
 }
 
 template {
