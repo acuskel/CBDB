@@ -18,4 +18,8 @@ export default {
     getPublicCollections() {
         return axios.get(path)
     },
+
+    deleteCollection(collectionId){
+        return axios.delete(path + '/' + collectionId)
+    },
 }
