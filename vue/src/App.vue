@@ -46,6 +46,10 @@ body, html, #app {
   background-image: url("https://www.onlygfx.com/wp-content/uploads/2016/08/halftone-simple.png"), linear-gradient(#a64ac9, #fccd04);
   }
 
+#app {
+min-height: 1000px;
+}
+
 #nav a {
   font-weight: bold;
   color: #2c3e50;

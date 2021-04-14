@@ -114,4 +114,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#register{
+  background-color:rgba(26, 24, 24, 0.966);
+  }
+</style>

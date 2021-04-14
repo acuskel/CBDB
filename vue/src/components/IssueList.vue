@@ -1,45 +1,60 @@
 <template>
   <div class="issues-container">
     <h1>Collection Stats</h1>
-    <table class="table table-bordered table-hover">
-    <b-tbody responsive>
-      <b-tr>
-        <th>Issues or Books</th>
-        <th>Marvel Comics</th>
-        <th>DC Comics</th>
-        <th>Issues Featuring Superheroes</th>
-        <th>Issues Featuring Wonder Woman</th>
-        <th>Issues Featuring Spiderman</th>
-        <th>Issues Featuring Superman</th>
-        <th>Issues Featuring Batman</th>
-      </b-tr>
-      <b-tr>
-        <td>{{issues.length }}</td>
-        <td>{{ marvelComics }}</td>
-        <td>{{ dcComics }}</td>
-        <td>{{ superheroCount }}</td>
-        <td> {{ wonderWomanCount }} </td>
-        <td>{{ spidermanCount }}</td>
-        <td>{{ supermanCount }}</td>
-        <td>{{ batmanCount }}</td>
-        
-      </b-tr>
-      
-    </b-tbody>
-    </table>
+    <b-container fluid-center class="card-grid">
+      <b-row align-h="center">
+        <b-card-group deck>
+          <b-col md="4" class="ml-auto p-3">
+            <b-card header="Issues" class="text-center">
+              <b-card-text class="card_text">{{ issues.length }}</b-card-text>
+            </b-card>
+            </b-col>
+            <b-col md="4" class="ml-auto p-3">
+              <b-card header="Featuring Superheroes" class="text-center">
+                <b-card-text class="card_text">{{
+                  superheroCount
+                }}</b-card-text>
+              </b-card>
+            </b-col>
+            <b-col md="4" class="ml-auto p-3">
+              <b-card header="Marvel Comics" class="text-center">
+                <b-card-text class="card_text">{{ marvelComics }}</b-card-text>
+              </b-card>
+            </b-col>
+            <b-col md="4" class="ml-auto p-3">
+              <b-card header="DC Comics" class="text-center">
+                <b-card-text class="card_text">{{ dcComics }}</b-card-text>
+              </b-card>
+            </b-col>
+
+            <b-col md="4" class="ml-auto p-3">
+              <b-card header="Featuring Spiderman" class="text-center">
+                <b-card-text class="card_text">{{
+                  spidermanCount
+                }}</b-card-text>
+              </b-card>
+            </b-col>
+            <b-col md="4" class="ml-auto p-3">
+            <b-card header="Featuring Batman" class="text-center">
+              <b-card-text class="card_text">{{ batmanCount }}</b-card-text>
+            </b-card>
+          </b-col>
+        </b-card-group>
+      </b-row>
+    </b-container>
+
     <h1>Issues in this Collection:</h1>
     <ul>
-
-      <li
-        
-        v-for="issue in issues"
-        v-bind:key="issue.id"
-      >
-      <router-link 
-      v-on:click="onSubmit"
-      v-bind:to="{name: 'issue-display', params: {id: issue.issueId, collectionId: collectionId}}">
-      {{issue.seriesTitle}}
-      </router-link>
+      <li v-for="issue in issues" v-bind:key="issue.id">
+        <router-link
+          v-on:click="onSubmit"
+          v-bind:to="{
+            name: 'issue-display',
+            params: { id: issue.issueId, collectionId: collectionId },
+          }"
+        >
+          {{ issue.seriesTitle }}
+        </router-link>
       </li>
       <!-- todo: bind on ID -->
     </ul>
@@ -54,153 +69,160 @@ export default {
     return {
       message: "",
       collectionId: 0,
-      collections: {}
+      collections: {},
     };
   },
   computed: {
     issues() {
       return this.$store.state.issues;
     },
-    marvelComics(){
+    marvelComics() {
       let counter = 0;
-      this.issues.forEach(i => {
-      if(i.publisher == 'Marvel'){
-        counter ++;
-      }     
+      this.issues.forEach((i) => {
+        if (i.publisher == "Marvel") {
+          counter++;
+        }
       });
-      return counter;  
+      return counter;
     },
-    dcComics(){
+    dcComics() {
       let counter = 0;
-      this.issues.forEach(i => {
-      if(i.publisher == 'DC'){
-        counter ++;
-      }     
+      this.issues.forEach((i) => {
+        if (i.publisher == "DC") {
+          counter++;
+        }
       });
-      return counter;  
+      return counter;
     },
-    imageComics(){
+    imageComics() {
       let counter = 0;
-      this.issues.forEach(i => {
-      if(i.publisher == 'Image'){
-        counter ++;
-      }     
+      this.issues.forEach((i) => {
+        if (i.publisher == "Image") {
+          counter++;
+        }
       });
-      return counter;  
+      return counter;
     },
-    darkHorseComics(){
+    darkHorseComics() {
       let counter = 0;
-      this.issues.forEach(i => {
-      if(i.publisher == 'Dark Horse'){
-        counter ++;
-      }     
+      this.issues.forEach((i) => {
+        if (i.publisher == "Dark Horse") {
+          counter++;
+        }
       });
-      return counter;  
+      return counter;
     },
-    superheroCount(){
+    superheroCount() {
       let counter = 0;
-      
-      this.issues.forEach(i => {
-      if(i.publisher == 'DC' || i.publisher == 'Marvel'){
-        counter ++;
-      }     
+
+      this.issues.forEach((i) => {
+        if (i.publisher == "DC" || i.publisher == "Marvel") {
+          counter++;
+        }
       });
-      return counter;  
+      return counter;
     },
-    spidermanCount(){
+    spidermanCount() {
       let counter = 0;
-      
-      this.issues.forEach(i => {
-      if(i.characters.includes("Spider-Man") || i.characters.includes("Spiderman")){
-        counter ++;
-      }     
+
+      this.issues.forEach((i) => {
+        if (
+          i.characters.includes("Spider-Man") ||
+          i.characters.includes("Spiderman")
+        ) {
+          counter++;
+        }
       });
-      return counter;  
+      return counter;
     },
-    wonderWomanCount(){
+    wonderWomanCount() {
       let counter = 0;
-      
-      this.issues.forEach(i => {
-      if(i.characters.includes("Wonder Woman")){
-        counter ++;
-      }     
+
+      this.issues.forEach((i) => {
+        if (i.characters.includes("Wonder Woman")) {
+          counter++;
+        }
       });
-      return counter;  
+      return counter;
     },
-    supermanCount(){
+    supermanCount() {
       let counter = 0;
-      
-      this.issues.forEach(i => {
-      if(i.characters.includes("Superman")){
-        counter ++;
-      }     
+
+      this.issues.forEach((i) => {
+        if (i.characters.includes("Superman")) {
+          counter++;
+        }
       });
-      return counter;  
+      return counter;
     },
-    batmanCount(){
+    batmanCount() {
       let counter = 0;
-      
-      this.issues.forEach(i => {
-      if(i.characters.includes("Batman")){
-        counter ++;
-      }     
+
+      this.issues.forEach((i) => {
+        if (i.characters.includes("Batman")) {
+          counter++;
+        }
       });
-      return counter;  
+      return counter;
     },
-    stanLeeComics(){
+    stanLeeComics() {
       let counter = 0;
-      
-      this.issues.forEach(i => {
-      if(i.creator.includes("Stan Lee")){
-        counter ++;
-      }     
+
+      this.issues.forEach((i) => {
+        if (i.creator.includes("Stan Lee")) {
+          counter++;
+        }
       });
-      return counter;  
+      return counter;
     },
-    jackKirbyComics(){
+    jackKirbyComics() {
       let counter = 0;
-      
-      this.issues.forEach(i => {
-      if(i.characters.includes("Jack Kirby")){
-        counter ++;
-      }     
+
+      this.issues.forEach((i) => {
+        if (i.characters.includes("Jack Kirby")) {
+          counter++;
+        }
       });
-      return counter;  
+      return counter;
     },
   },
   methods: {
     onSubmit() {
       this.$store.commit("SET_COLLECTION", this.$route.params.id);
     },
-    
   },
-  created(){
-    
+  created() {
     this.collectionId = this.$route.params.id;
-    console.log('store.collections', this.$store.state.collections);
-    this.collections = this.$store.state.collections
-    CollectionService
-      .getIssues(this.collectionId)
-      
+    console.log("store.collections", this.$store.state.collections);
+    this.collections = this.$store.state.collections;
+    CollectionService.getIssues(this.collectionId)
+
       .then((response) => {
         this.$store.commit("REPLACE_ISSUES", response.data);
       })
       .catch((error) => {
         if (error.response) {
-          this.message = 
-          "error: HTTP Response Code: " + error.response.data.status;
-          this.message =+ " Description: " + error.response.data.title;
+          this.message =
+            "error: HTTP Response Code: " + error.response.data.status;
+          this.message = +" Description: " + error.response.data.title;
         } else {
           this.message = "Network Error";
         }
       });
-    
   },
 };
 </script>
 
 <style>
-
+.card-grid {
+  padding-bottom: 2em;
+}
+.text-center {
+  font-weight: bold;
+}
+.card_text {
+  font-size: 4em;
+}
 table,
 th,
 td {
