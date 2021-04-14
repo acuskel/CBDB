@@ -1,6 +1,7 @@
 <template>
   <div id="search">
     <h1>Search</h1>
+    <b-button v-on:click="nextPage">Next</b-button>
     <b-table-simple striped hover>
       <b-thead>
         <b-tr>
@@ -34,13 +35,33 @@ export default {
   name: "search-issues",
   data() {
     return {
-      allIssues: [],
-    };
+      issues: this.allIssues,
+      first: 0,
+      last: 40,
+    }
+  },
+  computed: {
+    firstIssue(){
+      return this.first;
+    },
+    lastIssue(){
+      return this.last;
+    },
+    allIssues(){
+      return this.$store.state.allIssues.slice(this.firstIssue, this.lastIssue);
+    }
   },
   created() {
-    this.allIssues = this.$store.state.allIssues;
-    console.log("Reached Search Issues", this.allIssues)
+    //this.allIssues = this.$store.state.allIssues.slice(this.firstIssue, this.lastIssue);
+    console.log("Reached Search Issues", this.allIssues);
   },
+  methods: {
+    nextPage() {
+      this.first += 40;
+      this.last += 40;
+      this.issues = this.allIssues;
+    }
+  }
 };
 </script>
 
