@@ -53,5 +53,8 @@ export default {
 </script>
 
 <style>
-
+.public-collections{
+  background-color:rgba(26, 24, 24, 0.966);
+  padding:20px;
+  }
 </style>

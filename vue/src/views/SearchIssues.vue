@@ -1,8 +1,8 @@
 <template>
   <div id="search">
-    <h1>Search</h1>
-    <b-button v-on:click="nextPage">Next</b-button>
-    <b-table-simple striped hover>
+    <b-button id="prev" v-on:click="nextPage" variant="primary">Previous Page</b-button>
+    <b-button id="next" v-on:click="prevPage" variant="primary">Next Page</b-button>
+    <b-table-simple bordered hover small responsive=false>
       <b-thead>
         <b-tr>
           <b-th>Series Title</b-th>
@@ -60,6 +60,11 @@ export default {
       this.first += 40;
       this.last += 40;
       this.issues = this.allIssues;
+    },
+    prevPage() {
+      this.first -=40;
+      this.last -=40;
+      this.issues = this.allIssues;
     }
   }
 };
@@ -68,5 +73,16 @@ export default {
 <style>
 #search{
   background-color:rgba(26, 24, 24, 0.966);
+  padding:20px 80px 20px 30px;
   }
+
+#prev{
+  float:left;
+  margin:20px;
+}
+
+#next{
+  float:right;
+  margin:20px -20px 20px 20px;
+}
 </style>

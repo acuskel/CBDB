@@ -23,5 +23,6 @@ export default {
   color: white;
   margin: auto;
   padding: 50px;
+  padding-bottom:
 }
 </style>
