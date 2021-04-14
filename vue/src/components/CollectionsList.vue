@@ -29,6 +29,7 @@ export default {
   methods: {
     setCollection() {
       this.$store.commit('SET_COLLECTION', this.collection);
+      console.log('in coll disp', this.collection)
     }
   },
   created(){
@@ -46,6 +47,9 @@ export default {
           this.message = "Network Error";
         }
       });
+  
+  this.collection = this.$store.state.collection;
+  console.log('in coll disp created', this.collection)
   },
 };
 </script>
