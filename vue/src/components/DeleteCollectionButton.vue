@@ -1,6 +1,9 @@
 <template>
   <div>
-    <button v-on:click="deleteOnClick">Delete Collection</button>
+    <b-button v-b-modal.modal>Delete Collection</b-button>
+    <b-modal @ok="deleteOnClick" id="modal">
+      <h3>Are you sure you want to delete this collection?</h3>
+    </b-modal>
   </div>
 </template>
 
@@ -10,19 +13,25 @@ export default {
   name: "delete-collection-button",
   data() {
     return {
-      collection: {},
+
     };
   },
 
-  props: ['collectionId'],
+  props: ["collectionId"],
 
   methods: {
+    /*closeModal() {
+      this.show = false;
+    },
+    openModal() {
+      this.show = true;
+    },*/
     deleteOnClick() {
       collectionService
         .deleteCollection(this.collectionId)
         .then((response) => {
           console.log("promise was success", response);
-          this.$router.push({name: 'my-collections'});
+          this.$router.push({ name: "my-collections" });
         })
         .catch((error) => {
           if (error.response) {
@@ -37,5 +46,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
 </style>
