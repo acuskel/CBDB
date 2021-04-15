@@ -3,9 +3,8 @@
     <share-it
       text="This is sample text"
       url="https://www.google.com"
-      height= 600
-      width= 600
       dense
+      dark
     />
     
   </div>
@@ -21,8 +20,6 @@ export default {
 #footer {
   background-color: rgba(26, 24, 24, 0.966);
   color: white;
-  margin: auto;
-  padding: 50px;
-  padding-bottom:
+  padding: 20px 30px;
 }
 </style>

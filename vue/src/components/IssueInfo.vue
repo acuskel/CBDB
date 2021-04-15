@@ -4,20 +4,21 @@
       
       <b-row>
       <b-col class="text-left">
-        <h1 class="title">{{ issue.seriesTitle }}</h1>
-      <p class="data"><b>Creator:</b> {{ issue.creator }}</p>
-      <p class="data"><b>Publisher:</b> {{ issue.publisher }}</p>
-      <p class="data"><b>Publication Date:</b> {{ issue.releaseDate }}</p>
-      <p class="data"><b>Page Count:</b> {{ issue.pageCount }}</p>
-      <p><b>Featuring: </b>{{ issue.characters }}</p><br>
-      <h3>Add to collection:</h3>
+        <h1 class="title" style="font-family:bebas neue">{{ issue.seriesTitle }}</h1>
+        <br>
+      <p class="data"><b class="bold">Creator:</b> {{ issue.creator }}</p>
+      <p class="data"><b class="bold"> Publisher:</b> {{ issue.publisher }}</p>
+      <p class="data"><b class="bold">Publication Date:</b> {{ issue.releaseDate }}</p>
+      <p class="data"><b class="bold">Page Count:</b> {{ issue.pageCount }}</p>
+      <p class="data"><b class="bold">Featuring: </b>{{ issue.characters }}</p><br>
+      <h3 style="font-family:bebas neue">Add to collection:</h3>
       <b-container class="addToCollection" >
       <b-row>
         <b-col ><b-button 
         variant="primary"
         v-for="unaddedCollection in unaddedCollections"
         v-bind:key="unaddedCollection.id" 
-        v-on:click="addToCollection(issue, unaddedCollection.id)" v-b-tooltip.hover="'Click to add comic to collection!'"
+        v-on:click="addToCollection(issue, unaddedCollection.id)"
         >{{ unaddedCollection.name }}</b-button></b-col>
         </b-row>
     </b-container>
@@ -35,8 +36,8 @@
       </b-row>
       </b-container>
     <div class="summary">  
-    <h1>Synopsis</h1><br>
-    <p>{{ issue.summary }}</p>
+    <h1 style="font-family:bebas neue">Synopsis</h1><br>
+    <p class="data">{{ issue.summary }}</p>
     </div>
     <div>
       <!-- <b-form-rating v-model="value" variant="warning" class="mb-3"></b-form-rating> -->
@@ -119,6 +120,7 @@ export default {
 #issue-data{
   border:10px;
   border-color: white;
+
 }
 div {
   color:white;
@@ -136,9 +138,16 @@ button{
 
 .data {
   font-size: 18px;
+  font-family:'Montserrat'
 }
 
 .summary {
   font-size: 20px;
+  
+}
+
+.bold{
+  font-family:'Bebas neue';
+  font-size: 23px;
 }
 </style>

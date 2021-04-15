@@ -37,6 +37,7 @@ export default {
       .getCollections(this.$store.state.user.userId)
       .then((response) => {
         this.$store.commit("REPLACE_COLLECTIONS", response.data);
+        console.log('in coll list', this.$store.state.collections)
       })
       .catch((error) => {
         if (error.response) {
