@@ -15,6 +15,7 @@ namespace Capstone.DAO
         private string sqlAddIssue = "INSERT INTO collections_issues(collection_id, issue_id) VALUES (@collectionId, @issueId)";
         private string sqlGetIssue = "SELECT * FROM issues i WHERE i.id = @issueID;";
         private string sqlGetAllIssues = "SELECT * FROM issues ORDER BY series_title;";
+        private string sqlDeleteIssue = "DELETE FROM collections_issues WHERE collection_id = @collectionId AND issue_id = @issueId;";
         public IssueSqlDAO(string connectionString)
         {
             this.connectionString = connectionString;
@@ -44,6 +45,33 @@ namespace Capstone.DAO
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                result = false;
+            }
+            return result;
+        }
+
+        public bool DeleteIssueFromCollection(int collectionId, int issueId)
+        {
+            bool result = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlDeleteIssue, conn);
+                    cmd.Parameters.AddWithValue("@collectionid", collectionId);
+                    cmd.Parameters.AddWithValue("@issueId", issueId);
+
+                    int count = cmd.ExecuteNonQuery();
+
+                    if (count > 0)
+                    {
+                        result = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
                 result = false;
             }
             return result;

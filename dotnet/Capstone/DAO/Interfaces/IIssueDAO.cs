@@ -11,7 +11,9 @@ namespace Capstone.DAO.Interfaces
         Issue GetIssue(int issueId);
         bool AddIssue(int issueId, int collectionId);
         List<Issue> GetAllIssues();
+        bool DeleteIssueFromCollection(int collectionId, int issueId);
         //bool CreateIssue(Issue issue, int collectionId);
+
 
     }
 }
