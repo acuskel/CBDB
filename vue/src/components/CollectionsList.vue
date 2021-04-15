@@ -1,16 +1,21 @@
 <template>
   <div class="my-collection-container">
 
+
     <ul>
-      <li 
+      <li
         v-on:click="setCollection"
         v-for="collection in $store.state.collections"
         v-bind:key="collection.name"
       >
-      <router-link 
-      v-bind:to="{ name: 'collection-display', params: {id: collection.id}}">
-      {{collection.name}}
-      </router-link>
+        <router-link
+          v-bind:to="{
+            name: 'collection-display',
+            params: { id: collection.id },
+          }"
+        >
+          {{ collection.name }}
+        </router-link>
       </li>
     </ul>
   </div>
@@ -23,27 +28,27 @@ export default {
   data() {
     return {
       collection: {},
-      collectionId: 0
+      collectionId: 0,
     };
   },
   methods: {
     setCollection() {
-      this.$store.commit('SET_COLLECTION', this.collection);
-      console.log('in coll disp', this.collection)
-    }
+      this.$store.commit("SET_COLLECTION", this.collection);
+      console.log("in coll disp", this.collection);
+    },
   },
-  created(){
+  created() {
     collectionService
       .getCollections(this.$store.state.user.userId)
       .then((response) => {
         this.$store.commit("REPLACE_COLLECTIONS", response.data);
-        console.log('in coll list', this.$store.state.collections)
+        console.log("in coll list", this.$store.state.collections);
       })
       .catch((error) => {
         if (error.response) {
-          this.message = 
-          "error: HTTP Response Code: " + error.response.data.status;
-          this.message =+ " Description: " + error.response.data.title;
+          this.message =
+            "error: HTTP Response Code: " + error.response.data.status;
+          this.message = +" Description: " + error.response.data.title;
         } else {
           this.message = "Network Error";
         }
@@ -53,5 +58,4 @@ export default {
 </script>
 
 <style>
-
 </style>
