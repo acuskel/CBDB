@@ -6,6 +6,7 @@
       <b-col class="text-left">
         <h1 class="title" style="font-family:bebas neue">{{ issue.seriesTitle }}</h1>
         <br>
+        <p class="data"><b class="bold"> Issue No:</b> {{ issue.issueNumber }}</p>
       <p class="data"><b class="bold">Creator:</b> {{ issue.creator }}</p>
       <p class="data"><b class="bold"> Publisher:</b> {{ issue.publisher }}</p>
       <p class="data"><b class="bold">Publication Date:</b> {{ issue.releaseDate }}</p>
@@ -20,6 +21,9 @@
         v-bind:key="unaddedCollection.id" 
         v-on:click="addToCollection(issue, unaddedCollection.id)"
         >{{ unaddedCollection.name }}</b-button></b-col>
+        </b-row>
+        <b-row>
+          <b-form-rating v-model="value" variant="primary" class="mb-2" style="margin-top:15px;"></b-form-rating> 
         </b-row>
     </b-container>
       </b-col>
@@ -59,6 +63,7 @@ export default {
       issue: {},
       issues: [],
       unaddedCollections: [],
+      value: 0
     };
   },
   computed: {

@@ -38,29 +38,34 @@
         </b-card-group>
       </b-row>
     </b-container>
-
-    <h1>Issues in this Collection:</h1>
-    <ul>
-      <li v-for="issue in issues" v-bind:key="issue.id">
-        <router-link
-          v-on:click="onSubmit"
-          v-bind:to="{
-            name: 'issue-display',
-            params: { id: issue.issueId, collectionId: collectionId },
-          }"
-        >
-          {{ issue.seriesTitle }}
-        </router-link>
-      </li>
-      <!-- todo: bind on ID -->
-    </ul>
+      <h1>Issues in this Collection:</h1>
+      <ul>
+        <li class="issue" v-for="issue in issues" v-bind:key="issue.id">
+          <router-link
+            v-on:click="onSubmit"
+            v-bind:to="{
+              name: 'issue-display',
+              params: { id: issue.issueId, collectionId: collectionId },
+            }"
+          >
+            {{ issue.seriesTitle }}
+          </router-link>
+           <delete-issue-button class="delete" :issueId="issue.issueId" :collectionId="collectionId"/>
+        </li>
+        <!-- todo: bind on ID -->
+      </ul>
+    
   </div>
 </template>
 
 <script>
 import CollectionService from "../services/CollectionService.js";
+import DeleteIssueButton from './DeleteIssueButton.vue';
 export default {
   name: "issue-list",
+  components:{
+    DeleteIssueButton
+  },
   data() {
     return {
       message: "",
@@ -242,4 +247,5 @@ table {
 body {
   background-color: white;
 }
+
 </style>

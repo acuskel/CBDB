@@ -50,6 +50,7 @@
       </b-card-group>
     </b-row>
   </b-container>
+  
 </template>
 <script>
 import StatisticsService from "../services/StatisticsService.js";

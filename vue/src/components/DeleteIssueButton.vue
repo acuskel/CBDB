@@ -1,37 +1,29 @@
 <template>
   <div>
-    <b-button v-b-modal.modal>Delete Collection</b-button>
-    <b-modal @ok="deleteOnClick" id="modal">
-      <h3>Are you sure you want to delete this collection?</h3>
-    </b-modal>
+    <b-button variant="danger" v-on:click="deleteOnClick">Remove From Collection</b-button>
   </div>
 </template>
 
 <script>
-import collectionService from "../services/CollectionService.js";
+import issueService from "../services/IssueService.js";
 export default {
-  name: "delete-collection-button",
+  name: "delete-issue-button",
   data() {
     return {
 
     };
   },
 
-  props: ["collectionId"],
+  props: ["collectionId", "issueId"],
 
   methods: {
-    /*closeModal() {
-      this.show = false;
-    },
-    openModal() {
-      this.show = true;
-    },*/
+
     deleteOnClick() {
-      collectionService
-        .deleteCollection(this.collectionId)
+      issueService
+        .deleteIssueFromCollection(this.collectionId, this.issueId)
         .then((response) => {
           console.log("promise was success", response);
-          this.$router.push({ name: "my-collections" });
+          this.$router.go(0);
         })
         .catch((error) => {
           if (error.response) {

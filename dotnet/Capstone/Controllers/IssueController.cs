@@ -47,7 +47,22 @@ namespace Capstone.Controllers
             }
         }
 
-        
+        [HttpDelete("{collectionId}/{issueId}")]
+        public ActionResult DeleteIssueFromCollection(int collectionId, int issueId)
+        {
+            bool result = issueDAO.DeleteIssueFromCollection(collectionId, issueId);
+            if (result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+
+
 
     }
 
