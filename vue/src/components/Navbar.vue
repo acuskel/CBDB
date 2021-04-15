@@ -13,6 +13,7 @@
             <b-nav-item :to="{ name: 'my-collections'}" v-if="$store.state.token != ''" >My Collections</b-nav-item>
             <b-nav-item :to="{ name: 'public'}" >Browse Public Collections</b-nav-item>
             <b-nav-item :to="{ name: 'search'}">Browse All Comics</b-nav-item>
+            <b-nav-item :to="{name: 'statistics'}">Stats</b-nav-item>
             <b-nav-item :to="{ name: 'register'}" v-if="$store.state.token == ''">Register</b-nav-item>
             <b-nav-item :to="{ name: 'login'}" v-if="$store.state.token == '' && this.$route.name != 'login'">Log In</b-nav-item>
           </b-navbar-nav>
