@@ -1,12 +1,9 @@
 <template>
   <div id="search">
-    
-      <p>{{searchResults}}</p>
     <b-button id="prev" v-on:click="prevPage" variant="primary"
-      >Previous Page</b-button
+      v-show="currentPage > 1">Previous Page</b-button
     >
-    <b-button variant="success" style="margin-bottom: -50px"
-      >Current Page: {{ currentPage }}</b-button
+    <b-button variant="success" style="margin-bottom: -50px">Search Results: {{searchResults.length}} Current Page: {{ currentPage }}</b-button
     >
     <b-form-input
       size="sm"
@@ -16,9 +13,8 @@
     ></b-form-input>
     <b-button 
       v-on:click="getSearch" variant="outline-primary">🔍</b-button>
-    <b-button id="next" v-on:click="nextPage" variant="primary"
-      >Next Page</b-button
-    >
+    <b-button id="next" v-on:click="nextPage" variant="primary" v-show="searchResults.length > lastIssue">Next Page</b-button
+    > 
     <b-table-simple bordered hover small responsive="false">
       <b-thead>
         <b-tr>
@@ -28,7 +24,7 @@
           <b-th>Publication Date</b-th>
           <b-th>Creator</b-th>
         </b-tr>
-        <b-tr v-for="issue in allIssues" v-bind:key="issue.issueId">
+        <b-tr v-for="issue in IssuesDisplayed" v-bind:key="issue.issueId">
           <b-td>
             <b-link
               :to="{
@@ -54,7 +50,6 @@ export default {
   name: "search-issues",
   data() {
     return {
-      issues: this.allIssues,
       first: 0,
       last: 39,
       currentPage: 1,
@@ -69,20 +64,20 @@ export default {
     lastIssue() {
       return this.last;
     },
-    allIssues() {
-      return this.$store.state.allIssues.slice(this.firstIssue, this.lastIssue);
+    IssuesDisplayed() {
+      return this.searchResults.slice(this.firstIssue, this.lastIssue);
     },
   },
   created() {
-    //this.allIssues = this.$store.state.allIssues.slice(this.firstIssue, this.lastIssue);
-    //console.log("Reached Search Issues", this.allIssues);
+    this.allIssues = this.$store.state.allIssues
+    this.searchResults = this.allIssues;
+    console.log("seachIssues", this.searchResults)
   },
   methods: {
     nextPage() {
       this.first += 40;
       this.last += 40;
       this.currentPage += 1;
-      this.issues = this.allIssues;
       console.log("first", this.first);
       console.log("last", this.last);
       console.log("issue", this.issues);
@@ -91,13 +86,17 @@ export default {
       this.first -= 40;
       this.last -= 40;
       this.currentPage -= 1;
-      this.issues = this.allIssues;
+      this.issues = this.IssuesDisplayed;
     },
     getSearch() {
       console.log("reached getSearch");
-      this.searchResults =this.issues.filter((i) => i.seriesTitle.includes(this.searchText));
-      this.issues = this.searchResults;
-      this.$router.go(0);
+      console.log("All Issues", this.allIssues);
+      console.log("search text", this.searchText);
+      this.searchResults = this.allIssues.filter((i) => i.seriesTitle.toLowerCase().includes(this.searchText.toLowerCase()));
+      console.log("search results", this.searchResults);
+      this.currentPage = 1;
+      this.first = 0;
+      this.last = 39;
    }
   },
 };
