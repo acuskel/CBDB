@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p style="color:white; margin-top:40px">Create a new collection?</p>
     <form v-on:submit.prevent>
       <b-input
         class="collection-input"
@@ -8,9 +9,11 @@
         v-model="collection.name"
         style="max-width:300px; margin:auto "
       />
-      <b-button type="submit" v-on:click="onSubmit()" style="margin:10px">Add Collection</b-button>
+      <b-button type="submit" variant="primary" v-on:click="onSubmit()" style="margin:10px">Add Collection</b-button>
+
+
       <input type="checkbox" v-model="collection.isPublic" />
-      <label for="checkbox">Make Public</label>
+      <label for="checkbox" style="color:white; margin-left:10px">Make public?</label> 
     </form>
   </div>
 </template>
@@ -26,6 +29,7 @@ export default {
         name: "",
         userId: this.$store.state.user.userId,
         isPublic: false,
+        status: 'not'
       },
     };
   },

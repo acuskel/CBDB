@@ -28,7 +28,7 @@
     </b-container>
       </b-col>
       <b-col class="text-right">
-        <img v-if="issue.coverLink != ''" :src="issue.coverLink" />
+        <img v-if="issue.coverLink != ''" :src="issue.coverLink" style="max-width:400px" />
         <div v-else>
       <img v-if="issue.publisher == 'Dark Horse'" src="https://d2lzb5v10mb0lj.cloudfront.net/darkhorse/index_images/blog/blog2015/sdcc15logo.jpg">
       <img v-if="issue.publisher == 'Marvel'" width=300 src="https://logodownload.org/wp-content/uploads/2017/05/marvel-logo-0.png">

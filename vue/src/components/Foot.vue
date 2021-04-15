@@ -21,5 +21,6 @@ export default {
   background-color: rgba(26, 24, 24, 0.966);
   color: white;
   padding: 20px 30px;
+  padding-top:40px
 }
 </style>

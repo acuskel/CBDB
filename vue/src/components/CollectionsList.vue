@@ -20,15 +20,15 @@
        :img-src="collection.coverLink"
     img-alt="Image"
     img-top
+    :title="collection.name"
         v-for="collection in $store.state.collections"
         v-bind:key="collection.name"
         border-variant="outline-primary"
-        header-text-variant="white"
         align="center"
         :footer="publicorPrivate(collection.isPublic)"
     footer-tag="footer"
     :footer-bg-variant="isPublic(collection.isPublic)"
-    footer-text-variant="white"
+    header-text-variant="white"
         
 style="max-width: 30rem; min-width:300px; max-width:365px; margin: 10px"
 min-cols = 3   
@@ -37,7 +37,10 @@ min-cols = 3
 
         <b-button :to="{
             name: 'collection-display',
-            params: { id: collection.id }}" variant="dark" style="vertical-align: middle; min-width:90%">{{collection.name}}</b-button>
+            params: { id: collection.id }}" variant="primary" style="vertical-align: middle; min-width:90%">View Collection</b-button>
+            <b-button :to="{
+            name: 'collection-display',
+            params: { id: collection.id }}" variant="warning" style="vertical-align: middle; min-width:90%; margin-top: 10px">Delete Collection</b-button>
       </b-card>
     </b-card-group>
 
