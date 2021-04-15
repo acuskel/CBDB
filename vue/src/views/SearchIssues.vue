@@ -116,9 +116,8 @@ export default {
       console.log("reached getSearch");
       console.log("All Issues", this.allIssues);
       console.log("search text", this.searchText);
-      this.searchResults = this.allIssues.filter((i) =>
-        i.seriesTitle.toLowerCase().includes(this.searchText.toLowerCase())
-      );
+      this.searchResults = this.allIssues.filter((i) => i.seriesTitle.toLowerCase().includes(this.searchText.toLowerCase()) || i.creator.toLowerCase().includes(this.searchText.toLowerCase())
+      || i.publisher.toLowerCase().includes(this.searchText.toLowerCase()));
       console.log("search results", this.searchResults);
       this.currentPage = 1;
       this.first = 0;

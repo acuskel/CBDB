@@ -228,10 +228,10 @@ export default {
   padding-bottom: 2em;
 }
 .text-center {
-  font-weight: bold;
+  font-size: .80em;
 }
 .card_text {
-  font-size: 4em;
+  font-size: 3em;
 }
 table,
 th,

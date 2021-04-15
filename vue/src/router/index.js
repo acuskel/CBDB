@@ -12,6 +12,7 @@ import PublicDisplay from '../views/PublicDisplay.vue'
 import IssueDisplay from '../views/IssueDisplay.vue'
 import SearchIssues from '../views/SearchIssues.vue'
 import MyCollections from '../views/MyCollections.vue'
+import StatisticsDisplay from '../views/StatisticsDisplay.vue'
 
 
 Vue.use(Router)
@@ -99,7 +100,7 @@ const router = new Router({
     {
       path: '/statistics',
       name: 'statistics',
-      component: MyCollections
+      component: StatisticsDisplay
     }
   ]
 })
