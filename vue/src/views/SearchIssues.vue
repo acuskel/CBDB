@@ -1,20 +1,44 @@
 <template>
-  <div id="search">
-    <b-button id="prev" v-on:click="prevPage" variant="primary"
-      v-show="currentPage > 1">Previous Page</b-button
-    >
-    <b-button variant="success" style="margin-bottom: -50px">Search Results: {{searchResults.length}} Current Page: {{ currentPage }}</b-button
-    >
-    <b-form-input
-      size="sm"
-      class="mr-sm-2"
-      placeholder="Search"
-      v-model="searchText"
-    ></b-form-input>
-    <b-button 
-      v-on:click="getSearch" variant="outline-primary">🔍</b-button>
-    <b-button id="next" v-on:click="nextPage" variant="primary" v-show="searchResults.length > lastIssue">Next Page</b-button
-    > 
+  <div id="searchBar">
+    <div id="search">
+      <b-container>
+        <b-row>
+          <b-col>
+            <b-form-input
+              size="sm"
+              class="mr-sm-2"
+              placeholder="Search"
+              v-model="searchText"
+              style="margin-left: -20px"
+            ></b-form-input>
+          </b-col>
+          <b-col>
+            <b-button
+              v-on:click="getSearch"
+              variant="success"
+              style="float: left; margin-left: -40px; font-size: 0.6em"
+              >🔍</b-button
+            >
+          </b-col></b-row>
+      </b-container>
+    </div>
+    <div class="prevNext">
+      <b-button
+        id="prev"
+        v-on:click="prevPage"
+        variant="primary"
+        v-show="currentPage > 1"
+        >Previous Page</b-button
+      > <h4 style="min-width:400px; color:white; position:absolute; top:200px; left:820px;"><b >Results: </b>{{ searchResults.length }} <b>   </b> <b style="margin-left:30px">Current Page:</b>
+        {{ currentPage }}</h4>
+      <b-button
+        id="next"
+        v-on:click="nextPage"
+        variant="primary"
+        v-show="searchResults.length > lastIssue"
+        >Next Page</b-button
+      >
+    </div>
     <b-table-simple bordered hover small responsive="false">
       <b-thead>
         <b-tr>
@@ -69,9 +93,9 @@ export default {
     },
   },
   created() {
-    this.allIssues = this.$store.state.allIssues
+    this.allIssues = this.$store.state.allIssues;
     this.searchResults = this.allIssues;
-    console.log("seachIssues", this.searchResults)
+    console.log("seachIssues", this.searchResults);
   },
   methods: {
     nextPage() {
@@ -92,21 +116,33 @@ export default {
       console.log("reached getSearch");
       console.log("All Issues", this.allIssues);
       console.log("search text", this.searchText);
-      this.searchResults = this.allIssues.filter((i) => i.seriesTitle.toLowerCase().includes(this.searchText.toLowerCase()));
+      this.searchResults = this.allIssues.filter((i) =>
+        i.seriesTitle.toLowerCase().includes(this.searchText.toLowerCase())
+      );
       console.log("search results", this.searchResults);
       this.currentPage = 1;
       this.first = 0;
       this.last = 39;
-   }
+    },
   },
 };
 </script>
 
 <style>
+.search-bar {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
 #search {
-  background-color: rgba(26, 24, 24, 0.966);
   padding: 20px 80px 20px 30px;
   font-family: bebas neue;
+}
+
+#searchBar {
+  background-color: rgba(26, 24, 24, 0.966);
+  padding-right: 40px;
+  padding-bottom:10px;
 }
 
 #prev {

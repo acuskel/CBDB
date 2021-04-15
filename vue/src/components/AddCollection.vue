@@ -1,13 +1,14 @@
 <template>
   <div>
     <form v-on:submit.prevent>
-      <input
+      <b-input
         class="collection-input"
         type="text"
         placeholder="Insert Collection Name"
         v-model="collection.name"
+        style="max-width:300px; margin:auto "
       />
-      <button type="submit" v-on:click="onSubmit()">Add Collection</button>
+      <b-button type="submit" v-on:click="onSubmit()" style="margin:10px">Add Collection</b-button>
       <input type="checkbox" v-model="collection.isPublic" />
       <label for="checkbox">Make Public</label>
     </form>

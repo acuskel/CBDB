@@ -1,6 +1,6 @@
 <template>
   <div class="my-collections">
-    <h1>Collections</h1>
+    <h1>My Collections</h1>
     <collections-list />
     <add-collection />
   </div>
@@ -20,4 +20,9 @@ export default {
 .my-collections{
   background-color:rgba(26, 24, 24, 0.966);
   }
+
+h1 {
+  font-family: bebas neue;
+  color:white;
+}
 </style>

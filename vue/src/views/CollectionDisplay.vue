@@ -1,5 +1,13 @@
 <template>
   <div class="issue-list">
+
+
+
+
+
+
+
+
     <issue-list />
     <delete-collection-button v-bind:collectionId="collectionId"/>
   </div>
