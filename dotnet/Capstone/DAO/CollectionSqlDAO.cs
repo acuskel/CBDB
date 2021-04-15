@@ -190,11 +190,11 @@ namespace Capstone.DAO
             issue.Summary = Convert.ToString(reader["summary"]);
             issue.CoverLink = Convert.ToString(reader["cover_link"]);
             issue.Publisher = Convert.ToString(reader["publisher"]);
-            //issue.IssueNumber = Convert.ToInt32(reader["issue_number"]);
+            issue.IssueNumber = Convert.ToString(reader["issue_number"]);
             issue.Characters = Convert.ToString(reader["characters"]);
             issue.Creator = Convert.ToString(reader["author_name"]);
             issue.PageCount = Convert.ToInt32(reader["page_count"]);
-            issue.SeriesId = Convert.ToString(reader["series_id"]);
+            issue.SeriesId = Convert.ToInt32(reader["series_id"]);
             return issue;
         }
     }
