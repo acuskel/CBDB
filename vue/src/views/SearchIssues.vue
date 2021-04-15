@@ -1,18 +1,37 @@
 <template>
   <div id="search">
-    <b-button id="prev" v-on:click="prevPage" variant="primary">Previous Page</b-button>
-    <b-button id="next" v-on:click="nextPage" variant="primary">Next Page</b-button>
-    <b-table-simple bordered hover small responsive=false>
+    
+      <p>{{searchResults}}</p>
+    <b-button id="prev" v-on:click="prevPage" variant="primary"
+      >Previous Page</b-button
+    >
+    <b-button variant="success" style="margin-bottom: -50px"
+      >Current Page: {{ currentPage }}</b-button
+    >
+    <b-form-input
+      size="sm"
+      class="mr-sm-2"
+      placeholder="Search"
+      v-model="searchText"
+    ></b-form-input>
+    <b-button 
+      v-on:click="getSearch" variant="outline-primary">🔍</b-button>
+    <b-button id="next" v-on:click="nextPage" variant="primary"
+      >Next Page</b-button
+    >
+    <b-table-simple bordered hover small responsive="false">
       <b-thead>
         <b-tr>
           <b-th>Series Title</b-th>
+          <b-th>Issue No.</b-th>
           <b-th>Publisher</b-th>
           <b-th>Publication Date</b-th>
+          <b-th>Creator</b-th>
         </b-tr>
         <b-tr v-for="issue in allIssues" v-bind:key="issue.issueId">
           <b-td>
             <b-link
-               :to="{
+              :to="{
                 name: 'issue-display',
                 params: { id: issue.issueId },
               }"
@@ -20,8 +39,10 @@
               {{ issue.seriesTitle }}
             </b-link>
           </b-td>
+          <b-td>{{ issue.issueNumber }}</b-td>
           <b-td>{{ issue.publisher }}</b-td>
           <b-td>{{ issue.releaseDate }}</b-td>
+          <b-td>{{ issue.creator }}</b-td>
         </b-tr>
       </b-thead>
     </b-table-simple>
@@ -36,55 +57,70 @@ export default {
       issues: this.allIssues,
       first: 0,
       last: 39,
-    }
+      currentPage: 1,
+      searchText: "",
+      searchResults: [],
+    };
   },
   computed: {
-    firstIssue(){
+    firstIssue() {
       return this.first;
     },
-    lastIssue(){
+    lastIssue() {
       return this.last;
     },
-    allIssues(){
+    allIssues() {
       return this.$store.state.allIssues.slice(this.firstIssue, this.lastIssue);
-    }
+    },
   },
   created() {
     //this.allIssues = this.$store.state.allIssues.slice(this.firstIssue, this.lastIssue);
-    console.log("Reached Search Issues", this.allIssues);
+    //console.log("Reached Search Issues", this.allIssues);
   },
   methods: {
     nextPage() {
       this.first += 40;
       this.last += 40;
+      this.currentPage += 1;
       this.issues = this.allIssues;
       console.log("first", this.first);
       console.log("last", this.last);
       console.log("issue", this.issues);
     },
     prevPage() {
-      this.first -=40;
-      this.last -=40;
+      this.first -= 40;
+      this.last -= 40;
+      this.currentPage -= 1;
       this.issues = this.allIssues;
-    }
-  }
+    },
+    getSearch() {
+      console.log("reached getSearch");
+      this.searchResults =this.issues.filter((i) => i.seriesTitle.includes(this.searchText));
+      this.issues = this.searchResults;
+      this.$router.go(0);
+   }
+  },
 };
 </script>
 
 <style>
-#search{
-  background-color:rgba(26, 24, 24, 0.966);
-  padding:20px 80px 20px 30px;
-  font-family:bebas neue
-  }
-
-#prev{
-  float:left;
-  margin:20px;
+#search {
+  background-color: rgba(26, 24, 24, 0.966);
+  padding: 20px 80px 20px 30px;
+  font-family: bebas neue;
 }
 
-#next{
-  float:right;
-  margin:20px -20px 20px 20px;
+#prev {
+  float: left;
+  margin: 20px;
+}
+
+#next {
+  float: right;
+  margin: 20px -20px 20px 20px;
+}
+
+#current-page {
+  float: none;
 }
 </style>

@@ -30,7 +30,6 @@ namespace Capstone.Models
             }
         }
         public string Characters { get; set; }
-
         public int PageCount { get; set; }
         public int SeriesId { get; set; }
 
