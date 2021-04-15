@@ -51,7 +51,7 @@
               params: { id: issue.issueId, collectionId: collectionId },
             }"
           >
-            {{ issue.seriesTitle }}
+            {{ issue.seriesTitle }} {{issue.issueNumber}}
           </router-link>
            <delete-issue-button class="delete" :issueId="issue.issueId" :collectionId="collectionId"/>
         </li>
