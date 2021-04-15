@@ -1,6 +1,7 @@
 <template>
   <div>
-    <b-button variant="danger" v-on:click="deleteOnClick">Remove From Collection</b-button>
+    <!-- delete button only shows up if the user owns the collection. Will not show on public display if user is not owner -->
+    <b-button variant="danger" v-on:click="deleteOnClick" v-show="isMine">Remove From Collection</b-button>
   </div>
 </template>
 
@@ -10,12 +11,25 @@ export default {
   name: "delete-issue-button",
   data() {
     return {
-
+      myCollections: [],
+      count: 0
     };
   },
 
   props: ["collectionId", "issueId"],
-
+  computed: {
+    //determines if user is the owner of the collection selected
+  isMine() {
+  if(this.myCollections.filter((c) => c.id == this.collectionId).length == 1){
+    return true}
+    else{
+      return false}
+    }
+  },
+ created(){
+    this.myCollections =  this.$store.state.collections;
+    console.log("Is mine?", this.isMine)
+  },
   methods: {
 
     deleteOnClick() {

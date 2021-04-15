@@ -13,6 +13,7 @@ const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
 const currentCollections = JSON.parse(localStorage.getItem('collections'));
 const allIssues = JSON.parse(localStorage.getItem('allIssues'));
+const publicCollections = JSON.parse(localStorage.getItem('publicCollections'));
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -24,7 +25,7 @@ export default new Vuex.Store({
     issues: [],
     statistics: [],
     allIssues: allIssues || [],
-    publicCollections: [],
+    publicCollections: publicCollections|| [],
 
     collection: {},
     
@@ -56,7 +57,9 @@ export default new Vuex.Store({
       localStorage.setItem('collections', JSON.stringify(collections));
     },
     SET_PUBLIC_COLLECTIONS(state, publicCollections) {
-      state.publicCollections = publicCollections;},
+      state.publicCollections = publicCollections;
+      localStorage.setItem('publicCollections', JSON.stringify(publicCollections));
+    },
     REPLACE_ISSUES(state, issues) {
       state.issues = issues;
     },
