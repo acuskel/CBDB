@@ -1,14 +1,13 @@
 <template>
   <div id="search">
-    <b-button id="prev" v-on:click="nextPage" variant="primary">Previous Page</b-button>
-    <b-button id="next" v-on:click="prevPage" variant="primary">Next Page</b-button>
+    <b-button id="prev" v-on:click="prevPage" variant="primary">Previous Page</b-button>
+    <b-button id="next" v-on:click="nextPage" variant="primary">Next Page</b-button>
     <b-table-simple bordered hover small responsive=false>
       <b-thead>
         <b-tr>
           <b-th>Series Title</b-th>
-          <b-th>Issue Title</b-th>
+          <b-th>Publisher</b-th>
           <b-th>Publication Date</b-th>
-          <b-th>Characters</b-th>
         </b-tr>
         <b-tr v-for="issue in allIssues" v-bind:key="issue.issueId">
           <b-td>
@@ -21,9 +20,8 @@
               {{ issue.seriesTitle }}
             </b-link>
           </b-td>
-          <b-td>{{ issue.title }}</b-td>
+          <b-td>{{ issue.publisher }}</b-td>
           <b-td>{{ issue.releaseDate }}</b-td>
-          <b-td>{{ issue.characters }}</b-td>
         </b-tr>
       </b-thead>
     </b-table-simple>
@@ -37,7 +35,7 @@ export default {
     return {
       issues: this.allIssues,
       first: 0,
-      last: 40,
+      last: 39,
     }
   },
   computed: {
@@ -60,6 +58,9 @@ export default {
       this.first += 40;
       this.last += 40;
       this.issues = this.allIssues;
+      console.log("first", this.first);
+      console.log("last", this.last);
+      console.log("issue", this.issues);
     },
     prevPage() {
       this.first -=40;
@@ -74,6 +75,7 @@ export default {
 #search{
   background-color:rgba(26, 24, 24, 0.966);
   padding:20px 80px 20px 30px;
+  font-family:bebas neue
   }
 
 #prev{

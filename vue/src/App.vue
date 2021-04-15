@@ -51,7 +51,15 @@ export default {
 
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat+Alternates&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&family=Montserrat+Alternates&display=swap');
+
+
 body, html, #app {   
+  font-family: 'montserrat';
+  font-weight: 100;
+  font-size: 1.2em;
   margin: auto;
   max-width: 1200px;
   min-height: 100%;

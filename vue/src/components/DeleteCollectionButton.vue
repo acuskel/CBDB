@@ -14,18 +14,15 @@ export default {
     };
   },
 
-  created() {
-    this.collection = this.$store.state.collection;
-    console.log("in delete button created", this.collection);
-  },
+  props: ['collectionId'],
+
   methods: {
     deleteOnClick() {
       collectionService
-        .deleteCollection(this.collection.id)
+        .deleteCollection(this.collectionId)
         .then((response) => {
           console.log("promise was success", response);
-          this.$store.commit("SET_COLLECTION", {});
-          this.$router.push("collection-display");
+          this.$router.push({name: 'my-collections'});
         })
         .catch((error) => {
           if (error.response) {

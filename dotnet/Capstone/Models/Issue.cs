@@ -7,6 +7,7 @@ namespace Capstone.Models
 {
     public class Issue
     {
+        private string releaseDate = "";
         public int IssueId { get; set; }
         public string Title { get; set; }
         public string SeriesTitle { get; set; }
@@ -16,7 +17,17 @@ namespace Capstone.Models
         public string Creator { get; set; }
         public string Publisher { get; set; }
         public string CoverLink { get; set; }
-        public string ReleaseDate { get; set; }
+        public string ReleaseDate {
+            get{
+                return releaseDate;
+            }
+            set{
+                string bracketDates = value;
+                bracketDates = bracketDates.Replace("[", "");
+                bracketDates = bracketDates.Replace("]", "");
+                releaseDate = bracketDates;
+            }
+        }
         //public int IssueNumber { get; set; }
         //public string StoryTitle { get; set; }
         //public string StoryArcName { get; set; }

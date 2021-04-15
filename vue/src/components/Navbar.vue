@@ -1,8 +1,8 @@
 <template>
        <div id="navbar">
       <b-navbar class="navbar-custom" toggleable="lg" type="dark">
-        <b-navbar-brand>
-          <img class="navbar-logo" v-bind:to="{ name: 'home'}" src="../../src/assets/cbdbyellow2.png" alt="CBDB Logo" height="50">
+        <b-navbar-brand :to="{name: 'home'}">
+          <img class="navbar-logo" src="../../src/assets/cbdbyellow2.png" alt="CBDB Logo" height="50">
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -69,10 +69,9 @@ export default {
 
 <style scoped>
 .navbar-custom {
-  background-color:rgba(26, 24, 24, 0.966);
   color:white;
-
-;
+  background-color:rgba(26, 24, 24, 0.966);
+  font-family: 'Bebas Neue', cursive;
 }
 
 .navbar-dark .navbar-nav .nav-link{

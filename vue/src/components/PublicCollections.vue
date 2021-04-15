@@ -4,12 +4,12 @@
     <ul>
       <li
         
-        v-for="collection in $store.state.collections"
-        v-bind:key="collection.name"
+        v-for="publicCollection in $store.state.publicCollections"
+        v-bind:key="publicCollection.name"
       >
       <!-- todo: add routerlink to CollectionDisplay -->
-      <router-link v-bind:to="{ name: 'public-display', params: {id: collection.id}}">
-      {{collection.name}}
+      <router-link v-bind:to="{ name: 'public-display', params: {id: publicCollection.id}}">
+      {{publicCollection.name}}
       </router-link>
       </li>
       <!-- todo: bind on ID -->
@@ -27,8 +27,8 @@ export default {
     };
   },
   computed: {
-    collections() {
-      return this.$store.state.collections;
+    publicCollections() {
+      return this.$store.state.publicCollections;
     }
   },
   created(){
@@ -37,7 +37,7 @@ export default {
     collectionService
       .getPublicCollections()
       .then((response) => {
-        this.$store.commit("REPLACE_COLLECTIONS", response.data);
+        this.$store.commit("SET_PUBLIC_COLLECTIONS", response.data);
       })
       .catch((error) => {
         if (error.response) {
