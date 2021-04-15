@@ -1,8 +1,47 @@
 <template>
-  <div class="my-collection-container">
+  <div class="my-collection-container" style="margin: 10px 40px" >
+    <b-card-group deck>
+      <!--  <b-card
+        border-variant="primary"
+        header="Primary"
+        header-bg-variant="primary"
+        header-text-variant="white"
+        align="center"
+        footer="Card Footer"
+    footer-tag="footer"
+    :footer-bg-variant="isPublic"
+    title="Title"
+    style="max-width: 20rem;"
+      > 
+        <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+      </b-card> -->
+<!-- collection image    :img-src="collection.coverLink"  -->
+      <b-card
+       :img-src="collection.coverLink"
+    img-alt="Image"
+    img-top
+        v-for="collection in $store.state.collections"
+        v-bind:key="collection.name"
+        border-variant="outline-primary"
+        header-text-variant="white"
+        align="center"
+        :footer="publicorPrivate(collection.isPublic)"
+    footer-tag="footer"
+    :footer-bg-variant="isPublic(collection.isPublic)"
+    footer-text-variant="white"
+        
+style="max-width: 30rem; min-width:300px; max-width:365px; margin: 10px"
+min-cols = 3   
+      >
+        
 
+        <b-button :to="{
+            name: 'collection-display',
+            params: { id: collection.id }}" variant="dark" style="vertical-align: middle; min-width:90%">{{collection.name}}</b-button>
+      </b-card>
+    </b-card-group>
 
-    <ul>
+   <!-- <ul>
       <li
         v-on:click="setCollection"
         v-for="collection in $store.state.collections"
@@ -17,7 +56,7 @@
           {{ collection.name }}
         </router-link>
       </li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
@@ -36,6 +75,18 @@ export default {
       this.$store.commit("SET_COLLECTION", this.collection);
       console.log("in coll disp", this.collection);
     },
+    isPublic(bool){
+      if(bool){
+        return 'success';
+      }
+      else return 'danger'
+    },
+    publicorPrivate(bool){
+      if(bool){
+        return 'Public';
+      }
+      else return 'Private'
+    }
   },
   created() {
     collectionService

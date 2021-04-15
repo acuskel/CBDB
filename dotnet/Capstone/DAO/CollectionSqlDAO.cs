@@ -166,6 +166,7 @@ namespace Capstone.DAO
             collection.Name = Convert.ToString(reader["collection_name"]);
             collection.UserId = Convert.ToInt32(reader["user_id"]);
             collection.IsPublic = Convert.ToBoolean(reader["is_public"]);
+            collection.CoverLink = Convert.ToString(reader["cover_link"]);
             return collection;
         }
 

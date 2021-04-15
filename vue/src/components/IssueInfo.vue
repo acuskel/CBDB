@@ -28,6 +28,8 @@
     </b-container>
       </b-col>
       <b-col class="text-right">
+        <img v-if="issue.coverLink != ''" :src="issue.CoverLink" />
+        <div v-else>
       <img v-if="issue.publisher == 'Dark Horse'" src="https://d2lzb5v10mb0lj.cloudfront.net/darkhorse/index_images/blog/blog2015/sdcc15logo.jpg">
       <img v-if="issue.publisher == 'Marvel'" width=300 src="https://logodownload.org/wp-content/uploads/2017/05/marvel-logo-0.png">
       <img v-if="issue.publisher == 'DC'" width=300 src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/DC_Comics_logo.svg/600px-DC_Comics_logo.svg.png">
@@ -36,7 +38,7 @@
       <img v-if="issue.publisher == 'IDW'" width=300 src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/IDW_Publishing_logo.svg/300px-IDW_Publishing_logo.svg.png">
       <img v-if="issue.publisher == 'Archie'" width=300 src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Archiecomicslogo.png/800px-Archiecomicslogo.png">
       <img v-if="issue.publisher == 'Boom!'" width=300 src="https://upload.wikimedia.org/wikipedia/en/e/ea/Updated_BOOM%21_logo%2C_fair_use.jpg">
-      </b-col>
+      </div></b-col>
       </b-row>
       </b-container>
     <div class="summary">  

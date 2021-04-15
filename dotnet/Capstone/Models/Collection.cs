@@ -12,5 +12,6 @@ namespace Capstone.Models
         public List<Issue> Issues { get; set; }
         public int UserId { get; set; }
         public bool IsPublic { get; set; }
+        public string CoverLink { get; set; }
     }
 }
