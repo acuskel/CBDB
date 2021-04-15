@@ -1,62 +1,59 @@
 <template>
   <div class="issues-container">
-      <h1>Collection Stats</h1>
-      <b-container fluid-center class="card-grid">
-        <b-row align-h="center">
-          <b-card-group deck>
-            <b-col md="4" class="ml-auto p-3">
-              <b-card header="Issues" class="text-center">
-                <b-card-text class="card_text">{{ issues.length }}</b-card-text>
-              </b-card>
-            </b-col>
-            <b-col md="4" class="ml-auto p-3">
-              <b-card header="Featuring Superheroes" class="text-center">
-                <b-card-text class="card_text">{{ superheroCount }}</b-card-text>
-              </b-card>
-            </b-col>
-            <b-col md="4" class="ml-auto p-3">
-              <b-card header="Marvel Comics" class="text-center">
-                <b-card-text class="card_text">{{ marvelComics }}</b-card-text>
-              </b-card>
-            </b-col>
-            <b-col md="4" class="ml-auto p-3">
-              <b-card header="DC Comics" class="text-center">
-                <b-card-text class="card_text">{{ dcComics }}</b-card-text>
-              </b-card>
-            </b-col>
+    <h1>Collection Stats</h1>
+    <b-container fluid-center class="card-grid">
+      <b-row align-h="center">
+        <b-card-group deck>
+          <b-col md="4" class="ml-auto p-3">
+            <b-card header="Issues" class="text-center">
+              <b-card-text class="card_text">{{ issues.length }}</b-card-text>
+            </b-card>
+          </b-col>
+          
+          <b-col md="4" class="ml-auto p-3">
+            <b-card header="Marvel Comics" class="text-center">
+              <b-card-text class="card_text">{{ marvelComics }}</b-card-text>
+            </b-card>
+          </b-col>
+          <b-col md="4" class="ml-auto p-3">
+            <b-card header="DC Comics" class="text-center">
+              <b-card-text class="card_text">{{ dcComics }}</b-card-text>
+            </b-card>
+          </b-col>
+          <b-col md="4" class="ml-auto p-3">
+            <b-card header="Featuring Superheroes" class="text-center">
+              <b-card-text class="card_text">{{ superheroCount }}</b-card-text>
+            </b-card>
+          </b-col>
+          <b-col md="4" class="ml-auto p-3">
+            <b-card header="Total Pages in Collection" class="text-center">
+              <b-card-text class="card_text">{{ countPages }}</b-card-text>
+            </b-card>
+          </b-col>
+          <b-col md="4" class="ml-auto p-3">
+            <b-card header="Avg Pages Per Issue" class="text-center">
+              <b-card-text class="card_text">{{ averagePages }}</b-card-text>
+            </b-card>
+          </b-col>
+        </b-card-group>
+      </b-row>
+    </b-container>
 
-            <b-col md="4" class="ml-auto p-3">
-              <b-card header="Featuring Spiderman" class="text-center">
-                <b-card-text class="card_text">{{
-                  spidermanCount
-                }}</b-card-text>
-              </b-card>
-            </b-col>
-            <b-col md="4" class="ml-auto p-3">
-              <b-card header="Featuring Batman" class="text-center">
-                <b-card-text class="card_text">{{ batmanCount }}</b-card-text>
-              </b-card>
-            </b-col>
-          </b-card-group>
-        </b-row>
-      </b-container>
-
-      <h1>Issues in this Collection:</h1>
-      <ul>
-        <li v-for="issue in issues" v-bind:key="issue.id">
-          <router-link
-            v-on:click="onSubmit"
-            v-bind:to="{
-              name: 'issue-display',
-              params: { id: issue.issueId, collectionId: collectionId },
-            }"
-          >
-            {{ issue.seriesTitle }}
-          </router-link>
-        </li>
-        <!-- todo: bind on ID -->
-      </ul>
-    
+    <h1>Issues in this Collection:</h1>
+    <ul>
+      <li v-for="issue in issues" v-bind:key="issue.id">
+        <router-link
+          v-on:click="onSubmit"
+          v-bind:to="{
+            name: 'issue-display',
+            params: { id: issue.issueId, collectionId: collectionId },
+          }"
+        >
+          {{ issue.seriesTitle }}
+        </router-link>
+      </li>
+      <!-- todo: bind on ID -->
+    </ul>
   </div>
 </template>
 
@@ -115,7 +112,7 @@ export default {
       let counter = 0;
 
       this.issues.forEach((i) => {
-        if (i.publisher == "DC" || i.publisher == "Marvel") {
+        if (i.characters.includes("man") || i.characters.includes("men") || i.characters.includes("X") || i.characters.includes("Justice") || i.characters.includes("Squad") || i.characters.includes("Flash") || i.characters.includes("Guardians") ) {
           counter++;
         }
       });
@@ -174,17 +171,26 @@ export default {
       });
       return counter;
     },
-    jackKirbyComics() {
+    countPages() {
       let counter = 0;
 
       this.issues.forEach((i) => {
-        if (i.characters.includes("Jack Kirby")) {
-          counter++;
-        }
+        counter += i.pageCount;
       });
       return counter;
     },
+    averagePages() {
+      let pageCounter = 0;
+      let issuesCounter = 0;
+
+      this.issues.forEach((i) => {
+        issuesCounter++;
+        pageCounter += i.pageCount;
+      });
+      return Math.floor(pageCounter / issuesCounter);
+    },
   },
+  
   methods: {
     onSubmit() {
       this.$store.commit("SET_COLLECTION", this.$route.params.id);
