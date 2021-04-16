@@ -29,7 +29,7 @@
         variant="primary"
         v-show="currentPage > 1"
         >Previous Page</b-button
-      > <h4 style="min-width:400px; color:white; position:absolute; top:200px; left:820px;"><b >Results: </b>{{ searchResults.length }} <b>   </b> <b style="margin-left:30px">Current Page:</b>
+      > <h4 style="min-width:400px; color:white; position:absolute; top:200px; left:730px;"><b >Results: </b>{{ searchResults.length }} <b>   </b> <b style="margin-left:30px">Current Page:</b>
         {{ currentPage }}</h4>
       <b-button
         id="next"

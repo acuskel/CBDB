@@ -110,19 +110,19 @@ export default {
     
     userIdToUser(userId) {
       if (userId == 1) {
-        return "Josh"
+        return "acuskelly"
       }
       else if (userId == 2) {
-        return "Amanda"
+        return "admin"
       }
       else if (userId== 3) {
-        return "RJ"
+        return "joshkwood"
       }
       else if (userId == 4) {
-        return "User4"
+        return "rj2000"
       }
       else if (userId == 5) {
-        return "User5"
+        return "rj2000"
       }
       else if (userId == 6) {
         return "User6"

@@ -4,7 +4,7 @@
       <b-row> <b-col>
     <div  class="statslist" style="max-width: 400px; margin: auto; font-size: 1em; font-family:bebas neue; margin-left:10px">
       <b-card-group  deck variant="dark">
-        <b-card id="stats" header="Collection Stats" style="margin: 40px">
+        <b-card header-text-variant=dark id="stats" header="Collection Stats" style="margin: 40px">
           <b-list-group>
             <b-list-group-item href="#"
               >Issues: {{ issues.length }}
@@ -71,7 +71,7 @@
     <b-col>
     <div class="issues" style="margin-top:30x; margin-bottom:30px; margin-left:-210px; ">
 
-      <b-card header-text-variant=dark no-body header="Issues in Collection">
+      <b-card style="margin-top:40px; max-width:760px; font-family:bebas neue" header-text-variant=dark no-body header="Issues in Collection">
     <b-list-group flush>
 
 
@@ -81,7 +81,7 @@
       
       >
       <b-row><b-col>
-      {{issue.seriesTitle}} 
+      {{issue.seriesTitle}} : {{issue.issueNumber}}
       </b-col><b-col>
       <b-button class="buttons" v-on:click="onSubmit"
         
@@ -299,7 +299,6 @@ background-color:rgba(26, 24, 24);
 color:white;
 }
 #stats {
-background-color:rgba(26, 24, 24);
 color:white
 }
 

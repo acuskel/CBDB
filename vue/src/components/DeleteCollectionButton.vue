@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-button v-b-modal.modal variant=danger>Delete Entire Collection</b-button>
+    <b-button v-b-modal.modal variant=danger style="font-family:bebas neue">Delete Entire Collection</b-button>
     <b-modal @ok="deleteOnClick" id="modal">
       <h3>Are you sure you want to delete this collection?</h3>
     </b-modal>
