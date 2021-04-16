@@ -1,5 +1,5 @@
 <template>
-  <div id="login" class="text-center" style="padding-bottom:20px">
+  <div id="login" class="text-center" style="padding-bottom:20px; padding-top:10px">
     <div
         id="welcome"
         style="
