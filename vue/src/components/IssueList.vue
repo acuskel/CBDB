@@ -69,71 +69,41 @@
     </div> 
     </b-container> -->
     <b-col>
-    <div class="issues" style="margin-top:30x; margin-bottom:30px; margin-left:-210px">
+    <div class="issues" style="margin-top:30x; margin-bottom:30px; margin-left:-210px; ">
 
-      <b-card-group deck>
+      <b-card no-body header="Card with flush list group">
+    <b-list-group flush>
 
-        <b-card
-    img-alt="Image"
-    img-top
-        v-for="issue in issues" v-bind:key="issue.id"
-        border-variant="outline-primary"
-        align="center"
-    footer-tag="footer"
-    header-text-variant="r"
-    footer-text-variant="white"
-    class="issue"
-    style="max-width: 20rem; max-width:230px; margin: 20px; min-width:200px"
-    min-cols = 3   
+
+      <b-list-group-item 
+      v-for="issue in issues" v-bind:key="issue.id"
+      
+      
       >
-      <b-card-title style="font-weight:bold; font-family:bebas neue; font-size:1.2em; margin-bottom:10px; ">{{issue.seriesTitle}}</b-card-title>
-        
-
-        <b-button class="buttons" v-on:click="onSubmit"
+      <b-row><b-col>
+      {{issue.seriesTitle}} 
+      </b-col><b-col>
+      <b-button class="buttons" v-on:click="onSubmit"
         
         :to="{
             name: 'issue-display',
             params: { id: issue.issueId, collectionId: collectionId },
           }" variant="primary" style="vertical-align: middle; min-width:100%; max-height:40px; margin-bottom:10px">View Issue</b-button>
+      </b-col>
+            
+            <b-col>
             <delete-issue-button
           class="delete buttons"
           :issueId="issue.issueId"
           :collectionId="collectionId"
-        />
-      </b-card>
-    </b-card-group>
+        /></b-col></b-row>
+      
+      
+      
+      </b-list-group-item>
 
-
-
-
-
-
-
-
-
-
-
-
-      <!--
-    <h1>Issues in this Collection:</h1>
-    <ul>
-      <li class="issue" v-for="issue in issues" v-bind:key="issue.id">
-        <router-link
-          v-on:click="onSubmit"
-          v-bind:to="{
-            name: 'issue-display',
-            params: { id: issue.issueId, collectionId: collectionId },
-          }"
-        >
-          {{ issue.seriesTitle }} {{ issue.issueNumber }}
-        </router-link>
-        <delete-issue-button
-          class="delete"
-          :issueId="issue.issueId"
-          :collectionId="collectionId"
-        />
-      </li> 
-    </ul>-->
+    </b-list-group>
+  </b-card>
   </div>
     </b-col>
   </b-row>
@@ -314,10 +284,20 @@ export default {
 </script>
 
 <style>
+
+.card-header{
+color:white;
+font-size:1.5;
+}
+
 .buttons{
   font-size:10px
 }
-
+#issues{
+  
+background-color:rgba(26, 24, 24);
+color:white;
+}
 #stats {
 background-color:rgba(26, 24, 24);
 color:white

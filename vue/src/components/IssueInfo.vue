@@ -12,7 +12,7 @@
       <p class="data"><b class="bold">Publication Date:</b> {{ issue.releaseDate }}</p>
       <p class="data"><b class="bold">Page Count:</b> {{ issue.pageCount }}</p>
       <p class="data"><b class="bold">Featuring: </b>{{ issue.characters }}</p><br>
-      <h3 style="font-family:bebas neue">Add to collection:</h3>
+      <h3 v-if="$store.state.token != ''" style="font-family:bebas neue">Add to collection:</h3>
       <b-container class="addToCollection" >
       <b-row>
         <b-col ><b-button 
