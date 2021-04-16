@@ -14,8 +14,8 @@
       <p class="data"><b class="bold">Featuring: </b>{{ issue.characters }}</p><br>
       <h3 v-if="$store.state.token != ''" style="font-family:bebas neue">Add to collection:</h3>
       <b-container class="addToCollection" >
-      <b-row>
-        <b-col ><b-button 
+      <b-row v-if="$store.state.token != ''">
+        <b-col><b-button 
         variant="primary"
         v-for="unaddedCollection in unaddedCollections"
         v-bind:key="unaddedCollection.id" 
@@ -23,7 +23,7 @@
         >{{ unaddedCollection.name }}</b-button></b-col>
         </b-row>
         <b-row>
-          <b-form-rating v-model="value" variant="primary" class="mb-2" style="margin-top:15px;"></b-form-rating> 
+          <b-form-rating v-if="$store.state.token != ''" v-model="value" variant="primary" class="mb-2" style="margin-top:15px;"></b-form-rating> 
         </b-row>
     </b-container>
       </b-col>
@@ -69,6 +69,9 @@ export default {
     };
   },
   computed: {
+    //premiumORUnder100() {
+     // if($store.state.user.isPremium)
+    //}
   },
   methods: {
     addToCollection(issue, unaddedCollectionId){
