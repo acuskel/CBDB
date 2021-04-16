@@ -19,7 +19,8 @@
               style="float: left; margin-left: -40px; font-size: 0.6em"
               >🔍</b-button
             >
-          </b-col></b-row>
+          </b-col><b-col><h4 style="color:white">Results: {{ searchResults.length }}    <span style="margin-left:20px; margin-right:-250px"> Current Page:
+        {{ currentPage }}</span></h4></b-col></b-row>
       </b-container>
     </div>
     <div class="prevNext">
@@ -29,8 +30,7 @@
         variant="primary"
         v-show="currentPage > 1"
         >Previous Page</b-button
-      > <h4 style="min-width:400px; color:white; position:absolute; top:200px; left:730px;"><b >Results: </b>{{ searchResults.length }} <b>   </b> <b style="margin-left:30px">Current Page:</b>
-        {{ currentPage }}</h4>
+      > 
       <b-button
         id="next"
         v-on:click="nextPage"

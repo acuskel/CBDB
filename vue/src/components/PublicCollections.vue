@@ -110,22 +110,22 @@ export default {
     
     userIdToUser(userId) {
       if (userId == 1) {
-        return "acuskelly"
+        return "amanda1993"
       }
       else if (userId == 2) {
-        return "admin"
+        return "RJ2000"
       }
       else if (userId== 3) {
         return "joshkwood"
       }
       else if (userId == 4) {
-        return "rj2000"
+        return "acuskelly"
       }
       else if (userId == 5) {
-        return "rj2000"
+        return "anonymous"
       }
       else if (userId == 6) {
-        return "User6"
+        return "anonymous"
       }
       else return 'anonymous'
     },
