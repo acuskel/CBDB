@@ -1,5 +1,23 @@
 <template>
   <div id="login" class="text-center" style="padding-bottom:20px">
+    <div
+        id="welcome"
+        style="
+          width: 100%;
+          letter-spacing: 2px;
+          margin: 4px -3px;
+          padding: 7.5px 0px 5.5px;
+          border: solid 3px white;
+          border-radius: 20px;
+          text-align: center;
+          color: white;
+          font-size: 25px;
+          background: black;
+          margin-bottom:50px
+        "
+      >
+        <img src="../../src/assets/welcome.gif" />
+      </div>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
