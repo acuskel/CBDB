@@ -69,6 +69,9 @@ export default {
     };
   },
   computed: {
+    //premiumORUnder100() {
+     // if($store.state.user.isPremium)
+    //}
   },
   methods: {
     addToCollection(issue, unaddedCollectionId){

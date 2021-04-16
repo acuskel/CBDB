@@ -1,12 +1,12 @@
 <template>
-  <div id="register" class="text-center">
+  <div id="register" class="text-center" style="padding-bottom:10px; padding-top:30px">
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <h1 class="h3 mb-3 font-weight-normal" style="margin-top:30px">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
       <label for="username" class="sr-only">Username</label>
-      <input
+      <input style="max-width:300px; margin:auto; margin-bottom:10px"
         type="text"
         id="username"
         class="form-control"
@@ -16,7 +16,7 @@
         autofocus
       />
       <label for="password" class="sr-only">Password</label>
-      <input
+      <input style="max-width:300px; margin:auto; margin-bottom:10px"
         type="password"
         id="password"
         class="form-control"
@@ -24,7 +24,7 @@
         v-model="user.password"
         required
       />
-      <input
+      <input style="max-width:300px; margin:auto; margin-bottom:10px"
         type="password"
         id="confirmPassword"
         class="form-control"
@@ -42,22 +42,20 @@
         :required="user.isPremium ? true : false"
       />
       <br />
-      <input
+      <input style="margin-top:10px"
         type="checkbox"
         id="isPremium"
         class="form-control"
         v-model="user.isPremium"
       />
       <label for="checkbox"
-        >Register as a premium member to receive our monthly newsletter e-mail
-        and have no limit on the number of comics you can add to your
-        collections!</label
+        ><p style="color:white; margin-top:10px">Register as a premium member ?</p></label
       >
       <br />
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <button style="max-width:300px; margin:auto; margin-bottom:10px" class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      <router-link :to="{ name: 'login' }"><p style="margin-top:5px">Have an account?</p></router-link>
     </form>
   </div>
 </template>
