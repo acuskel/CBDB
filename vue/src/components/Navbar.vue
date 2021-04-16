@@ -9,7 +9,7 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item :to="{ name: 'home'}" >Home</b-nav-item>
+            <b-nav-item :to="{ name: 'home'}" v-if="$store.state.token != ''">Home</b-nav-item>
             <b-nav-item :to="{ name: 'my-collections'}" v-if="$store.state.token != ''" >My Collections</b-nav-item>
             <b-nav-item :to="{ name: 'public'}" >Browse Public Collections</b-nav-item>
             <b-nav-item :to="{ name: 'search'}">Browse All Comics</b-nav-item>
