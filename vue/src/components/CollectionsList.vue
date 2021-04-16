@@ -20,7 +20,6 @@
        :img-src="collection.coverLink"
     img-alt="Image"
     img-top
-    :title="collection.name"
         v-for="collection in $store.state.collections"
         v-bind:key="collection.name"
         border-variant="outline-primary"
@@ -29,18 +28,21 @@
     footer-tag="footer"
     :footer-bg-variant="isPublic(collection.isPublic)"
     header-text-variant="white"
+    footer-text-variant="white"
         
 style="max-width: 30rem; min-width:300px; max-width:365px; margin: 10px"
 min-cols = 3   
       >
+      <b-card-title style="font-weight:bold; font-family:bebas neue; font-size:40px; margin-bottom:20px">{{collection.name}}</b-card-title>
         
 
         <b-button :to="{
             name: 'collection-display',
             params: { id: collection.id }}" variant="primary" style="vertical-align: middle; min-width:90%">View Collection</b-button>
-            <b-button :to="{
+            <b-button
+             :to="{
             name: 'collection-display',
-            params: { id: collection.id }}" variant="warning" style="vertical-align: middle; min-width:90%; margin-top: 10px">Delete Collection</b-button>
+            params: { id: collection.id }}" variant="danger" style="vertical-align: middle; min-width:90%; margin-top: 10px">Delete Collection</b-button>
       </b-card>
     </b-card-group>
 
@@ -82,7 +84,7 @@ export default {
       if(bool){
         return 'success';
       }
-      else return 'danger'
+      else return 'dark'
     },
     publicorPrivate(bool){
       if(bool){

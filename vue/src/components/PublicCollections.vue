@@ -1,21 +1,68 @@
 <template>
-  <div class="public-collections">
+  <div class="my-collection-container" style="padding-bottom:50px">
+    <b-card-group deck style="margin: auto;">
+      <b-card
+      class="text-center"
+        :img-src="publicCollection.coverLink"
+        img-alt="Image"
+        img-top
+        v-for="publicCollection in $store.state.publicCollections"
+        v-bind:key="publicCollection.name"
+        border-variant="outline-primary"
+        align="center"
+        :footer="'Owner: ' + userIdToUser(publicCollection.userId)"
+        footer-tag="footer"
+        footer-bg-variant=dark
+        header-text-variant="white"
+        footer-text-variant="white"
+        style="
+          max-width: 30rem;
+          min-width: 300px;
+          max-width: 365px;
+          margin: 10px;
+        "
+        min-cols="3"
+      >
+        <b-card-title
+          style="
+            font-weight: bold;
+            font-family: bebas neue;
+            font-size: 40px;
+            margin-bottom: 20px;
+          "
+          >{{ publicCollection.name }}</b-card-title
+        >
 
-    <ul>
+        <b-button
+          :to="{
+            name: 'public-display',
+            params: { id: publicCollection.id },
+          }"
+          variant="primary"
+          style="vertical-align: middle; min-width: 90%"
+          >View Collection</b-button
+        >
+      </b-card>
+    </b-card-group>
+
+    <!-- <ul>
       <li
-        
         v-for="publicCollection in $store.state.publicCollections"
         v-bind:key="publicCollection.name"
       >
-      <!-- todo: add routerlink to CollectionDisplay -->
-      <router-link v-bind:to="{ name: 'public-display', params: {id: publicCollection.id}}">
-      {{publicCollection.name}}
-      </router-link>
+       
+        <router-link
+          v-bind:to="{
+            name: 'public-display',
+            params: { id: publicCollection.id },
+          }"
+        >
+          {{ publicCollection.name }}
+        </router-link>
       </li>
-      <!-- todo: bind on ID -->
-    </ul>
+    </ul> -->
   </div>
-</template>
+</template> 
 
 <script>
 import collectionService from "../services/CollectionService.js";
@@ -31,7 +78,7 @@ export default {
       return this.$store.state.publicCollections;
     }
   },
-  created(){
+  created() {
     this.message = "";
 
     collectionService
@@ -41,20 +88,56 @@ export default {
       })
       .catch((error) => {
         if (error.response) {
-          this.message = 
-          "error: HTTP Response Code: " + error.response.data.status;
-          this.message =+ " Description: " + error.response.data.title;
+          this.message =
+            "error: HTTP Response Code: " + error.response.data.status;
+          this.message = +" Description: " + error.response.data.title;
         } else {
           this.message = "Network Error";
         }
       });
   },
+  methods: {
+    isPublic(bool) {
+      if (bool) {
+        return "success";
+      } else return "dark";
+    },
+    publicorPrivate(bool) {
+      if (bool) {
+        return "Public";
+      } else return "Private";
+    },
+    
+    userIdToUser(userId) {
+      if (userId == 1) {
+        return "Josh"
+      }
+      else if (userId == 2) {
+        return "Amanda"
+      }
+      else if (userId== 3) {
+        return "RJ"
+      }
+      else if (userId == 4) {
+        return "User4"
+      }
+      else if (userId == 5) {
+        return "User5"
+      }
+      else if (userId == 6) {
+        return "User6"
+      }
+      else return 'anonymous'
+    },
+  },
 };
 </script>
 
 <style>
-.public-collections{
-  background-color:rgba(26, 24, 24, 0.966);
-  padding:20px;
-  }
+.my-collection-container{
+
+}
+.public-collections {
+  padding: 20px;
+}
 </style>

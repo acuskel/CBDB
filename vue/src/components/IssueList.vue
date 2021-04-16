@@ -1,7 +1,36 @@
 <template>
   <div class="issues-container">
-    <h1>Collection Stats</h1>
-    <b-container fluid-center class="card-grid">
+    
+      <b-row> <b-col>
+    <div  class="statslist" style="max-width: 400px; margin: auto; font-size: 1em; font-family:bebas neue; margin-left:10px">
+      <b-card-group  deck variant="dark">
+        <b-card id="stats" header="Collection Stats" style="margin: 40px">
+          <b-list-group>
+            <b-list-group-item href="#"
+              >Issues: {{ issues.length }}
+            </b-list-group-item>
+            <b-list-group-item href="#"
+              >Featuring Superheroes: {{ superheroCount }}</b-list-group-item
+            >
+            <b-list-group-item href="#"
+              >Average pages per comic: {{ averagePages }}</b-list-group-item
+            >
+            <b-list-group-item href="#"
+              >Total pages: {{ countPages }}</b-list-group-item
+            >
+            <b-list-group-item href="#" variant="danger"
+              >Marvel Comics: {{ marvelComics }}</b-list-group-item
+            >
+            <b-list-group-item href="#" variant="primary"
+              >DC Comics: {{ dcComics }}</b-list-group-item
+            >
+          </b-list-group>
+        </b-card>
+      </b-card-group>
+    </div>
+  </b-col>
+    <!-- <b-container fluid-center class="card-grid">
+      <div class="statsbox" >
       <b-row align-h="center">
         <b-card-group deck>
           <b-col md="4" class="ml-auto p-3">
@@ -37,34 +66,87 @@
           </b-col>
         </b-card-group>
       </b-row>
-    </b-container>
-      <h1>Issues in this Collection:</h1>
-      <ul>
-        <li class="issue" v-for="issue in issues" v-bind:key="issue.id">
-          <router-link
-            v-on:click="onSubmit"
-            v-bind:to="{
-              name: 'issue-display',
-              params: { id: issue.issueId, collectionId: collectionId },
-            }"
-          >
-            {{ issue.seriesTitle }} {{issue.issueNumber}}
-          </router-link>
-           <delete-issue-button class="delete" :issueId="issue.issueId" :collectionId="collectionId"/>
-        </li>
-        <!-- todo: bind on ID -->
-      </ul>
-    
+    </div> 
+    </b-container> -->
+    <b-col>
+    <div class="issues" style="margin-top:30x; margin-bottom:30px; margin-left:-210px">
+
+      <b-card-group deck>
+
+        <b-card
+    img-alt="Image"
+    img-top
+        v-for="issue in issues" v-bind:key="issue.id"
+        border-variant="outline-primary"
+        align="center"
+    footer-tag="footer"
+    header-text-variant="r"
+    footer-text-variant="white"
+    class="issue"
+    style="max-width: 20rem; max-width:230px; margin: 20px; min-width:200px"
+    min-cols = 3   
+      >
+      <b-card-title style="font-weight:bold; font-family:bebas neue; font-size:1.2em; margin-bottom:10px; ">{{issue.seriesTitle}}</b-card-title>
+        
+
+        <b-button class="buttons" v-on:click="onSubmit"
+        
+        :to="{
+            name: 'issue-display',
+            params: { id: issue.issueId, collectionId: collectionId },
+          }" variant="primary" style="vertical-align: middle; min-width:100%; max-height:40px; margin-bottom:10px">View Issue</b-button>
+            <delete-issue-button
+          class="delete buttons"
+          :issueId="issue.issueId"
+          :collectionId="collectionId"
+        />
+      </b-card>
+    </b-card-group>
+
+
+
+
+
+
+
+
+
+
+
+
+      <!--
+    <h1>Issues in this Collection:</h1>
+    <ul>
+      <li class="issue" v-for="issue in issues" v-bind:key="issue.id">
+        <router-link
+          v-on:click="onSubmit"
+          v-bind:to="{
+            name: 'issue-display',
+            params: { id: issue.issueId, collectionId: collectionId },
+          }"
+        >
+          {{ issue.seriesTitle }} {{ issue.issueNumber }}
+        </router-link>
+        <delete-issue-button
+          class="delete"
+          :issueId="issue.issueId"
+          :collectionId="collectionId"
+        />
+      </li> 
+    </ul>-->
+  </div>
+    </b-col>
+  </b-row>
   </div>
 </template>
 
 <script>
 import CollectionService from "../services/CollectionService.js";
-import DeleteIssueButton from './DeleteIssueButton.vue';
+import DeleteIssueButton from "./DeleteIssueButton.vue";
 export default {
   name: "issue-list",
-  components:{
-    DeleteIssueButton
+  components: {
+    DeleteIssueButton,
   },
   data() {
     return {
@@ -117,7 +199,15 @@ export default {
       let counter = 0;
 
       this.issues.forEach((i) => {
-        if (i.characters.includes("man") || i.characters.includes("men") || i.characters.includes("X") || i.characters.includes("Justice") || i.characters.includes("Squad") || i.characters.includes("Flash") || i.characters.includes("Guardians") ) {
+        if (
+          i.characters.includes("man") ||
+          i.characters.includes("men") ||
+          i.characters.includes("X") ||
+          i.characters.includes("Justice") ||
+          i.characters.includes("Squad") ||
+          i.characters.includes("Flash") ||
+          i.characters.includes("Guardians")
+        ) {
           counter++;
         }
       });
@@ -195,7 +285,7 @@ export default {
       return Math.floor(pageCounter / issuesCounter);
     },
   },
-  
+
   methods: {
     onSubmit() {
       this.$store.commit("SET_COLLECTION", this.$route.params.id);
@@ -224,11 +314,20 @@ export default {
 </script>
 
 <style>
+.buttons{
+  font-size:10px
+}
+
+#stats {
+background-color:rgba(26, 24, 24);
+color:white
+}
+
 .card-grid {
   padding-bottom: 2em;
 }
 .text-center {
-  font-size: .80em;
+  font-size: 0.8em;
 }
 .card_text {
   font-size: 3em;
@@ -247,5 +346,4 @@ table {
 body {
   background-color: white;
 }
-
 </style>
