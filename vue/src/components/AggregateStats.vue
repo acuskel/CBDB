@@ -4,47 +4,47 @@
     <b-row align-h="center">
       <b-card-group deck>
         <b-col md="4" class="ml-auto p-4">
-          <b-card header="Total Number of Users" class="text-center">
-            <b-card-text class="card_text">{{ numberOfUsers }}</b-card-text>
+          <b-card header-text-variant=dark header="Total Number of Users" class="text-center">
+            <b-card-text  class="card_text">{{ numberOfUsers }}</b-card-text>
           </b-card>
         </b-col>
         <b-col md="4" class="ml-auto p-4">
-          <b-card header="Size of Largest Collection" class="text-center">
+          <b-card header-text-variant=dark header="Size of Largest Collection" class="text-center">
             <b-card-text class="card_text">{{ largestUserCollection }}</b-card-text>
           </b-card>
         </b-col>
         <b-col md="4" class="ml-auto p-4">
-          <b-card header="Avg. Issues Per Collection" class="text-center">
+          <b-card  header-text-variant=dark header="Avg. Issues Per Collection" class="text-center">
             <b-card-text class="card_text">{{ averageNumberOfIssues }}</b-card-text>
           </b-card>
         </b-col>
         <b-col md="4" class="ml-auto p-4">
-          <b-card header="Most Collections by a User" class="text-center">
+          <b-card  header-text-variant=dark header="Most Collections by a User" class="text-center">
             <b-card-text class="card_text">{{ mostCollectionsByUser }}</b-card-text>
           </b-card>
         </b-col>
         <b-col md="4" class="ml-auto p-4">
-              <b-card header="Featuring Superheroes" class="text-center">
+              <b-card header-text-variant=dark header="Featuring Superheroes" class="text-center">
                 <b-card-text class="card_text">{{ superheroCount }}</b-card-text>
               </b-card>
             </b-col>
         <b-col md="4" class="ml-auto p-4">
-          <b-card header="DC Comics" class="text-center">
+          <b-card header-text-variant=dark header="DC Comics" class="text-center">
             <b-card-text class="card_text">{{ dcComics }}</b-card-text>
           </b-card>
         </b-col>
         <b-col md="4" class="ml-auto p-4">
-          <b-card header="Marvel Comics" class="text-center">
+          <b-card header-text-variant=dark header="Marvel Comics" class="text-center">
             <b-card-text class="card_text">{{ marvelComics }}</b-card-text>
           </b-card>
         </b-col>
         <b-col md="4" class="ml-auto p-4">
-          <b-card header="Image Comics" class="text-center">
+          <b-card header-text-variant=dark header="Image Comics" class="text-center">
             <b-card-text class="card_text">{{ imageComics }}</b-card-text>
           </b-card>
         </b-col>
         <b-col md="4" class="ml-auto p-4">
-          <b-card header="Dark Horse Comics" class="text-center">
+          <b-card header-text-variant=dark header="Dark Horse Comics" class="text-center">
             <b-card-text class="card_text">{{ darkHorseComics }}</b-card-text>
           </b-card>
         </b-col>

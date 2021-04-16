@@ -71,7 +71,7 @@
     <b-col>
     <div class="issues" style="margin-top:30x; margin-bottom:30px; margin-left:-210px; ">
 
-      <b-card no-body header="Card with flush list group">
+      <b-card header-text-variant=dark no-body header="Issues in Collection">
     <b-list-group flush>
 
 
