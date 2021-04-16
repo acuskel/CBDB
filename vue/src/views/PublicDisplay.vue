@@ -1,6 +1,5 @@
 <template>
-  <div id="public-bg">
-    <h1>List of comics in collection selected</h1> <!-- selected collection name? -->
+  <div id="public-bg"><!-- selected collection name? -->
     <issue-list />
   </div>
 </template>

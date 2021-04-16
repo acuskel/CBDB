@@ -1,5 +1,5 @@
 <template>
-  <div id="login" class="text-center">
+  <div id="login" class="text-center" style="padding-bottom:20px">
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
@@ -14,6 +14,7 @@
       >Thank you for registering, please sign in.</div>
       <label for="username" class="sr-only">Username</label>
       <input
+      style="max-width:300px; margin:auto; margin-bottom:10px"
         type="text"
         id="username"
         class="form-control"
@@ -24,6 +25,7 @@
       />
       <label for="password" class="sr-only">Password</label>
       <input
+      style="max-width:300px; margin:auto; margin-bottom:10px"
         type="password"
         id="password"
         class="form-control"
@@ -31,8 +33,8 @@
         v-model="user.password"
         required
       />
-      <button type="submit">Sign in</button>
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      <b-button variant=primary type="submit" style="margin-right:20px; margin-top:20px">Sign in</b-button>
+      <router-link :to="{ name: 'register' }"><p style="margin-top:20px">Need an account?</p></router-link>
     </form>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="deleteButton">
     <!-- delete button only shows up if the user owns the collection. Will not show on public display if user is not owner -->
     <b-button variant="danger" v-on:click="deleteOnClick" v-show="isMine">Remove From Collection</b-button>
   </div>
@@ -53,5 +53,7 @@ export default {
 </script>
 
 <style scoped>
-
+#deleteButton{
+  font-size: 12px;
+}
 </style>
